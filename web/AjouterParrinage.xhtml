@@ -12,15 +12,20 @@
         <br/><br/> <br/>
         <p:growl id="growl" life="3000" />
 
-        <h1><h:outputText value="Gestion Des Dossiers" style="font-size: 25px; " /></h1>
+        <h:form style="margin-left: 1280px; margin-top: -50px;">
 
 
-  <h:form id="hi" >
-          <h:panelGrid columns="6" >
-          
+            <p:dock position="top" itemWidth="80" maxWidth="30"  >
 
+                <p:menuitem  icon="/images/retour.png" action="/parrinage/GestionDossiers.xhtml"   />
+            </p:dock>                   
+        </h:form>
 
-                
+<br/><br/><br/>
+        <h:form id="hi" >
+            <p:fieldset legend="Ajouter Une Parrinage"  style="width: 1000px; margin-left: 90px;">
+                <h:panelGrid columns="6" >
+
                     <p:outputLabel  value="Parrain  :" for="parrain" />
                     <p:inputText id="parrain"   value="#{parrinageController.getParrain1().id}"   />
                     <p:outputLabel  value="Parrain Non Existe :" for="b1" />
@@ -53,19 +58,20 @@
                     <p:outputLabel value="Nombre De Mois Du Montant Données" for="nbr"  />
                     <p:inputText id="nbr" value="#{parrinageController.selected.nbrjours1}" title="#{bundle.CreateParrinageTitle_montant}" />
 
-                            
-               
-          
-                <p:commandButton  style="margin-bottom: 10px;" actionListener="#{parrinageController.ajouterParrinageeee()}" update=":growl" value="Ajouter Parrinage" ajax="false"  />
-          
-             </h:panelGrid> 
-         </h:form> 
-        <h:form>
-            
-            
-                <p:commandButton  style="margin-bottom: 10px;" actionListener="#{parrinageController.affiche()}" update=":growl" value="Ajouter Parrinage"  />
 
-</h:form>
+
+
+                    <p:commandButton  style="margin-bottom: 10px;" actionListener="#{parrinageController.ajouterParrinageeee()}" update=":growl" value="Ajouter Parrinage" ajax="false"  />
+
+                </h:panelGrid> 
+            </p:fieldset>
+        </h:form> 
+        <h:form>
+
+
+            <p:commandButton  style="margin-bottom: 10px;" actionListener="#{parrinageController.affiche()}" update=":growl" value="Ajouter Parrinage"  />
+
+        </h:form>
         <h:form>
 
             <p:dialog header="Ajouter Nouveau Parrain" widgetVar="dlg3" showEffect="explode"  height="300" width="300">
@@ -99,9 +105,9 @@
             <h:form id="qq">
                 <h:panelGrid columns="6" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel value="#{bundle.CreateParrainLabel_nom}" for="nom" />
-                    <p:inputText id="nom" value="#{parrainController.nom}" title="#{bundle.CreateParrainTitle_nom}" />
+                    <p:inputText id="nom" value="#{parrainController.parrainn1.nom}" title="#{bundle.CreateParrainTitle_nom}" />
                     <p:outputLabel value="#{bundle.CreateParrainLabel_prenom}" for="prenom" />
-                    <p:inputText id="prenom" value="#{parrainController.prenom}" title="#{bundle.CreateParrainTitle_prenom}" />
+                    <p:inputText id="prenom" value="#{parrainController.parrainn1.prenom}" title="#{bundle.CreateParrainTitle_prenom}" />
 
                     <br/>
                     <p:commandButton value="--Rechercher--" actionListener="#{parrainController.rechrcher()}" update=":qq:datalist" icon="ui-icon-search" style="width: 120px; margin-left: 20px;margin-bottom: 10px;" />

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CliquerViewDlg" widgetVar="CliquerViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCliquerTitle}">
+            <h:form id="CliquerViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cliquerController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCliquerLabel_res2}"/>
+                        <h:outputText value="#{cliquerController.selected.res2}" title="#{bundle.ViewCliquerTitle_res2}"/>
+                        <h:outputText value="#{bundle.ViewCliquerLabel_res3}"/>
+                        <h:outputText value="#{cliquerController.selected.res3}" title="#{bundle.ViewCliquerTitle_res3}"/>
+                        <h:outputText value="#{bundle.ViewCliquerLabel_res}"/>
+                        <h:outputText value="#{cliquerController.selected.res}" title="#{bundle.ViewCliquerTitle_res}"/>
+                        <h:outputText value="#{bundle.ViewCliquerLabel_id}"/>
+                        <h:outputText value="#{cliquerController.selected.id}" title="#{bundle.ViewCliquerTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CliquerViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

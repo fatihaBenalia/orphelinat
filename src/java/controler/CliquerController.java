@@ -1,10 +1,9 @@
 package controler;
 
-import bean.Parrain;
+import bean.Cliquer;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
-import controler.util.SessionUtil;
-import service.ParrainFacade;
+import service.CliquerFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,42 +19,63 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("parrainController")
+@Named("cliquerController")
 @SessionScoped
-public class ParrainController implements Serializable {
+public class CliquerController implements Serializable {
 
     @EJB
-    private service.ParrainFacade ejbFacade;
-    private List<Parrain> items = null;
-    private Parrain selected;
-    private Parrain parrainn1;
-
-    public Parrain getParrainn1() {
-        if(parrainn1 == null){
-            parrainn1 = new Parrain();
+    private service.CliquerFacade ejbFacade;
+    private List<Cliquer> items = null;
+    private Cliquer selected;
+ public int clicker1() {
+        Cliquer cliquer = ejbFacade.find(1);
+        if (cliquer.getRes()== 1) {
+            return 1;
+        } else {
+            return -1;
         }
-        return parrainn1;
+    }
+       public int clicker2() {
+        Cliquer cliquer = ejbFacade.find(1);
+        if (cliquer.getRes2()== 1) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+          public int clicker3() {
+        Cliquer cliquer = ejbFacade.find(1);
+        if (cliquer.getRes3()== 1) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
-    public void setParrainn1(Parrain parrainn1) {
-        this.parrainn1 = parrainn1;
-    }
-    
- 
-    
-    
+   
 
-    public ParrainController() {
+    public void actionButton() {
+        System.out.println("voila l'ation");
+        Cliquer cliquer = ejbFacade.find(1);
+        System.out.println("hahwaa "+cliquer);
+        cliquer.setRes(1);
+        cliquer.setRes2(1);
+        cliquer.setRes3(1);
+        ejbFacade.edit(cliquer);
+        System.out.println("ha howa "+cliquer);
     }
 
-    public Parrain getSelected() {
-        if (selected == null) {
-            selected = new Parrain();
+    public CliquerController() {
+    }
+
+    public Cliquer getSelected() {
+        if(selected==null){
+            selected=new Cliquer();
         }
         return selected;
     }
 
-    public void setSelected(Parrain selected) {
+    public void setSelected(Cliquer selected) {
         this.selected = selected;
     }
 
@@ -65,36 +85,36 @@ public class ParrainController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private ParrainFacade getFacade() {
+    private CliquerFacade getFacade() {
         return ejbFacade;
     }
 
-    public Parrain prepareCreate() {
-        selected = new Parrain();
+    public Cliquer prepareCreate() {
+        selected = new Cliquer();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ParrainCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("CliquerCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ParrainUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("CliquerUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ParrainDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("CliquerDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Parrain> getItems() {
+    public List<Cliquer> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -129,38 +149,38 @@ public class ParrainController implements Serializable {
         }
     }
 
-    public Parrain getParrain(java.lang.Long id) {
+    public Cliquer getCliquer(int id) {
         return getFacade().find(id);
     }
 
-    public List<Parrain> getItemsAvailableSelectMany() {
+    public List<Cliquer> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Parrain> getItemsAvailableSelectOne() {
+    public List<Cliquer> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Parrain.class)
-    public static class ParrainControllerConverter implements Converter {
+    @FacesConverter(forClass = Cliquer.class)
+    public static class CliquerControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ParrainController controller = (ParrainController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "parrainController");
-            return controller.getParrain(getKey(value));
+            CliquerController controller = (CliquerController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "cliquerController");
+            return controller.getCliquer(getKey(value));
         }
 
-        java.lang.Long getKey(String value) {
-            java.lang.Long key;
-            key = Long.valueOf(value);
+        int getKey(String value) {
+            int key;
+            key = Integer.parseInt(value);
             return key;
         }
 
-        String getStringKey(java.lang.Long value) {
+        String getStringKey(int value) {
             StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
@@ -171,39 +191,15 @@ public class ParrainController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Parrain) {
-                Parrain o = (Parrain) object;
+            if (object instanceof Cliquer) {
+                Cliquer o = (Cliquer) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Parrain.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Cliquer.class.getName()});
                 return null;
             }
         }
 
     }
-////////////////
 
-    public Parrain getParrain1() {
-        Parrain par = SessionUtil.getParrin();
-        return par;
-    }
-
-    public void rechrcher() {
-        items = ejbFacade.rechercher(parrainn1);
-
-    }
-
-    public void selection() {
-        SessionUtil.registerParrain(selected);
-        System.out.println("hqqqq hwaaa" + selected.getNom());
-    }
-    
-     public void createParrain(){
-        int res=ejbFacade.createParrain(selected);
-        if(res >0){
-            JsfUtil.addSuccessMessage("Le Parrain Est Ajoutee Avec Succes");
-        }else {
-            JsfUtil.addErrorMessage("Error !  Ce Parrain Existe Deja !");
-        }
-    }
 }

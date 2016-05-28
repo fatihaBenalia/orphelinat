@@ -5,6 +5,7 @@ import bean.Parrain;
 import bean.Parrinage;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import controler.util.Mail;
 import controler.util.SessionUtil;
 import java.io.IOException;
 import service.ParrinageFacade;
@@ -32,7 +33,50 @@ public class ParrinageController implements Serializable {
     private service.ParrinageFacade ejbFacade;
     private List<Parrinage> items = null;
     private Parrinage selected;
+    private Parrinage parrinage1;
+    private String message;
+    private String objet;
+    private String email;
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getObjet() {
+        return objet;
+    }
+
+    public void setObjet(String objet) {
+        this.objet = objet;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
+    
+    public Parrinage getParrinage1() {
+        if(parrinage1 == null){
+            parrinage1 = new Parrinage();
+        }
+        return parrinage1;
+    }
+
+    public void setParrinage1(Parrinage parrinage1) {
+        this.parrinage1 = parrinage1;
+    }
+
+    
+    
     public ParrinageController() {
     }
 
@@ -49,6 +93,12 @@ public class ParrinageController implements Serializable {
     public Parrinage getParrinage(){
       return  SessionUtil.getParrinage();
     }
+    
+    public String goPage(){
+    enregisterSelected();
+    return "/EnvoyerEmail.xhtml";
+    }
+    
     public void setSelected(Parrinage selected) {
         this.selected = selected;
     }
@@ -218,4 +268,13 @@ public class ParrinageController implements Serializable {
        }
     }
 
+    public void rechercheByCritere(){
+        items = ejbFacade.rechercheByCritere(parrinage1);
+    }
+    
+    public void envoyerMessage(){
+        Mail.sendMail("fatihaabenaliaa@gmail.com","fatiha123456", email, objet, message);
+        JsfUtil.addSuccessMessage("Votre Message Est Envoyer Avec Succes");
+    }
+    
 }

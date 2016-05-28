@@ -40,4 +40,14 @@ public class ParametreFacade extends AbstractFacade<Parametre> {
         }
         return new Parametre();
     }
+      
+
+    public Parametre chercher() {
+        long res = findAll().size();
+        System.out.println("voilaaaaaaa le resultat======>" + res);
+        Parametre parametre = find(res);
+        System.out.println("hahoooooowa" + parametre.toString());
+        System.out.println("hahooooooooowa=============>" + parametre.getHabillement());
+        return parametre;
+    }
 }

@@ -104,5 +104,17 @@ public class ParrinageFacade extends AbstractFacade<Parrinage> {
         params.put("prenommedia",parrinage.getParrain().getMediataire().getPrenom());
         PdfUtil.generatePdf(findAll(), params, "information Parrinage"+parrinage.getId(), "/report/Parrinage.jasper");
     }
+
+    public List<Parrinage> rechercheByCritere(Parrinage parrinage1) {
+    String req = " select p from Parrinage p where 1=1";
+    if(parrinage1.getParrain().getNom() != null && parrinage1.getParrain().getNom().equals("") && parrinage1.getParrain() != null ){
+        req += " and p.parrain.nom like '" + parrinage1.getParrain().getNom() + "' and parrinage.dossier.id  = '" + SessionUtil.getDossier() + "' ";
+    }
+    if(parrinage1.getParrain().getMediataire().getNom() != null && parrinage1.getParrain().getMediataire().getNom().equals("") && parrinage1.getParrain().getMediataire().getNom() != null ){
+        req += " and p.parrain.mediataire.nom like '" + parrinage1.getParrain().getMediataire().getNom() + "' and parrinage.dossier.id  = '" + SessionUtil.getDossier() + "' ";
+    }
+    List<Parrinage> lista = em.createQuery(req).getResultList();
+    return lista;
+    }
   
 }

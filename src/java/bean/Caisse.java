@@ -36,6 +36,16 @@ public class Caisse implements Serializable {
     private double depense;
     private double profit;
     private double entree;
+    private double entreeDossier;
+
+    public double getEntreeDossier() {
+        return entreeDossier;
+    }
+
+    public void setEntreeDossier(double entreeDossier) {
+        this.entreeDossier = entreeDossier;
+    }
+    
     
     private String type; /// social ou gestion 
 

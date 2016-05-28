@@ -6,11 +6,11 @@ import controler.util.JsfUtil.PersistAction;
 import service.CaisseFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
@@ -19,7 +19,10 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import org.primefaces.model.chart.PieChartModel;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 
 @Named("caisseController")
 @SessionScoped
@@ -37,110 +40,148 @@ public class CaisseController implements Serializable {
     private static double montDete1;
     private static double montProfit1;
     private static double montEntree1;
-  
-    
-    
-    
-     private PieChartModel pieModel1;
-  
- 
-    @PostConstruct
-    public void init() {
-        createPieModels();
+    private Caisse caisse;
+    private BarChartModel barChartModel;
+    private List<Caisse> caissees;
+    private String typeCaisse;
+
+    public String getTypeCaisse() {
+        return typeCaisse;
     }
- 
-    public PieChartModel getPieModel1() {
-        if (pieModel1==null) {
-            pieModel1=new PieChartModel();
-            
+
+    public void setTypeCaisse(String typeCaisse) {
+        this.typeCaisse = typeCaisse;
+    }
+    
+    
+
+    
+     public void findByCaise() {
+         System.out.println("haa type dyal lcaisse "+typeCaisse);
+        caissees = ejbFacade.findCaisse(typeCaisse);
+     
+    }
+    
+    public List<Caisse> getCaissees() {
+        if(caissees == null){
+            caissees = new ArrayList();
         }
-        createPieModel1();
-        return pieModel1;
+        return caissees;
     }
-     
+
+    public void setCaissees(List<Caisse> caissees) {
+        this.caissees = caissees;
+    }
+    
+
+    public Caisse getCaisse() {
+        if (caisse == null) {
+            caisse = new Caisse();
+        }
+        return caisse;
+    }
+
+    public void setCaisse(Caisse caisse) {
+        this.caisse = caisse;
+    }
+
+    public BarChartModel getBarChartModel() {
+        if (barChartModel == null) {
+            barChartModel = new BarChartModel();
+        }
+        createBarModel();
+        return barChartModel;
+    }
+
+    public void setBarChartModel(BarChartModel barChartModel) {
+        this.barChartModel = barChartModel;
+    }
+
+    public void createBarModel() {
+
+        barChartModel = new BarChartModel();
  
+        ChartSeries p = new ChartSeries();
+        barChartModel.addSeries(p);
+        p.setLabel("Depense");
+        p.set("__", (Number) ejbFacade.getCaisse(caisse));
+        
+        ChartSeries p1 = new ChartSeries();
+        barChartModel.addSeries(p1);
+        p1.setLabel("Dete");
+        p1.set("__", (Number) ejbFacade.getCaisse1(caisse));
+        
+        ChartSeries p2 = new ChartSeries();
+        barChartModel.addSeries(p2);
+        p2.setLabel("Entree");
+        p2.set("__", (Number) ejbFacade.getCaisse3(caisse));
+        
+        ChartSeries p3 = new ChartSeries();
+        barChartModel.addSeries(p3);
+        p3.setLabel("Profit");
+        p3.set("__", (Number) ejbFacade.getCaisse2(caisse));
+ 
+        barChartModel.setTitle("Statistique Pour La Caisse"+"   "+caisse.getId());
+        barChartModel.setLegendPosition("ne");
      
-    private void createPieModels() {
-        createPieModel1();
       
+
     }
- 
-    private void createPieModel1() {
-        System.out.println("haniii dkhalt");
-        pieModel1 = new PieChartModel();
-         if(selected != null){
-             System.out.println("voilaaaaaa slected"+selected.toString());
-        pieModel1.set("Brand 1", selected.getDepense());
-        pieModel1.set("Brand 2", selected.getDete());
-        pieModel1.set("Brand 3", selected.getEntree());
-        pieModel1.set("Brand 4", selected.getProfit());
-         
-        pieModel1.setTitle("Simple Pie");
-        pieModel1.setLegendPosition("w");
-    }
-    }
-    
-    
+
     public double getMontDete() {
-        double mont=ejbFacade.calculMontDete();
-        montDete=mont;
+        double mont = ejbFacade.calculMontDete();
+        montDete = mont;
         return montDete;
     }
 
-
     public double getMontProfit() {
-        double mont=ejbFacade.calculMontProfit();
-        montProfit=mont;
+        double mont = ejbFacade.calculMontProfit();
+        montProfit = mont;
         return montProfit;
     }
 
-   
-
     public double getMontEntree() {
-        double mont=ejbFacade.calculMontEntree();
-        System.out.println("haa lmontentree"+mont);
-        return montEntree=mont;
+        double mont = ejbFacade.calculMontEntree();
+        System.out.println("haa lmontentree" + mont);
+        return montEntree = mont;
     }
 
     public double getMontdepense() {
-        double mont=ejbFacade.calculMontDepense();
-        montdepense=mont;
+        double mont = ejbFacade.calculMontDepense();
+        montdepense = mont;
         return montdepense;
     }
+
     public double getMontDete1() {
-        double mont=ejbFacade.calculMontDeteGestion();
-        montDete1=mont;
+        double mont = ejbFacade.calculMontDeteGestion();
+        montDete1 = mont;
         return montDete1;
     }
 
-
     public double getMontProfit1() {
-        double mont=ejbFacade.calculMontProfit1();
-        montProfit1=mont;
+        double mont = ejbFacade.calculMontProfit1();
+        montProfit1 = mont;
         return montProfit1;
     }
 
-   
-
     public double getMontEntree1() {
-        double mont=ejbFacade.calculMontEntree1();
-        System.out.println("haa lmontentree"+mont);
-        return montEntree1=mont;
+        double mont = ejbFacade.calculMontEntree1();
+        System.out.println("haa lmontentree" + mont);
+        return montEntree1 = mont;
     }
 
     public double getMontdepense1() {
-        double mont=ejbFacade.calculMontDepense1();
-        montdepense1=mont;
+        double mont = ejbFacade.calculMontDepense1();
+        montdepense1 = mont;
         return montdepense1;
     }
 
-    
     public CaisseController() {
     }
 
     public Caisse getSelected() {
-        if(selected == null){
-            selected= new Caisse();
+        if (selected == null) {
+            selected = new Caisse();
         }
         return selected;
     }

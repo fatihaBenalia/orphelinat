@@ -31,6 +31,26 @@ public class OperationMois implements Serializable {
     private Date date;
     @ManyToOne
     private Caisse caisse;
+    private String description;
+    private int etat;//wach 7atina f dossier wla hazina
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
+    }
+    
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
 
     public Dossier getDossier() {
         return dossier;

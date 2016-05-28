@@ -1,8 +1,11 @@
 package controler;
 
+import bean.Cliquer;
 import bean.OperationMois;
+import bean.Parametre;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import java.io.IOException;
 import service.OperationMoisFacade;
 
 import java.io.Serializable;
@@ -18,6 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import net.sf.jasperreports.engine.JRException;
+import service.CliquerFacade;
+import service.ParametreFacade;
 
 @Named("operationMoisController")
 @SessionScoped
@@ -27,11 +33,72 @@ public class OperationMoisController implements Serializable {
     private service.OperationMoisFacade ejbFacade;
     private List<OperationMois> items = null;
     private OperationMois selected;
+ @EJB
+    private CliquerFacade cliquerFacade;
+ @EJB
+ private ParametreFacade parametreFacade;
 
+    public void afficher() {
+        long res = parametreFacade.findAll().size();
+        System.out.println("voilaaaaaaa le resultat======>" + res);
+        Parametre parametre = parametreFacade.find(res);
+        System.out.println("hahoooooowa" + parametre.toString());
+    }
+
+    public void action1() throws JRException, IOException {
+        int res = ejbFacade.addOperationDeMoi();
+        Cliquer cliquer = cliquerFacade.find(1);
+        if (res > 0) {
+            cliquer.setRes(1);
+            cliquerFacade.edit(cliquer);
+          ejbFacade.generatePdf();
+        FacesContext.getCurrentInstance().getResponseComplete();
+            JsfUtil.addSuccessMessage("hadchi howa hadak");
+        } else {
+            JsfUtil.addErrorMessage("hadchi madaz");
+        }
+    }
+
+    public void action2() throws JRException, IOException {
+        int res = ejbFacade.DossierDeEtat2();
+        Cliquer cliquer = cliquerFacade.find(1);
+        if (res > 0) {
+            cliquer.setRes2(1);
+            cliquerFacade.edit(cliquer);
+            JsfUtil.addSuccessMessage("hadchi howa hadak");
+        } else {
+            JsfUtil.addErrorMessage("hadchi madaz");
+        }
+    }
+
+    public void action3() throws JRException, IOException {
+        int res = ejbFacade.dossier3();
+        Cliquer cliquer = cliquerFacade.find(1);
+        if (res > 0) {
+            cliquer.setRes3(1);
+            cliquerFacade.edit(cliquer);
+            JsfUtil.addSuccessMessage("hadchi howa hadak");
+
+        } else {
+            JsfUtil.addErrorMessage("hadchi madaz");
+        }
+    }
+
+    public int clicker() {
+        Cliquer cliquer = cliquerFacade.find(1);
+        if (cliquer.getRes() == 1) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
     public OperationMoisController() {
     }
 
     public OperationMois getSelected() {
+        if(selected==null){
+            selected=new OperationMois();
+        }
         return selected;
     }
 

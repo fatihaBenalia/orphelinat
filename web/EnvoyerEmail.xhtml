@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+        <h:form style="margin-left: 1280px;">
+           
+
+            <p:dock position="top" itemWidth="80" maxWidth="30"  >
+
+                <p:menuitem  icon="/images/retour.png" action="/parrinage/GestionDossiers.xhtml"   />
+            </p:dock>                   
+        </h:form>
+        <img src="img1.jpg" style="margin-left:500px; width: 300px; margin-top: -10px;" />
+        <p:fieldset legend="Envoyer Votre Message Gmail" style="margin-left: 300px; margin-top: 10px; width: 700px; height: 350px;">
+            <br/><br/>
+            <h:form>
+                <table>
+                    <tr>
+                        <td align="right" style="font-style: italic;"><b> Destinataire :</b></td>
+                        <td>
+                            <p:inputText value="#{parrinageController.email}" size="75" style="margin-left: 30px; " />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="right" style="font-style: italic;"><b> Objet :</b></td>
+                        <td>
+                            <p:inputText value="#{parrinageController.objet}" size="75" style="margin-left: 30px;" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="right" style="margin-left: 10px; font-style: italic;"><b> Votre Message :</b></td>
+                        <td>
+                            <h:inputTextarea  value="#{parrinageController.message}"  cols="75" rows="6" style="margin-left: 30px; margin-top: 30px; " ></h:inputTextarea>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <p:commandButton  value="Envoyer"  actionListener="#{parrinageController.envoyerMessage()}" update=":growl" style="margin-left: 280px; margin-top: 40px; position: absolute; font-size: 20px; font-style: italic; "/>
+                        </td>
+                        
+                    </tr>
+                </table>
+                
+            </h:form>
+            <br/><br/><br/>
+        </p:fieldset> 
+        <br/><br/>
+
+    </h:body>
+
+
+</html>
+

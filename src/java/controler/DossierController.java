@@ -33,7 +33,9 @@ public class DossierController implements Serializable {
     private int nbr;
     private String msg;
     private String destination;
-
+    private Dossier nesDossier;
+    
+    
     public String getMsg() {
         return msg;
     }
@@ -41,6 +43,19 @@ public class DossierController implements Serializable {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    public Dossier getNesDossier() {
+        if(nesDossier == null){
+            nesDossier = new Dossier();
+        }
+        return nesDossier;
+    }
+
+    public void setNesDossier(Dossier nesDossier) {
+        this.nesDossier = nesDossier;
+    }
+   
+    
 
     public String getDestination() {
         return destination;
@@ -119,9 +134,9 @@ public class DossierController implements Serializable {
     }
 
     public List<Dossier> getItems() {
-        items = ejbFacade.mesDossiers();
+        
         if (items == null) {
-            items = new ArrayList<>();
+            items = ejbFacade.mesDossiers();
         }
         return items;
     }
@@ -218,6 +233,7 @@ public class DossierController implements Serializable {
 
     }
 
+   
     public void selectParrinage(Dossier dossier) {
         selected.setParrinages(ejbFacade.findAllParrinage(dossier));
     }
@@ -228,7 +244,6 @@ public class DossierController implements Serializable {
     }
 
     public String registerDossier() {
-        System.out.println("haa dossier" + selected.getId());
         SessionUtil.registerDossier(selected);
 
         return "/AjouterParrinage.xhtml";
@@ -239,4 +254,10 @@ public class DossierController implements Serializable {
         return dos;
     }
 
+    public void rechercheByCritere(){
+        System.out.println("haa dossier"+nesDossier);
+        items = ejbFacade.rechercheByCritere(nesDossier);
+    }
+    
+    
 }

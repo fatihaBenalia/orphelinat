@@ -334,11 +334,11 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListOperationnTitle_etat}"/>
+                                <h:outputText value="Facture"/>
                             </f:facet>
                             <p:tab  title="Ajouter un pdf" id="infoPhoto">
-                                <p:commandButton rendered="#{operationnController.resultat(item) == 1}"    id="utton" value="Ajouter pdf"  actionListener="#{operationnController.setSelected(item)}" oncomplete="PF('PopUp').show()" />
-                            <p:link value="kokiii" rendered="#{operationnController.resultat(item) == -1}" href="/myFile/#{item.photo}" style="display: inline"  />
+                                <p:commandButton rendered="#{operationnController.resultat(item) == 1}"    id="utton" value="Ajouter Facture"  actionListener="#{operationnController.setSelected(item)}" oncomplete="PF('PopUp').show()" />
+                            <p:link value="Voir Facture" rendered="#{operationnController.resultat(item) == -1}" href="/myFile/#{item.photo}" style="display: inline"  />
 
                             </p:tab >
                             <br/>

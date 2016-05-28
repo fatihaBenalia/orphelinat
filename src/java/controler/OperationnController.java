@@ -235,7 +235,7 @@ public class OperationnController implements Serializable {
 
     public void createOperation() throws JRException, IOException {
         int res = ejbFacade.ajouterOperation(selected);
-//        Mail.sendMail("azzazisamia123@gmail.com","i love u my parents", "fatihaabenaliaa@gmail.com", "hhh", "testtest");
+//        Mail.sendMail("fatihaabenaliaa@gmail.com","fatiha123456", "azzazisamia123@gmail.com", "hhh", "testtest");
         if (res > 0) {
 //            ejbFacade.generatePdf(selected);
 //            FacesContext.getCurrentInstance().getResponseComplete();
