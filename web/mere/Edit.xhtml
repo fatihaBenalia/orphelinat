@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MereEditDlg" widgetVar="MereEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMereTitle}">
+            <h:form id="MereEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mereController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMereLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{mereController.selected.dossier}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMereLabel_dateDeces}" for="dateDeces" />
+                        <p:calendar id="dateDeces" pattern="MM/dd/yyyy" value="#{mereController.selected.dateDeces}" title="#{bundle.EditMereTitle_dateDeces}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMereLabel_raisonDeces}" for="raisonDeces" />
+                        <p:inputText id="raisonDeces" value="#{mereController.selected.raisonDeces}" title="#{bundle.EditMereTitle_raisonDeces}" />
+                        <p:outputLabel value="#{bundle.EditMereLabel_dateNaissance}" for="dateNaissance" />
+                        <p:calendar id="dateNaissance" pattern="MM/dd/yyyy" value="#{mereController.selected.dateNaissance}" title="#{bundle.EditMereTitle_dateNaissance}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMereLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{mereController.selected.id}" title="#{bundle.EditMereTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditMereLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{mereController.selected.nom}" title="#{bundle.EditMereTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditMereLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{mereController.selected.prenom}" title="#{bundle.EditMereTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditMereLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{mereController.selected.telephone}" title="#{bundle.EditMereTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.EditMereLabel_gmail}" for="gmail" />
+                        <p:inputText id="gmail" value="#{mereController.selected.gmail}" title="#{bundle.EditMereTitle_gmail}" />
+                        <p:outputLabel value="#{bundle.EditMereLabel_adresse}" for="adresse" />
+                        <p:inputText id="adresse" value="#{mereController.selected.adresse}" title="#{bundle.EditMereTitle_adresse}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{mereController.update}" value="#{bundle.Save}" update="display,:MereListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MereEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MereEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

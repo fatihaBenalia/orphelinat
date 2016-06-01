@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <br/><br/> <br/>
+        <p:growl id="growl" life="3000" />
+
+        <p:tabView dynamic="true" cache="true" >
+            <p:tab title="Godfather Part I">
+
+
+                <h:panelGroup>
+                    <h:form id="DossierListForm" >
+                        <p:fieldset legend="La Liste Des Dossiers">
+                            <p:dataTable id="datalist2" value="#{dossierController.items}" var="item"
+                                         selectionMode="single" selection="#{dossierController.selected}"
+                                         paginator="true"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         editable="true" 
+                                         editMode="cell" widgetVar="cellCars"
+
+                                         >
+
+                                <p:ajax event="cellEdit" listener="#{dossierController.onCellEdit}" update=":growl" />
+                                <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } " >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDossierTitle_compteAssociationParrinage}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.compteAssociationParrinage}"/>
+                                </p:column>
+                                <p:column style="background: #{item.laid == 0 ? ' coral ' : ' '  } " >
+                                    <f:facet name="header">
+                                        <h:outputText value="id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.id}"/>
+                                </p:column>
+                                <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } " >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDossierTitle_etat}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.etat}"/>
+                                </p:column>
+                                <p:column headerText="Etat Du Dossier" style="background: #{item.laid == 0  ? ' coral ' : ' '  } ;width: 100px; "   >
+                                    <p:cellEditor>
+                                        <f:facet name="header">
+                                            <f:facet name="output"><h:outputText value="Etat"/></f:facet>
+                                        </f:facet>
+                                        <f:facet name="input" >
+                                            <p:selectOneMenu value="#{item.etat}" id="ff" >
+                                                <f:selectItem itemLabel="parrinee avec 300 dh" itemValue="1" />
+                                                <f:selectItem itemLabel="parrinee avec 600dh par 2 parrains" itemValue="2" />
+                                                <f:selectItem itemLabel="parrinee avec 600dh" itemValue="3" />
+                                                <f:selectItem itemLabel="    abandonnee    " itemValue="4" />
+                                                <f:selectItem itemLabel="   Caisse        " itemValue="5" />
+                                            </p:selectOneMenu>
+                                        </f:facet>
+
+                                    </p:cellEditor>
+                                </p:column>
+
+
+                                <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } " >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDossierTitle_nbrOrphelin}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nbrOrphelin}"/>
+                                </p:column>
+
+
+                                <p:column style="background: #{item.laid == 0 ? ' coral ' : ' '  } ">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDossierTitle_dateDossier}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.dateDossier}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column style="background: #{item.laid == 0 ? ' coral ' : ' '  } ">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDossierTitle_nomFamille}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nomFamille}"/>
+                                </p:column>
+                                <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } ">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDossierTitle_region}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.region}"/>
+                                </p:column>
+
+
+                                <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } ">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDossierTitle_logement}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.logement}"/>
+                                </p:column>
+
+                                <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } ">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListDossierTitle_montantTotal}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.montantTotal}"/>
+                                </p:column>
+                                <p:column >
+                                    <f:facet name="header">
+                                        <h:outputText value="Details"/>
+                                    </f:facet>
+                                    <p:commandButton value="okk" actionListener="#{dossierController.selectParrinage(item)}"   />
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton value="Ajouter Parrinage Pour Un Dossier"  action="#{dossierController.registerDossier()}"/>
+                                </f:facet>
+                                <p:contextMenu for="datalist2" widgetVar="cMenu">   
+                                    <p:menuitem  icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
+                                    <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/> 
+                                </p:contextMenu> 
+                            </p:dataTable>
+                        </p:fieldset>
+
+                        <p:fieldset>
+                            
+                            <p:dataTable id="datalist1" value="#{dossierController.selected.parrinages}" var="item"
+                             selectionMode="single" selection="#{parrinageController.selected}"
+                             paginator="true"
+                             rowKey="#{item.id}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+
+                             >
+                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                        <f:facet name="header">
+                            <h:outputText value="Parrain"/>
+                        </f:facet>
+                        <h:outputText value="#{item.parrain}"/>
+                    </p:column>
+                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                        <f:facet name="header">
+                            <h:outputText value="Montant"/>
+                        </f:facet>
+                        <h:outputText value="#{item.montant}"/>
+                    </p:column>
+
+                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                        <f:facet name="header">
+                            <h:outputText value="DebutPar"/>
+                        </f:facet>
+                        <h:outputText value="#{item.debutPar}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                        <f:facet name="header">
+                            <h:outputText value="FinPar"/>
+                        </f:facet>
+                        <h:outputText value="#{item.finPar}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                        <f:facet name="header">
+                            <h:outputText value="Type"/>
+                        </f:facet>
+                        <h:outputText value="#{item.type}"/>
+                    </p:column>
+                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                        <f:facet name="header">
+                            <h:outputText value="nbr"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nbrjours1}"/>
+                    </p:column>
+                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.parrain.mediataire.nom}"/>
+                    </p:column>
+                </p:dataTable>
+                        </p:fieldset>
+
+
+                    </h:form>    
+                </h:panelGroup>
+
+
+
+
+            </p:tab>
+
+        </p:tabView>
+
+    </h:body>
+
+
+</html>
+

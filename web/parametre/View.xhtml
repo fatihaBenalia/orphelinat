@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParametreViewDlg" widgetVar="ParametreViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewParametreTitle}">
+            <h:form id="ParametreViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parametreController.selected != null}">
+                        <h:outputText value="#{bundle.ViewParametreLabel_dateApplication}"/>
+                        <h:outputText value="#{parametreController.selected.dateApplication}" title="#{bundle.ViewParametreTitle_dateApplication}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewParametreLabel_montantComplete}"/>
+                        <h:outputText value="#{parametreController.selected.montantComplete}" title="#{bundle.ViewParametreTitle_montantComplete}"/>
+                        <h:outputText value="#{bundle.ViewParametreLabel_montantPartielle}"/>
+                        <h:outputText value="#{parametreController.selected.montantPartielle}" title="#{bundle.ViewParametreTitle_montantPartielle}"/>
+                        <h:outputText value="#{bundle.ViewParametreLabel_alimentation}"/>
+                        <h:outputText value="#{parametreController.selected.alimentation}" title="#{bundle.ViewParametreTitle_alimentation}"/>
+                        <h:outputText value="#{bundle.ViewParametreLabel_habillement}"/>
+                        <h:outputText value="#{parametreController.selected.habillement}" title="#{bundle.ViewParametreTitle_habillement}"/>
+                        <h:outputText value="#{bundle.ViewParametreLabel_matelasEtCouvertures}"/>
+                        <h:outputText value="#{parametreController.selected.matelasEtCouvertures}" title="#{bundle.ViewParametreTitle_matelasEtCouvertures}"/>
+                        <h:outputText value="#{bundle.ViewParametreLabel_sante}"/>
+                        <h:outputText value="#{parametreController.selected.sante}" title="#{bundle.ViewParametreTitle_sante}"/>
+                        <h:outputText value="#{bundle.ViewParametreLabel_scolarité}"/>
+                        <h:outputText value="#{parametreController.selected.scolarité}" title="#{bundle.ViewParametreTitle_scolarité}"/>
+                        <h:outputText value="#{bundle.ViewParametreLabel_sacrifice}"/>
+                        <h:outputText value="#{parametreController.selected.sacrifice}" title="#{bundle.ViewParametreTitle_sacrifice}"/>
+                        <h:outputText value="#{bundle.ViewParametreLabel_id}"/>
+                        <h:outputText value="#{parametreController.selected.id}" title="#{bundle.ViewParametreTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ParametreViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

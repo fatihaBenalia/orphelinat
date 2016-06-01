@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParrinageViewDlg" widgetVar="ParrinageViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewParrinageTitle}">
+            <h:form id="ParrinageViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parrinageController.selected != null}">
+                        <h:outputText value="#{bundle.ViewParrinageLabel_nbrjours1}"/>
+                        <h:outputText value="#{parrinageController.selected.nbrjours1}" title="#{bundle.ViewParrinageTitle_nbrjours1}"/>
+                        <h:outputText value="#{bundle.ViewParrinageLabel_parrain}"/>
+                        <h:outputText value="#{parrinageController.selected.parrain}" title="#{bundle.ViewParrinageTitle_parrain}"/>
+                        <h:outputText value="#{bundle.ViewParrinageLabel_montant}"/>
+                        <h:outputText value="#{parrinageController.selected.montant}" title="#{bundle.ViewParrinageTitle_montant}"/>
+                        <h:outputText value="#{bundle.ViewParrinageLabel_dossier}"/>
+                        <h:outputText value="#{parrinageController.selected.dossier}" title="#{bundle.ViewParrinageTitle_dossier}"/>
+                        <h:outputText value="#{bundle.ViewParrinageLabel_debutPar}"/>
+                        <h:outputText value="#{parrinageController.selected.debutPar}" title="#{bundle.ViewParrinageTitle_debutPar}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewParrinageLabel_finPar}"/>
+                        <h:outputText value="#{parrinageController.selected.finPar}" title="#{bundle.ViewParrinageTitle_finPar}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewParrinageLabel_priseDossier}"/>
+                        <h:outputText value="#{parrinageController.selected.priseDossier}" title="#{bundle.ViewParrinageTitle_priseDossier}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewParrinageLabel_type}"/>
+                        <h:outputText value="#{parrinageController.selected.type}" title="#{bundle.ViewParrinageTitle_type}"/>
+                        <h:outputText value="#{bundle.ViewParrinageLabel_id}"/>
+                        <h:outputText value="#{parrinageController.selected.id}" title="#{bundle.ViewParrinageTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ParrinageViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

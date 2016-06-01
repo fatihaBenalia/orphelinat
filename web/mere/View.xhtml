@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MereViewDlg" widgetVar="MereViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMereTitle}">
+            <h:form id="MereViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mereController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMereLabel_dossier}"/>
+                        <h:outputText value="#{mereController.selected.dossier}" title="#{bundle.ViewMereTitle_dossier}"/>
+                        <h:outputText value="#{bundle.ViewMereLabel_dateDeces}"/>
+                        <h:outputText value="#{mereController.selected.dateDeces}" title="#{bundle.ViewMereTitle_dateDeces}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMereLabel_raisonDeces}"/>
+                        <h:outputText value="#{mereController.selected.raisonDeces}" title="#{bundle.ViewMereTitle_raisonDeces}"/>
+                        <h:outputText value="#{bundle.ViewMereLabel_dateNaissance}"/>
+                        <h:outputText value="#{mereController.selected.dateNaissance}" title="#{bundle.ViewMereTitle_dateNaissance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMereLabel_id}"/>
+                        <h:outputText value="#{mereController.selected.id}" title="#{bundle.ViewMereTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewMereLabel_nom}"/>
+                        <h:outputText value="#{mereController.selected.nom}" title="#{bundle.ViewMereTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewMereLabel_prenom}"/>
+                        <h:outputText value="#{mereController.selected.prenom}" title="#{bundle.ViewMereTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewMereLabel_telephone}"/>
+                        <h:outputText value="#{mereController.selected.telephone}" title="#{bundle.ViewMereTitle_telephone}"/>
+                        <h:outputText value="#{bundle.ViewMereLabel_gmail}"/>
+                        <h:outputText value="#{mereController.selected.gmail}" title="#{bundle.ViewMereTitle_gmail}"/>
+                        <h:outputText value="#{bundle.ViewMereLabel_adresse}"/>
+                        <h:outputText value="#{mereController.selected.adresse}" title="#{bundle.ViewMereTitle_adresse}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MereViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

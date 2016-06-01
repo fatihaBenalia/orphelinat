@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DescriptionViewDlg" widgetVar="DescriptionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDescriptionTitle}">
+            <h:form id="DescriptionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{descriptionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDescriptionLabel_idCaise}"/>
+                        <h:outputText value="#{descriptionController.selected.idCaise}" title="#{bundle.ViewDescriptionTitle_idCaise}"/>
+                        <h:outputText value="#{bundle.ViewDescriptionLabel_description}"/>
+                        <h:outputText value="#{descriptionController.selected.description}" title="#{bundle.ViewDescriptionTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewDescriptionLabel_id}"/>
+                        <h:outputText value="#{descriptionController.selected.id}" title="#{bundle.ViewDescriptionTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DescriptionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

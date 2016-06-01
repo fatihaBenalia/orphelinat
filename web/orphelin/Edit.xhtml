@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrphelinEditDlg" widgetVar="OrphelinEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOrphelinTitle}">
+            <h:form id="OrphelinEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{orphelinController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_sexe}" for="sexe" />
+                        <p:inputText id="sexe" value="#{orphelinController.selected.sexe}" title="#{bundle.EditOrphelinTitle_sexe}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{orphelinController.selected.id}" title="#{bundle.EditOrphelinTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{orphelinController.selected.nom}" title="#{bundle.EditOrphelinTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{orphelinController.selected.prenom}" title="#{bundle.EditOrphelinTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_etatSanteOrphelin}" for="etatSanteOrphelin" />
+                        <p:selectOneMenu id="etatSanteOrphelin" value="#{orphelinController.selected.etatSanteOrphelin}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{etatSanteOrphelinController.itemsAvailableSelectOne}"
+                                           var="etatSanteOrphelinItem"
+                                           itemValue="#{etatSanteOrphelinItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_etatPedagogiqueItem}" for="etatPedagogiqueItem" />
+                        <p:selectOneMenu id="etatPedagogiqueItem" value="#{orphelinController.selected.etatPedagogiqueItem}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{etatPedagogiqueItemController.itemsAvailableSelectOne}"
+                                           var="etatPedagogiqueItemItem"
+                                           itemValue="#{etatPedagogiqueItemItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_dateNaissance}" for="dateNaissance" />
+                        <p:calendar id="dateNaissance" pattern="MM/dd/yyyy" value="#{orphelinController.selected.dateNaissance}" title="#{bundle.EditOrphelinTitle_dateNaissance}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{orphelinController.selected.dossier}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_niveauScolaire}" for="niveauScolaire" />
+                        <p:inputText id="niveauScolaire" value="#{orphelinController.selected.niveauScolaire}" title="#{bundle.EditOrphelinTitle_niveauScolaire}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_ecole}" for="ecole" />
+                        <p:inputText id="ecole" value="#{orphelinController.selected.ecole}" title="#{bundle.EditOrphelinTitle_ecole}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_nbrAnneeRedouble}" for="nbrAnneeRedouble" />
+                        <p:inputText id="nbrAnneeRedouble" value="#{orphelinController.selected.nbrAnneeRedouble}" title="#{bundle.EditOrphelinTitle_nbrAnneeRedouble}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_raisonRedoublement}" for="raisonRedoublement" />
+                        <p:inputText id="raisonRedoublement" value="#{orphelinController.selected.raisonRedoublement}" title="#{bundle.EditOrphelinTitle_raisonRedoublement}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_aideScolaire}" for="aideScolaire" />
+                        <p:inputText id="aideScolaire" value="#{orphelinController.selected.aideScolaire}" title="#{bundle.EditOrphelinTitle_aideScolaire}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_matiere}" for="matiere" />
+                        <p:inputText id="matiere" value="#{orphelinController.selected.matiere}" title="#{bundle.EditOrphelinTitle_matiere}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_blemeScolaire}" for="blemeScolaire" />
+                        <p:inputText id="blemeScolaire" value="#{orphelinController.selected.blemeScolaire}" title="#{bundle.EditOrphelinTitle_blemeScolaire}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_futurPerspective}" for="futurPerspective" />
+                        <p:inputText id="futurPerspective" value="#{orphelinController.selected.futurPerspective}" title="#{bundle.EditOrphelinTitle_futurPerspective}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_dateDisconScolaire}" for="dateDisconScolaire" />
+                        <p:calendar id="dateDisconScolaire" pattern="MM/dd/yyyy" value="#{orphelinController.selected.dateDisconScolaire}" title="#{bundle.EditOrphelinTitle_dateDisconScolaire}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_raisonDisconScolaire}" for="raisonDisconScolaire" />
+                        <p:inputText id="raisonDisconScolaire" value="#{orphelinController.selected.raisonDisconScolaire}" title="#{bundle.EditOrphelinTitle_raisonDisconScolaire}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_etablissement}" for="etablissement" />
+                        <p:inputText id="etablissement" value="#{orphelinController.selected.etablissement}" title="#{bundle.EditOrphelinTitle_etablissement}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_dateDebutFormation}" for="dateDebutFormation" />
+                        <p:calendar id="dateDebutFormation" pattern="MM/dd/yyyy" value="#{orphelinController.selected.dateDebutFormation}" title="#{bundle.EditOrphelinTitle_dateDebutFormation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_dureeFormation}" for="dureeFormation" />
+                        <p:inputText id="dureeFormation" value="#{orphelinController.selected.dureeFormation}" title="#{bundle.EditOrphelinTitle_dureeFormation}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_typeFormation}" for="typeFormation" />
+                        <p:inputText id="typeFormation" value="#{orphelinController.selected.typeFormation}" title="#{bundle.EditOrphelinTitle_typeFormation}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_blemeFormation}" for="blemeFormation" />
+                        <p:inputText id="blemeFormation" value="#{orphelinController.selected.blemeFormation}" title="#{bundle.EditOrphelinTitle_blemeFormation}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_dateDiscon}" for="dateDiscon" />
+                        <p:calendar id="dateDiscon" pattern="MM/dd/yyyy" value="#{orphelinController.selected.dateDiscon}" title="#{bundle.EditOrphelinTitle_dateDiscon}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_raisondiscontinuite}" for="raisondiscontinuite" />
+                        <p:inputText id="raisondiscontinuite" value="#{orphelinController.selected.raisondiscontinuite}" title="#{bundle.EditOrphelinTitle_raisondiscontinuite}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_capacite}" for="capacite" />
+                        <p:inputText id="capacite" value="#{orphelinController.selected.capacite}" title="#{bundle.EditOrphelinTitle_capacite}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_raisonNonTravail}" for="raisonNonTravail" />
+                        <p:inputText id="raisonNonTravail" value="#{orphelinController.selected.raisonNonTravail}" title="#{bundle.EditOrphelinTitle_raisonNonTravail}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_dureeChomage}" for="dureeChomage" />
+                        <p:inputText id="dureeChomage" value="#{orphelinController.selected.dureeChomage}" title="#{bundle.EditOrphelinTitle_dureeChomage}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_perspective}" for="perspective" />
+                        <p:inputText id="perspective" value="#{orphelinController.selected.perspective}" title="#{bundle.EditOrphelinTitle_perspective}" />
+                        <p:outputLabel value="#{bundle.EditOrphelinLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{orphelinController.selected.type}" title="#{bundle.EditOrphelinTitle_type}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{orphelinController.update}" value="#{bundle.Save}" update="display,:OrphelinListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OrphelinEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OrphelinEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

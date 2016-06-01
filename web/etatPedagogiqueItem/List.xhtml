@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="EtatPedagogiqueItemListForm">
+                <p:panel header="#{bundle.ListEtatPedagogiqueItemTitle}">
+                    <p:dataTable id="datalist" value="#{etatPedagogiqueItemController.items}" var="item"
+                                 selectionMode="single" selection="#{etatPedagogiqueItemController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_etatPedagogique}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etatPedagogique}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_orphelin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.orphelin}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_relationMere}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.relationMere}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_relationFrere}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.relationFrere}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_relationVoision}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.relationVoision}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_moeur}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.moeur}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_habillement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.habillement}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_interetScolaire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.interetScolaire}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_commentaire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.commentaire}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatPedagogiqueItemTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{etatPedagogiqueItemController.prepareCreate}" update=":EtatPedagogiqueItemCreateForm" oncomplete="PF('EtatPedagogiqueItemCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EtatPedagogiqueItemViewForm" oncomplete="PF('EtatPedagogiqueItemViewDialog').show()" disabled="#{empty etatPedagogiqueItemController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EtatPedagogiqueItemEditForm" oncomplete="PF('EtatPedagogiqueItemEditDialog').show()" disabled="#{empty etatPedagogiqueItemController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{etatPedagogiqueItemController.destroy}" update=":growl,datalist" disabled="#{empty etatPedagogiqueItemController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

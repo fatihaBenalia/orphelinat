@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResponsableRegionEditDlg" widgetVar="ResponsableRegionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditResponsableRegionTitle}">
+            <h:form id="ResponsableRegionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{responsableRegionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditResponsableRegionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{responsableRegionController.selected.id}" title="#{bundle.EditResponsableRegionTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditResponsableRegionLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{responsableRegionController.selected.nom}" title="#{bundle.EditResponsableRegionTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditResponsableRegionLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{responsableRegionController.selected.prenom}" title="#{bundle.EditResponsableRegionTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditResponsableRegionLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{responsableRegionController.selected.telephone}" title="#{bundle.EditResponsableRegionTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.EditResponsableRegionLabel_gmail}" for="gmail" />
+                        <p:inputText id="gmail" value="#{responsableRegionController.selected.gmail}" title="#{bundle.EditResponsableRegionTitle_gmail}" />
+                        <p:outputLabel value="#{bundle.EditResponsableRegionLabel_adresse}" for="adresse" />
+                        <p:inputText id="adresse" value="#{responsableRegionController.selected.adresse}" title="#{bundle.EditResponsableRegionTitle_adresse}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{responsableRegionController.update}" value="#{bundle.Save}" update="display,:ResponsableRegionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResponsableRegionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResponsableRegionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

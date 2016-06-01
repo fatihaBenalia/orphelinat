@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtatSanteOrphelinViewDlg" widgetVar="EtatSanteOrphelinViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEtatSanteOrphelinTitle}">
+            <h:form id="EtatSanteOrphelinViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etatSanteOrphelinController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_etatSante}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.etatSante}" title="#{bundle.ViewEtatSanteOrphelinTitle_etatSante}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_typeHandicape}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.typeHandicape}" title="#{bundle.ViewEtatSanteOrphelinTitle_typeHandicape}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_etatHandicape}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.etatHandicape}" title="#{bundle.ViewEtatSanteOrphelinTitle_etatHandicape}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_maladie}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.maladie}" title="#{bundle.ViewEtatSanteOrphelinTitle_maladie}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_suivieMaladieChronique}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.suivieMaladieChronique}" title="#{bundle.ViewEtatSanteOrphelinTitle_suivieMaladieChronique}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_suivieHandicape}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.suivieHandicape}" title="#{bundle.ViewEtatSanteOrphelinTitle_suivieHandicape}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_suivieMaladieRepetitif}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.suivieMaladieRepetitif}" title="#{bundle.ViewEtatSanteOrphelinTitle_suivieMaladieRepetitif}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_depense}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.depense}" title="#{bundle.ViewEtatSanteOrphelinTitle_depense}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_besoin}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.besoin}" title="#{bundle.ViewEtatSanteOrphelinTitle_besoin}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_orphelin}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.orphelin}" title="#{bundle.ViewEtatSanteOrphelinTitle_orphelin}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteOrphelinLabel_id}"/>
+                        <h:outputText value="#{etatSanteOrphelinController.selected.id}" title="#{bundle.ViewEtatSanteOrphelinTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EtatSanteOrphelinViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

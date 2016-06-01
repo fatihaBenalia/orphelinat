@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterielEditDlg" widgetVar="MaterielEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMaterielTitle}">
+            <h:form id="MaterielEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materielController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{materielController.selected.dossier}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{materielController.selected.id}" title="#{bundle.EditMaterielTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_etatMateriel}" for="etatMateriel" />
+                        <p:inputText id="etatMateriel" value="#{materielController.selected.etatMateriel}" title="#{bundle.EditMaterielTitle_etatMateriel}" />
+                        <p:outputLabel value="#{bundle.EditMaterielLabel_libelleMateriel}" for="libelleMateriel" />
+                        <p:inputText id="libelleMateriel" value="#{materielController.selected.libelleMateriel}" title="#{bundle.EditMaterielTitle_libelleMateriel}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{materielController.update}" value="#{bundle.Save}" update="display,:MaterielListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MaterielEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MaterielEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

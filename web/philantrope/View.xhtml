@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PhilantropeViewDlg" widgetVar="PhilantropeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPhilantropeTitle}">
+            <h:form id="PhilantropeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{philantropeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPhilantropeLabel_id}"/>
+                        <h:outputText value="#{philantropeController.selected.id}" title="#{bundle.ViewPhilantropeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewPhilantropeLabel_nom}"/>
+                        <h:outputText value="#{philantropeController.selected.nom}" title="#{bundle.ViewPhilantropeTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewPhilantropeLabel_prenom}"/>
+                        <h:outputText value="#{philantropeController.selected.prenom}" title="#{bundle.ViewPhilantropeTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewPhilantropeLabel_telephone}"/>
+                        <h:outputText value="#{philantropeController.selected.telephone}" title="#{bundle.ViewPhilantropeTitle_telephone}"/>
+                        <h:outputText value="#{bundle.ViewPhilantropeLabel_gmail}"/>
+                        <h:outputText value="#{philantropeController.selected.gmail}" title="#{bundle.ViewPhilantropeTitle_gmail}"/>
+                        <h:outputText value="#{bundle.ViewPhilantropeLabel_adresse}"/>
+                        <h:outputText value="#{philantropeController.selected.adresse}" title="#{bundle.ViewPhilantropeTitle_adresse}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PhilantropeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

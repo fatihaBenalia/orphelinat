@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="EtatSanteOrphelinListForm">
+                <p:panel header="#{bundle.ListEtatSanteOrphelinTitle}">
+                    <p:dataTable id="datalist" value="#{etatSanteOrphelinController.items}" var="item"
+                                 selectionMode="single" selection="#{etatSanteOrphelinController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_etatSante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etatSante}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_typeHandicape}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeHandicape}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_etatHandicape}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etatHandicape}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_maladie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.maladie}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_suivieMaladieChronique}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suivieMaladieChronique}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_suivieHandicape}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suivieHandicape}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_suivieMaladieRepetitif}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suivieMaladieRepetitif}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_depense}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.depense}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_besoin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.besoin}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_orphelin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.orphelin}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEtatSanteOrphelinTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{etatSanteOrphelinController.prepareCreate}" update=":EtatSanteOrphelinCreateForm" oncomplete="PF('EtatSanteOrphelinCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EtatSanteOrphelinViewForm" oncomplete="PF('EtatSanteOrphelinViewDialog').show()" disabled="#{empty etatSanteOrphelinController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EtatSanteOrphelinEditForm" oncomplete="PF('EtatSanteOrphelinEditDialog').show()" disabled="#{empty etatSanteOrphelinController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{etatSanteOrphelinController.destroy}" update=":growl,datalist" disabled="#{empty etatSanteOrphelinController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

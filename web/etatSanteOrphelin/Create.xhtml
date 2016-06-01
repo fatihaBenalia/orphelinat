@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtatSanteOrphelinCreateDlg" widgetVar="EtatSanteOrphelinCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEtatSanteOrphelinTitle}">
+            <h:form id="EtatSanteOrphelinCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etatSanteOrphelinController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_etatSante}" for="etatSante" />
+                        <p:selectOneMenu id="etatSante" value="#{etatSanteOrphelinController.selected.etatSante}" >
+                            <f:selectItems value="#{etatSanteController.itemsAvailableSelectOne}"
+                                           var="etatSanteItem"
+                                           itemValue="#{etatSanteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_typeHandicape}" for="typeHandicape" />
+                        <p:inputText id="typeHandicape" value="#{etatSanteOrphelinController.selected.typeHandicape}" title="#{bundle.CreateEtatSanteOrphelinTitle_typeHandicape}" />
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_etatHandicape}" for="etatHandicape" />
+                        <p:inputText id="etatHandicape" value="#{etatSanteOrphelinController.selected.etatHandicape}" title="#{bundle.CreateEtatSanteOrphelinTitle_etatHandicape}" />
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_maladie}" for="maladie" />
+                        <p:inputText id="maladie" value="#{etatSanteOrphelinController.selected.maladie}" title="#{bundle.CreateEtatSanteOrphelinTitle_maladie}" />
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_suivieMaladieChronique}" for="suivieMaladieChronique" />
+                        <p:inputText id="suivieMaladieChronique" value="#{etatSanteOrphelinController.selected.suivieMaladieChronique}" title="#{bundle.CreateEtatSanteOrphelinTitle_suivieMaladieChronique}" />
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_suivieHandicape}" for="suivieHandicape" />
+                        <p:inputText id="suivieHandicape" value="#{etatSanteOrphelinController.selected.suivieHandicape}" title="#{bundle.CreateEtatSanteOrphelinTitle_suivieHandicape}" />
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_suivieMaladieRepetitif}" for="suivieMaladieRepetitif" />
+                        <p:inputText id="suivieMaladieRepetitif" value="#{etatSanteOrphelinController.selected.suivieMaladieRepetitif}" title="#{bundle.CreateEtatSanteOrphelinTitle_suivieMaladieRepetitif}" />
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_depense}" for="depense" />
+                        <p:inputText id="depense" value="#{etatSanteOrphelinController.selected.depense}" title="#{bundle.CreateEtatSanteOrphelinTitle_depense}" />
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_besoin}" for="besoin" />
+                        <p:inputText id="besoin" value="#{etatSanteOrphelinController.selected.besoin}" title="#{bundle.CreateEtatSanteOrphelinTitle_besoin}" />
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_orphelin}" for="orphelin" />
+                        <p:selectOneMenu id="orphelin" value="#{etatSanteOrphelinController.selected.orphelin}" >
+                            <f:selectItems value="#{orphelinController.itemsAvailableSelectOne}"
+                                           var="orphelinItem"
+                                           itemValue="#{orphelinItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEtatSanteOrphelinLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{etatSanteOrphelinController.selected.id}" title="#{bundle.CreateEtatSanteOrphelinTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{etatSanteOrphelinController.create}" value="#{bundle.Save}" update="display,:EtatSanteOrphelinListForm:datalist,:growl" oncomplete="handleSubmit(args,'EtatSanteOrphelinCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtatSanteOrphelinCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

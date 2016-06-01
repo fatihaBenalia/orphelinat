@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperationnCreateDlg" widgetVar="OperationnCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateOperationnTitle}">
+            <h:form id="OperationnCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{operationnController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_etatValide}" for="etatValide" />
+                        <p:inputText id="etatValide" value="#{operationnController.selected.etatValide}" title="#{bundle.CreateOperationnTitle_etatValide}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_date1}" for="date1" />
+                        <p:calendar id="date1" pattern="MM/dd/yyyy" value="#{operationnController.selected.date1}" title="#{bundle.EditOperationnTitle_date1}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_date2}" for="date2" />
+                        <p:calendar id="date2" pattern="MM/dd/yyyy" value="#{operationnController.selected.date2}" title="#{bundle.EditOperationnTitle_date2}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_nbrMois}" for="nbrMois" />
+                        <p:inputText id="nbrMois" value="#{operationnController.selected.nbrMois}" title="#{bundle.CreateOperationnTitle_nbrMois}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{operationnController.selected.type}" title="#{bundle.CreateOperationnTitle_type}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_caisse}" for="caisse" />
+                        <p:selectOneMenu id="caisse" value="#{operationnController.selected.caisse.id}" >
+                            <f:selectItems value="#{caisseController.itemsAvailableSelectOne}"
+                                           var="caisseItem"
+                                           itemValue="#{caisseItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_descriptionCai}" for="descriptionCai" />
+                        <p:inputText id="descriptionCai" value="#{operationnController.selected.descriptionCai}" title="#{bundle.CreateOperationnTitle_descriptionCai}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_descriptionOper}" for="descriptionOper" />
+                        <p:inputText id="descriptionOper" value="#{operationnController.selected.descriptionOper}" title="#{bundle.CreateOperationnTitle_descriptionOper}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_responsable}" for="responsable" />
+                        <p:inputText id="responsable" value="#{operationnController.selected.responsable}" title="#{bundle.CreateOperationnTitle_responsable}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_fournisseur}" for="fournisseur" />
+                        <p:inputText id="fournisseur" value="#{operationnController.selected.fournisseur}" title="#{bundle.CreateOperationnTitle_fournisseur}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_mediataire}" for="mediataire" />
+                        <p:inputText id="mediataire" value="#{operationnController.selected.mediataire}" title="#{bundle.CreateOperationnTitle_mediataire}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_debit}" for="debit" />
+                        <p:inputText id="debit" value="#{operationnController.selected.debit}" title="#{bundle.CreateOperationnTitle_debit}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_credit}" for="credit" />
+                        <p:inputText id="credit" value="#{operationnController.selected.credit}" title="#{bundle.CreateOperationnTitle_credit}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{operationnController.selected.montant}" title="#{bundle.CreateOperationnTitle_montant}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numCheque}" for="numCheque" />
+                        <p:inputText id="numCheque" value="#{operationnController.selected.numCheque}" title="#{bundle.CreateOperationnTitle_numCheque}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numFacture}" for="numFacture" />
+                        <p:inputText id="numFacture" value="#{operationnController.selected.numFacture}" title="#{bundle.CreateOperationnTitle_numFacture}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numReleve}" for="numReleve" />
+                        <p:inputText id="numReleve" value="#{operationnController.selected.numReleve}" title="#{bundle.CreateOperationnTitle_numReleve}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_photo}" for="photo" />
+                        <p:inputText id="photo" value="#{operationnController.selected.photo}" title="#{bundle.CreateOperationnTitle_photo}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_etat}" for="etat" />
+                        <p:inputText id="etat" value="#{operationnController.selected.etat}" title="#{bundle.CreateOperationnTitle_etat}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{operationnController.selected.id}" title="#{bundle.CreateOperationnTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{operationnController.create}" value="#{bundle.Save}" update="display,:OperationnListForm:datalist,:growl" oncomplete="handleSubmit(args,'OperationnCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OperationnCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

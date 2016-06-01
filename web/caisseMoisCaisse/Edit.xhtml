@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CaisseMoisCaisseEditDlg" widgetVar="CaisseMoisCaisseEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCaisseMoisCaisseTitle}">
+            <h:form id="CaisseMoisCaisseEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{caisseMoisCaisseController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCaisseMoisCaisseLabel_dete}" for="dete" />
+                        <p:inputText id="dete" value="#{caisseMoisCaisseController.selected.dete}" title="#{bundle.EditCaisseMoisCaisseTitle_dete}" />
+                        <p:outputLabel value="#{bundle.EditCaisseMoisCaisseLabel_depense}" for="depense" />
+                        <p:inputText id="depense" value="#{caisseMoisCaisseController.selected.depense}" title="#{bundle.EditCaisseMoisCaisseTitle_depense}" />
+                        <p:outputLabel value="#{bundle.EditCaisseMoisCaisseLabel_profit}" for="profit" />
+                        <p:inputText id="profit" value="#{caisseMoisCaisseController.selected.profit}" title="#{bundle.EditCaisseMoisCaisseTitle_profit}" />
+                        <p:outputLabel value="#{bundle.EditCaisseMoisCaisseLabel_entree}" for="entree" />
+                        <p:inputText id="entree" value="#{caisseMoisCaisseController.selected.entree}" title="#{bundle.EditCaisseMoisCaisseTitle_entree}" />
+                        <p:outputLabel value="#{bundle.EditCaisseMoisCaisseLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{caisseMoisCaisseController.selected.id}" title="#{bundle.EditCaisseMoisCaisseTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{caisseMoisCaisseController.update}" value="#{bundle.Save}" update="display,:CaisseMoisCaisseListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CaisseMoisCaisseEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CaisseMoisCaisseEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

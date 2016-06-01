@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierViewDlg" widgetVar="DossierViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDossierTitle}">
+            <h:form id="DossierViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dossierController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDossierLabel_montantDepenseSanter}"/>
+                        <h:outputText value="#{dossierController.selected.montantDepenseSanter}" title="#{bundle.ViewDossierTitle_montantDepenseSanter}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_laid}"/>
+                        <h:outputText value="#{dossierController.selected.laid}" title="#{bundle.ViewDossierTitle_laid}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_compteAssociationParrinage}"/>
+                        <h:outputText value="#{dossierController.selected.compteAssociationParrinage}" title="#{bundle.ViewDossierTitle_compteAssociationParrinage}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_etat}"/>
+                        <h:outputText value="#{dossierController.selected.etat}" title="#{bundle.ViewDossierTitle_etat}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_nbrOrphelin}"/>
+                        <h:outputText value="#{dossierController.selected.nbrOrphelin}" title="#{bundle.ViewDossierTitle_nbrOrphelin}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_nbrMembre}"/>
+                        <h:outputText value="#{dossierController.selected.nbrMembre}" title="#{bundle.ViewDossierTitle_nbrMembre}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_indice}"/>
+                        <h:outputText value="#{dossierController.selected.indice}" title="#{bundle.ViewDossierTitle_indice}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_id}"/>
+                        <h:outputText value="#{dossierController.selected.id}" title="#{bundle.ViewDossierTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_dateDossier}"/>
+                        <h:outputText value="#{dossierController.selected.dateDossier}" title="#{bundle.ViewDossierTitle_dateDossier}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDossierLabel_mere}"/>
+                        <h:outputText value="#{dossierController.selected.mere}" title="#{bundle.ViewDossierTitle_mere}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_pere}"/>
+                        <h:outputText value="#{dossierController.selected.pere}" title="#{bundle.ViewDossierTitle_pere}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_responsableFamille}"/>
+                        <h:outputText value="#{dossierController.selected.responsableFamille}" title="#{bundle.ViewDossierTitle_responsableFamille}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_numDossier}"/>
+                        <h:outputText value="#{dossierController.selected.numDossier}" title="#{bundle.ViewDossierTitle_numDossier}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_numero}"/>
+                        <h:outputText value="#{dossierController.selected.numero}" title="#{bundle.ViewDossierTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_nomFamille}"/>
+                        <h:outputText value="#{dossierController.selected.nomFamille}" title="#{bundle.ViewDossierTitle_nomFamille}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_region}"/>
+                        <h:outputText value="#{dossierController.selected.region}" title="#{bundle.ViewDossierTitle_region}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_responsableRegion}"/>
+                        <h:outputText value="#{dossierController.selected.responsableRegion}" title="#{bundle.ViewDossierTitle_responsableRegion}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_adresseActuelle}"/>
+                        <h:outputText value="#{dossierController.selected.adresseActuelle}" title="#{bundle.ViewDossierTitle_adresseActuelle}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_etatPedagogique}"/>
+                        <h:outputText value="#{dossierController.selected.etatPedagogique}" title="#{bundle.ViewDossierTitle_etatPedagogique}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_etatEthique}"/>
+                        <h:outputText value="#{dossierController.selected.etatEthique}" title="#{bundle.ViewDossierTitle_etatEthique}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_etatSante}"/>
+                        <h:outputText value="#{dossierController.selected.etatSante}" title="#{bundle.ViewDossierTitle_etatSante}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_logement}"/>
+                        <h:outputText value="#{dossierController.selected.logement}" title="#{bundle.ViewDossierTitle_logement}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_activite}"/>
+                        <h:outputText value="#{dossierController.selected.activite}" title="#{bundle.ViewDossierTitle_activite}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_aide}"/>
+                        <h:outputText value="#{dossierController.selected.aide}" title="#{bundle.ViewDossierTitle_aide}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_assistanteSociale1}"/>
+                        <h:outputText value="#{dossierController.selected.assistanteSociale1}" title="#{bundle.ViewDossierTitle_assistanteSociale1}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_assistanteSociale2}"/>
+                        <h:outputText value="#{dossierController.selected.assistanteSociale2}" title="#{bundle.ViewDossierTitle_assistanteSociale2}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_remarque}"/>
+                        <h:outputText value="#{dossierController.selected.remarque}" title="#{bundle.ViewDossierTitle_remarque}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_proposition}"/>
+                        <h:outputText value="#{dossierController.selected.proposition}" title="#{bundle.ViewDossierTitle_proposition}"/>
+                        <h:outputText value="#{bundle.ViewDossierLabel_montantTotal}"/>
+                        <h:outputText value="#{dossierController.selected.montantTotal}" title="#{bundle.ViewDossierTitle_montantTotal}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DossierViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

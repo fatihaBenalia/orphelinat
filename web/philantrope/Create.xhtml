@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PhilantropeCreateDlg" widgetVar="PhilantropeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePhilantropeTitle}">
+            <h:form id="PhilantropeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{philantropeController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePhilantropeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{philantropeController.selected.id}" title="#{bundle.CreatePhilantropeTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreatePhilantropeLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{philantropeController.selected.nom}" title="#{bundle.CreatePhilantropeTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreatePhilantropeLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{philantropeController.selected.prenom}" title="#{bundle.CreatePhilantropeTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreatePhilantropeLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{philantropeController.selected.telephone}" title="#{bundle.CreatePhilantropeTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.CreatePhilantropeLabel_gmail}" for="gmail" />
+                        <p:inputText id="gmail" value="#{philantropeController.selected.gmail}" title="#{bundle.CreatePhilantropeTitle_gmail}" />
+                        <p:outputLabel value="#{bundle.CreatePhilantropeLabel_adresse}" for="adresse" />
+                        <p:inputText id="adresse" value="#{philantropeController.selected.adresse}" title="#{bundle.CreatePhilantropeTitle_adresse}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{philantropeController.create}" value="#{bundle.Save}" update="display,:PhilantropeListForm:datalist,:growl" oncomplete="handleSubmit(args,'PhilantropeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PhilantropeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

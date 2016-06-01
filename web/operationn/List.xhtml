@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOperationnTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <h1><h:outputText value="Gestion Des Resources :" style="font-size: 25px; " /></h1>      
+            <br/><br/><br/><br/>
+
+
+
+            <style>
+
+                #menu-demo2, #menu-demo2 ul{
+                    padding:0;
+                    margin:0;
+                    list-style:none;
+                    text-align:center;
+                }
+                #menu-demo2 li{
+                    display:inline-block;
+                    position:relative;
+                    border-radius:8px 8px 0 0;
+                }
+                #menu-demo2 ul li{
+                    display:inherit;
+                    border-radius:0;
+                }
+                #menu-demo2 ul li:hover{
+                    border-radius:0;
+                }
+                #menu-demo2 ul li:last-child{
+                    border-radius:0 0 8px 8px;
+                }
+                #menu-demo2 ul{
+                    position:absolute;
+                    z-index: 1000;
+                    max-height:0;
+                    left: 0;
+                    right: 0;
+                    overflow:hidden;
+                    -moz-transition: .8s all .3s;
+                    -webkit-transition: .8s all .3s;
+                    transition: .8s all .3s;
+                }
+                #menu-demo2 li:hover ul{
+                    max-height:15em;
+                }
+                /* background des liens menus */
+                #menu-demo2 li:first-child{
+                    background-color: #65537A;
+                    background-image:-webkit-linear-gradient(top, #65537A 0%, #2A2333 100%);
+                    background-image:linear-gradient(to bottom, #65537A 0%, #2A2333 100%);
+                }
+                #menu-demo2 li:nth-child(2){
+                    background-color: #729EBF;
+                    background-image: -webkit-linear-gradient(top, #729EBF 0%, #333A40 100%);
+                    background-image:linear-gradient(to bottom, #729EBF 0%, #333A40 100%);
+                }
+                #menu-demo2 li:nth-child(3){
+                    background-color: #F6AD1A;
+                    background-image:-webkit-linear-gradient(top, #F6AD1A 0%, #9F391A 100%);
+                    background-image:linear-gradient(to bottom, #F6AD1A 0%, #9F391A 100%);
+                }
+                #menu-demo2 li:last-child{
+                    background-color: #CFFF6A;
+                    background-image:-webkit-linear-gradient(top, #CFFF6A 0%, #677F35 100%);
+                    background-image:linear-gradient(to bottom, #CFFF6A 0%, #677F35 100%);
+                }
+                /* background des liens sous menus */
+                #menu-demo2 li:first-child li{
+                    background:#2A2333;
+                }
+                #menu-demo2 li:nth-child(2) li{
+                    background:#333A40;
+                }
+                #menu-demo2 li:nth-child(3) li{
+                    background:#9F391A;
+                }
+                #menu-demo2 li:last-child li{
+                    background:#677F35;
+                }
+                /* background des liens menus et sous menus au survol */
+                #menu-demo2 li:first-child:hover, #menu-demo2 li:first-child li:hover{
+                    background:#65537A;
+                }
+                #menu-demo2 li:nth-child(2):hover, #menu-demo2 li:nth-child(2) li:hover{
+                    background:#729EBF;
+                }
+                #menu-demo2 li:nth-child(3):hover, #menu-demo2 li:nth-child(3) li:hover{
+                    background:#F6AD1A;
+                }
+                #menu-demo2 li:last-child:hover, #menu-demo2 li:last-child li:hover{
+                    background:#CFFF6A;
+                }
+                /* les a href */
+                #menu-demo2 a{
+                    text-decoration:none;
+                    display:block;
+                    padding:8px 32px;
+                    color:#fff;
+                    font-family:arial;
+                }
+                #menu-demo2 ul a{
+                    padding:8px 0;
+                }
+                #menu-demo2 li:hover li a{
+                    color:#fff;
+                    text-transform:inherit;
+                }
+                #menu-demo2 li:hover a, #menu-demo2 li li:hover a{
+                    color:#000;
+                }
+            </style>
+            <h1><h:outputText value="Comptabilité Sociale :" style="font-size: 16px; " /></h1> 
+            <ul id="menu-demo2" style="margin-top: -50px;">
+                <li><a href="#">La Somme Des Revenues</a>
+
+                </li>
+                <li><a href="#">La Somme Des Depenses</a>
+
+                </li>
+                <li><a href="#">La Somme Des Detes</a>
+
+                </li>
+                <li><a href="#">La Somme Des Profits</a>
+
+                </li>
+            </ul>
+            <div><h1><h:outputText value="Comptabilité De Gestion :" style="font-size: 16px;margin-top: 50px;position: absolute; " /></h1></div>
+            <ul id="menu-demo2" style="margin-top: 50px;">
+                <li><a href="#">La Somme Des Revenues</a>
+
+                </li>
+                <li><a href="#">La Somme Des Depenses</a>
+
+                </li>
+                <li><a href="#">La Somme Des Detes</a>
+
+                </li>
+                <li><a href="#">La Somme Des Profits</a>
+
+                </li>
+            </ul>
+            <h:form id="halcais1" style="margin-left: 268px; ">
+
+                <p:inputText value="#{caisseController.getMontEntree()}"  id="enter" style="width:200px; " readonly="true" />
+                <p:inputText value="#{caisseController.getMontdepense()}"  id="dep" style="width:203px; margin-left: 3px; " readonly="true"  />
+                <p:inputText value="#{caisseController.getMontDete()}"  id="dete" style="width:177px; margin-left: 2px; " readonly="true" />
+                <p:inputText value="#{caisseController.getMontProfit()}"  id="profi" style="width:179px; margin-left: 3px; " readonly="true" />
+            </h:form>
+            <h:form  id="halcais2" style="margin-left: 268px; margin-top: -106px;  ">
+
+                <p:inputText value="#{caisseController.getMontEntree1()}"  id="enter1" style="width:200px; " readonly="true" />
+                <p:inputText value="#{caisseController.getMontdepense1()}"  id="dep1" style="width:203px; margin-left: 3px; " readonly="true"  />
+                <p:inputText value="#{caisseController.getMontDete1()}"  id="dete1" style="width:177px; margin-left: 2px; " readonly="true" />
+                <p:inputText value="#{caisseController.getMontProfit1()}"  id="profi1" style="width:179px; margin-left: 3px; " readonly="true" />
+            </h:form>
+            <br/><br/><br/><br/><br/><br/>
+            <h:form style="margin-top: 20px; margin-left: 240px;">
+                <h:outputLabel for="ch" value="Ajouter Nouveau Operation :"   style="  font-size: 16px; margin-left: 205px;font-weight: bold ; " />&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton  icon="ui-icon-plus"   value="Creer" type="button" onclick="PF('dlg4').show();"  update=":OperationnCreateForm:datalist" />
+
+                <br/>
+
+
+            </h:form>
+            <br/><br/>
+            <h:form id="OperationnListForm">
+
+                <p:fieldset legend="Partie De Recherche :"  style="width:900px; margin-left: 180px; " >
+                    <h:panelGrid columns="4" style=" margin-left: 120px;" >                        
+                        <p:outputLabel for="ch" value="Type Operation :"   style="  font-size: 18px; font-weight: bold ; " />
+                        <p:selectOneMenu value="#{operationnController.operation.type}" id="ch" style="margin-left: 40px;" >
+                            <f:selectItem itemLabel=" -- select --" itemValue="#{null}"/>
+                            <f:selectItem itemLabel="Depense" itemValue="depense" />
+                            <f:selectItem itemLabel="Revenue" itemValue="revenue" />
+                            <f:selectItem itemLabel="Dete" itemValue="dete" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Date Operation :" for="date1"   style="  font-size: 18px; font-weight: bold ; margin-left: 90px; "/>
+                        <p:calendar  style="margin-left: 40px;"  id="date1" pattern="MM/dd/yyyy" value="#{operationnController.operation.date1}" title="#{bundle.EditOperationnTitle_date1}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_caisse}" for="caisse"  style="  font-size: 18px; font-weight: bold ; " />
+                        <p:selectOneMenu id="caisse" value="#{operationnController.operation.caisse.id}"  style="margin-left: 40px;" >
+                            <f:selectItem itemLabel=" -- select --" itemValue="#{null}"/>
+                            <f:selectItems value="#{caisseController.itemsAvailableSelectOne}"
+                                           var="caisseItem"
+                                           itemValue="#{caisseItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Etat Operation :" for="etatValide"  style="  font-size: 18px; font-weight: bold ; margin-left: 90px; " />
+                        <p:selectOneMenu id="etatValide" value="#{operationnController.operation.etatValide}" style="margin-left: 40px;"  >
+                            <f:selectItem itemLabel=" -- select --" itemValue="0"/>
+                            <f:selectItem itemLabel="Attentent la Facture" itemValue="1" />
+                            <f:selectItem itemLabel="reçoivent la facture" itemValue="2" />
+                        </p:selectOneMenu>
+
+
+                    </h:panelGrid>
+                    <p:commandButton icon="ui-icon-search" actionListener="#{operationnController.rechercheByCritere()}" update=":OperationnListForm:datalist" value="-- Rechercher --" style="margin-left: 340px;" />
+
+                </p:fieldset>
+
+                <br/> <br/><br/><br/>
+
+
+                <p:panel header="#{bundle.ListOperationnTitle}">
+                    <p:dataTable id="datalist" value="#{operationnController.items}" var="item"
+                                 selectionMode="single" selection="#{operationnController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_date1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date1}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_date2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date2}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_nbrMois}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nbrMois}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_type}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_caisse}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.caisse}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_descriptionCai}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descriptioncaise}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_descriptionOper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descriptionOper}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_responsable}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsable}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_fournisseur}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fournisseur}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_mediataire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mediataire}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_debit}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.debit}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_credit}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.credit}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_montant}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montant}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_numCheque}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numCheque}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_numFacture}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numFacture}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_numReleve}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numReleve}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_etat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOperationnTitle_etat}"/>
+                            </f:facet>
+                            <p:tab  title="Ajouter un pdf" id="infoPhoto">
+                                <p:commandButton rendered="#{operationnController.resultat(item) == 1}"    id="utton" value="Ajouter pdf"  actionListener="#{operationnController.setSelected(item)}" oncomplete="PF('PopUp').show()" />
+                            <p:link value="kokiii" rendered="#{operationnController.resultat(item) == -1}" href="/myFile/#{item.photo}" style="display: inline"  />
+
+                            </p:tab >
+                            <br/>
+                        </p:column>
+                     
+
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{operationnController.prepareCreate}" update=":OperationnCreateForm" oncomplete="PF('OperationnCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":OperationnViewForm" oncomplete="PF('OperationnViewDialog').show()" disabled="#{empty operationnController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":OperationnEditForm" oncomplete="PF('OperationnEditDialog').show()" disabled="#{empty operationnController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{operationnController.destroy}" update=":growl,datalist" disabled="#{empty operationnController.selected}"/>
+                        </f:facet>
+                        <br/><br/> <br/><br/> <br/><br/> <br/><br/>
+                    </p:dataTable>
+
+                </p:panel>
+
+            </h:form>
+
+
+
+            <h:form>
+
+                <p:dialog header="Ajouter Nouveau Operation (Sociale / Gestion)" widgetVar="dlg4" showEffect="explode"  height="290" width="900">
+
+                    <h:panelGrid columns="6" style="margin-bottom:10px; margin-left: 10px;" >
+
+                        <p:outputLabel value="Type D'operation :" for="type" />
+                        <p:selectOneMenu value="#{operationnController.selected.type}" id="type" style="margin-left: 10px;">
+                            <f:selectItem itemLabel=" -- select --"/>
+                            <f:selectItem itemLabel="Depense" itemValue="depense" />
+                            <f:selectItem itemLabel="Revenue" itemValue="revenue" />
+                            <f:selectItem itemLabel="Dete" itemValue="dete" />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Caisse" for="rr" />
+
+                        <p:selectOneMenu  id="rr"  value="#{operationnController.selected.caisse.id}"  >
+                            <f:selectItem itemLabel=" -- select --"  />
+                            <f:selectItems value="#{caisseController.itemsAvailableSelectOne}"
+                                           var="caisseItem"
+                                           itemValue="#{caisseItem}"/>
+                            <p:ajax  process="rr"  listener="#{operationnController.findByCaise()}"  update="qq" ></p:ajax>
+
+                        </p:selectOneMenu>   
+
+
+                        <p:outputLabel value="Description" for="qq" />
+                        <p:selectOneMenu  id="qq"  value="#{operationnController.selected.descriptionCai}"  >
+                            <f:selectItem itemLabel=" -- selectDescription --"  />
+                            <f:selectItems value="#{operationnController.description}"
+                                           var="caisseItem"
+                                           itemValue="#{caisseItem}"/>
+                        </p:selectOneMenu> 
+
+                        <p:outputLabel value="   Date Operation  :" for="date1" />
+                        <p:calendar id="date1" pattern="MM/dd/yyyy" value="#{operationnController.selected.date1}" title="#{bundle.EditOperationnTitle_date1}"  showOn="button"/>
+                        <p:outputLabel value="Date Virement :" for="date2" />
+                        <p:calendar id="date2" pattern="MM/dd/yyyy" value="#{operationnController.selected.date2}" title="#{bundle.EditOperationnTitle_date2}"  showOn="button"/>
+                        <p:outputLabel value="Mois :" for="nbrMois" />
+                        <p:selectOneMenu value="#{operationnController.selected.nbrMois}" id="nbrMois"  >
+
+                            <f:selectItem itemLabel=" -- select --"/>
+                            <f:selectItem itemLabel="Mois 1" itemValue="1"   />
+                            <f:selectItem itemLabel="Mois 2" itemValue="2"   />
+                            <f:selectItem itemLabel="Mois 3" itemValue="3"   />
+                            <f:selectItem itemLabel="Mois 4" itemValue="4"   />
+                            <f:selectItem itemLabel="Mois 5" itemValue="5"   />
+                            <f:selectItem itemLabel="Mois 6" itemValue="6"   />
+                            <f:selectItem itemLabel="Mois 7" itemValue="7"   />
+                            <f:selectItem itemLabel="Mois 8" itemValue="8"   />
+                            <f:selectItem itemLabel="Mois 9" itemValue="9"   />
+                            <f:selectItem itemLabel="Mois 10" itemValue="10"   />
+                            <f:selectItem itemLabel="Mois 11" itemValue="11"   />
+                            <f:selectItem itemLabel="Mois 12" itemValue="12"   />
+                        </p:selectOneMenu>
+
+
+
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_descriptionOper}" for="descriptionOper" />
+                        <p:inputText id="descriptionOper" value="#{operationnController.selected.descriptionOper}" title="#{bundle.CreateOperationnTitle_descriptionOper}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_responsable}" for="responsable" />
+                        <p:inputText id="responsable" value="#{operationnController.selected.responsable}" title="#{bundle.CreateOperationnTitle_responsable}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_fournisseur}" for="fournisseur" />
+                        <p:inputText id="fournisseur" value="#{operationnController.selected.fournisseur}" title="#{bundle.CreateOperationnTitle_fournisseur}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_mediataire}" for="mediataire" />
+                        <p:inputText id="mediataire" value="#{operationnController.selected.mediataire}" title="#{bundle.CreateOperationnTitle_mediataire}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_debit}" for="debit" />
+                        <p:inputText id="debit" value="#{operationnController.selected.debit}" title="#{bundle.CreateOperationnTitle_debit}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_credit}" for="credit" />
+                        <p:inputText id="credit" value="#{operationnController.selected.credit}" title="#{bundle.CreateOperationnTitle_credit}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{operationnController.selected.montant}" title="#{bundle.CreateOperationnTitle_montant}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numCheque}" for="numCheque" />
+                        <p:inputText id="numCheque" value="#{operationnController.selected.numCheque}" title="#{bundle.CreateOperationnTitle_numCheque}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numFacture}" for="numFacture" />
+                        <p:inputText id="numFacture" value="#{operationnController.selected.numFacture}" title="#{bundle.CreateOperationnTitle_numFacture}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numReleve}" for="numReleve" />
+                        <p:inputText id="numReleve" value="#{operationnController.selected.numReleve}" title="#{bundle.CreateOperationnTitle_numReleve}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_photo}" for="photo" />
+                        <p:inputText id="photo" value="#{operationnController.selected.photo}" title="#{bundle.CreateOperationnTitle_photo}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_etat}" for="etat" />
+                        <p:inputText id="etat" value="#{operationnController.selected.etat}" title="#{bundle.CreateOperationnTitle_etat}" />
+
+                        <p:commandButton  icon="ui-icon-plus" actionListener="#{operationnController.createOperation()}" value="Ajouter" update=":OperationnListForm:datalist,:growl,:halcais1,:halcais2"  />
+                        <p:commandButton  icon="ui-icon-plus" actionListener="#{operationnController.generatePdf()}" value="Imprimer"  ajax="false" />
+                        <p:commandButton value="Annuler" onclick="dlg4.hide()"/>
+                    </h:panelGrid>
+                </p:dialog>
+                <br/><br/><br/><br/><br/><br/>
+            </h:form>
+
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+            <ui:include src="/addPdf/AddExcel.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

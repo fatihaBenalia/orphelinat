@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AvocatEditDlg" widgetVar="AvocatEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAvocatTitle}">
+            <h:form id="AvocatEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{avocatController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAvocatLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{avocatController.selected.id}" title="#{bundle.EditAvocatTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditAvocatLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{avocatController.selected.nom}" title="#{bundle.EditAvocatTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditAvocatLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{avocatController.selected.prenom}" title="#{bundle.EditAvocatTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditAvocatLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{avocatController.selected.telephone}" title="#{bundle.EditAvocatTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.EditAvocatLabel_gmail}" for="gmail" />
+                        <p:inputText id="gmail" value="#{avocatController.selected.gmail}" title="#{bundle.EditAvocatTitle_gmail}" />
+                        <p:outputLabel value="#{bundle.EditAvocatLabel_adresse}" for="adresse" />
+                        <p:inputText id="adresse" value="#{avocatController.selected.adresse}" title="#{bundle.EditAvocatTitle_adresse}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{avocatController.update}" value="#{bundle.Save}" update="display,:AvocatListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AvocatEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AvocatEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

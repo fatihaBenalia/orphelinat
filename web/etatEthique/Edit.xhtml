@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtatEthiqueEditDlg" widgetVar="EtatEthiqueEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEtatEthiqueTitle}">
+            <h:form id="EtatEthiqueEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etatEthiqueController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{etatEthiqueController.selected.dossier}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{etatEthiqueController.selected.id}" title="#{bundle.EditEtatEthiqueTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_soutienScolaire}" for="soutienScolaire" />
+                        <p:inputText id="soutienScolaire" value="#{etatEthiqueController.selected.soutienScolaire}" title="#{bundle.EditEtatEthiqueTitle_soutienScolaire}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_nourritureOrphelin}" for="nourritureOrphelin" />
+                        <p:inputText id="nourritureOrphelin" value="#{etatEthiqueController.selected.nourritureOrphelin}" title="#{bundle.EditEtatEthiqueTitle_nourritureOrphelin}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_propreteHabille}" for="propreteHabille" />
+                        <p:inputText id="propreteHabille" value="#{etatEthiqueController.selected.propreteHabille}" title="#{bundle.EditEtatEthiqueTitle_propreteHabille}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_propreteLogement}" for="propreteLogement" />
+                        <p:inputText id="propreteLogement" value="#{etatEthiqueController.selected.propreteLogement}" title="#{bundle.EditEtatEthiqueTitle_propreteLogement}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_relationFamille}" for="relationFamille" />
+                        <p:inputText id="relationFamille" value="#{etatEthiqueController.selected.relationFamille}" title="#{bundle.EditEtatEthiqueTitle_relationFamille}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_relationVoision}" for="relationVoision" />
+                        <p:inputText id="relationVoision" value="#{etatEthiqueController.selected.relationVoision}" title="#{bundle.EditEtatEthiqueTitle_relationVoision}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_habillement}" for="habillement" />
+                        <p:inputText id="habillement" value="#{etatEthiqueController.selected.habillement}" title="#{bundle.EditEtatEthiqueTitle_habillement}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_interetScolaire}" for="interetScolaire" />
+                        <p:inputText id="interetScolaire" value="#{etatEthiqueController.selected.interetScolaire}" title="#{bundle.EditEtatEthiqueTitle_interetScolaire}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_commentaire}" for="commentaire" />
+                        <p:inputText id="commentaire" value="#{etatEthiqueController.selected.commentaire}" title="#{bundle.EditEtatEthiqueTitle_commentaire}" />
+                        <p:outputLabel value="#{bundle.EditEtatEthiqueLabel_mere}" for="mere" />
+                        <p:selectOneMenu id="mere" value="#{etatEthiqueController.selected.mere}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mereController.itemsAvailableSelectOne}"
+                                           var="mereItem"
+                                           itemValue="#{mereItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{etatEthiqueController.update}" value="#{bundle.Save}" update="display,:EtatEthiqueListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EtatEthiqueEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtatEthiqueEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonneViewDlg" widgetVar="PersonneViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPersonneTitle}">
+            <h:form id="PersonneViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personneController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPersonneLabel_id}"/>
+                        <h:outputText value="#{personneController.selected.id}" title="#{bundle.ViewPersonneTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewPersonneLabel_nom}"/>
+                        <h:outputText value="#{personneController.selected.nom}" title="#{bundle.ViewPersonneTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewPersonneLabel_prenom}"/>
+                        <h:outputText value="#{personneController.selected.prenom}" title="#{bundle.ViewPersonneTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewPersonneLabel_telephone}"/>
+                        <h:outputText value="#{personneController.selected.telephone}" title="#{bundle.ViewPersonneTitle_telephone}"/>
+                        <h:outputText value="#{bundle.ViewPersonneLabel_gmail}"/>
+                        <h:outputText value="#{personneController.selected.gmail}" title="#{bundle.ViewPersonneTitle_gmail}"/>
+                        <h:outputText value="#{bundle.ViewPersonneLabel_adresse}"/>
+                        <h:outputText value="#{personneController.selected.adresse}" title="#{bundle.ViewPersonneTitle_adresse}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PersonneViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

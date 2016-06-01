@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MembreViewDlg" widgetVar="MembreViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMembreTitle}">
+            <h:form id="MembreViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{membreController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMembreLabel_dossier}"/>
+                        <h:outputText value="#{membreController.selected.dossier}" title="#{bundle.ViewMembreTitle_dossier}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_id}"/>
+                        <h:outputText value="#{membreController.selected.id}" title="#{bundle.ViewMembreTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_nom}"/>
+                        <h:outputText value="#{membreController.selected.nom}" title="#{bundle.ViewMembreTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_prenom}"/>
+                        <h:outputText value="#{membreController.selected.prenom}" title="#{bundle.ViewMembreTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_relationOrphelin}"/>
+                        <h:outputText value="#{membreController.selected.relationOrphelin}" title="#{bundle.ViewMembreTitle_relationOrphelin}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_dateNaissance}"/>
+                        <h:outputText value="#{membreController.selected.dateNaissance}" title="#{bundle.ViewMembreTitle_dateNaissance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMembreLabel_profession}"/>
+                        <h:outputText value="#{membreController.selected.profession}" title="#{bundle.ViewMembreTitle_profession}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_typeMetier}"/>
+                        <h:outputText value="#{membreController.selected.typeMetier}" title="#{bundle.ViewMembreTitle_typeMetier}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_niveauScolaire}"/>
+                        <h:outputText value="#{membreController.selected.niveauScolaire}" title="#{bundle.ViewMembreTitle_niveauScolaire}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_recruteur}"/>
+                        <h:outputText value="#{membreController.selected.recruteur}" title="#{bundle.ViewMembreTitle_recruteur}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_ecole}"/>
+                        <h:outputText value="#{membreController.selected.ecole}" title="#{bundle.ViewMembreTitle_ecole}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_salaire}"/>
+                        <h:outputText value="#{membreController.selected.salaire}" title="#{bundle.ViewMembreTitle_salaire}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_moyenne}"/>
+                        <h:outputText value="#{membreController.selected.moyenne}" title="#{bundle.ViewMembreTitle_moyenne}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_depenses}"/>
+                        <h:outputText value="#{membreController.selected.depenses}" title="#{bundle.ViewMembreTitle_depenses}"/>
+                        <h:outputText value="#{bundle.ViewMembreLabel_commentaire}"/>
+                        <h:outputText value="#{membreController.selected.commentaire}" title="#{bundle.ViewMembreTitle_commentaire}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MembreViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

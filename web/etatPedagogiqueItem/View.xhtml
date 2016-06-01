@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtatPedagogiqueItemViewDlg" widgetVar="EtatPedagogiqueItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEtatPedagogiqueItemTitle}">
+            <h:form id="EtatPedagogiqueItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etatPedagogiqueItemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_etatPedagogique}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.etatPedagogique}" title="#{bundle.ViewEtatPedagogiqueItemTitle_etatPedagogique}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_orphelin}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.orphelin}" title="#{bundle.ViewEtatPedagogiqueItemTitle_orphelin}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_relationMere}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.relationMere}" title="#{bundle.ViewEtatPedagogiqueItemTitle_relationMere}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_relationFrere}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.relationFrere}" title="#{bundle.ViewEtatPedagogiqueItemTitle_relationFrere}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_relationVoision}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.relationVoision}" title="#{bundle.ViewEtatPedagogiqueItemTitle_relationVoision}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_moeur}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.moeur}" title="#{bundle.ViewEtatPedagogiqueItemTitle_moeur}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_habillement}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.habillement}" title="#{bundle.ViewEtatPedagogiqueItemTitle_habillement}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_interetScolaire}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.interetScolaire}" title="#{bundle.ViewEtatPedagogiqueItemTitle_interetScolaire}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_commentaire}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.commentaire}" title="#{bundle.ViewEtatPedagogiqueItemTitle_commentaire}"/>
+                        <h:outputText value="#{bundle.ViewEtatPedagogiqueItemLabel_id}"/>
+                        <h:outputText value="#{etatPedagogiqueItemController.selected.id}" title="#{bundle.ViewEtatPedagogiqueItemTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EtatPedagogiqueItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

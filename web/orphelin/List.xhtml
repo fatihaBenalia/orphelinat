@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOrphelinTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="OrphelinListForm">
+                <p:panel header="#{bundle.ListOrphelinTitle}">
+                    <p:dataTable id="datalist" value="#{orphelinController.items}" var="item"
+                                 selectionMode="single" selection="#{orphelinController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_sexe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexe}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_nom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_prenom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_etatSanteOrphelin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etatSanteOrphelin}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_etatPedagogiqueItem}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etatPedagogiqueItem}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_dateNaissance}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateNaissance}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_dossier}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dossier}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_niveauScolaire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.niveauScolaire}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_ecole}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ecole}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_nbrAnneeRedouble}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nbrAnneeRedouble}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_raisonRedoublement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.raisonRedoublement}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_aideScolaire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aideScolaire}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_matiere}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.matiere}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_blemeScolaire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.blemeScolaire}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_futurPerspective}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.futurPerspective}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_dateDisconScolaire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDisconScolaire}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_raisonDisconScolaire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.raisonDisconScolaire}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_etablissement}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etablissement}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_dateDebutFormation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDebutFormation}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_dureeFormation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dureeFormation}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_typeFormation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeFormation}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_blemeFormation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.blemeFormation}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_dateDiscon}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDiscon}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_raisondiscontinuite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.raisondiscontinuite}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_capacite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capacite}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_raisonNonTravail}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.raisonNonTravail}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_dureeChomage}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dureeChomage}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_perspective}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.perspective}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrphelinTitle_type}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{orphelinController.prepareCreate}" update=":OrphelinCreateForm" oncomplete="PF('OrphelinCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":OrphelinViewForm" oncomplete="PF('OrphelinViewDialog').show()" disabled="#{empty orphelinController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":OrphelinEditForm" oncomplete="PF('OrphelinEditDialog').show()" disabled="#{empty orphelinController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{orphelinController.destroy}" update=":growl,datalist" disabled="#{empty orphelinController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

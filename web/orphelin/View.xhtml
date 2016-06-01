@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrphelinViewDlg" widgetVar="OrphelinViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOrphelinTitle}">
+            <h:form id="OrphelinViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{orphelinController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_sexe}"/>
+                        <h:outputText value="#{orphelinController.selected.sexe}" title="#{bundle.ViewOrphelinTitle_sexe}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_id}"/>
+                        <h:outputText value="#{orphelinController.selected.id}" title="#{bundle.ViewOrphelinTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_nom}"/>
+                        <h:outputText value="#{orphelinController.selected.nom}" title="#{bundle.ViewOrphelinTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_prenom}"/>
+                        <h:outputText value="#{orphelinController.selected.prenom}" title="#{bundle.ViewOrphelinTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_etatSanteOrphelin}"/>
+                        <h:outputText value="#{orphelinController.selected.etatSanteOrphelin}" title="#{bundle.ViewOrphelinTitle_etatSanteOrphelin}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_etatPedagogiqueItem}"/>
+                        <h:outputText value="#{orphelinController.selected.etatPedagogiqueItem}" title="#{bundle.ViewOrphelinTitle_etatPedagogiqueItem}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_dateNaissance}"/>
+                        <h:outputText value="#{orphelinController.selected.dateNaissance}" title="#{bundle.ViewOrphelinTitle_dateNaissance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_dossier}"/>
+                        <h:outputText value="#{orphelinController.selected.dossier}" title="#{bundle.ViewOrphelinTitle_dossier}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_niveauScolaire}"/>
+                        <h:outputText value="#{orphelinController.selected.niveauScolaire}" title="#{bundle.ViewOrphelinTitle_niveauScolaire}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_ecole}"/>
+                        <h:outputText value="#{orphelinController.selected.ecole}" title="#{bundle.ViewOrphelinTitle_ecole}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_nbrAnneeRedouble}"/>
+                        <h:outputText value="#{orphelinController.selected.nbrAnneeRedouble}" title="#{bundle.ViewOrphelinTitle_nbrAnneeRedouble}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_raisonRedoublement}"/>
+                        <h:outputText value="#{orphelinController.selected.raisonRedoublement}" title="#{bundle.ViewOrphelinTitle_raisonRedoublement}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_aideScolaire}"/>
+                        <h:outputText value="#{orphelinController.selected.aideScolaire}" title="#{bundle.ViewOrphelinTitle_aideScolaire}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_matiere}"/>
+                        <h:outputText value="#{orphelinController.selected.matiere}" title="#{bundle.ViewOrphelinTitle_matiere}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_blemeScolaire}"/>
+                        <h:outputText value="#{orphelinController.selected.blemeScolaire}" title="#{bundle.ViewOrphelinTitle_blemeScolaire}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_futurPerspective}"/>
+                        <h:outputText value="#{orphelinController.selected.futurPerspective}" title="#{bundle.ViewOrphelinTitle_futurPerspective}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_dateDisconScolaire}"/>
+                        <h:outputText value="#{orphelinController.selected.dateDisconScolaire}" title="#{bundle.ViewOrphelinTitle_dateDisconScolaire}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_raisonDisconScolaire}"/>
+                        <h:outputText value="#{orphelinController.selected.raisonDisconScolaire}" title="#{bundle.ViewOrphelinTitle_raisonDisconScolaire}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_etablissement}"/>
+                        <h:outputText value="#{orphelinController.selected.etablissement}" title="#{bundle.ViewOrphelinTitle_etablissement}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_dateDebutFormation}"/>
+                        <h:outputText value="#{orphelinController.selected.dateDebutFormation}" title="#{bundle.ViewOrphelinTitle_dateDebutFormation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_dureeFormation}"/>
+                        <h:outputText value="#{orphelinController.selected.dureeFormation}" title="#{bundle.ViewOrphelinTitle_dureeFormation}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_typeFormation}"/>
+                        <h:outputText value="#{orphelinController.selected.typeFormation}" title="#{bundle.ViewOrphelinTitle_typeFormation}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_blemeFormation}"/>
+                        <h:outputText value="#{orphelinController.selected.blemeFormation}" title="#{bundle.ViewOrphelinTitle_blemeFormation}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_dateDiscon}"/>
+                        <h:outputText value="#{orphelinController.selected.dateDiscon}" title="#{bundle.ViewOrphelinTitle_dateDiscon}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_raisondiscontinuite}"/>
+                        <h:outputText value="#{orphelinController.selected.raisondiscontinuite}" title="#{bundle.ViewOrphelinTitle_raisondiscontinuite}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_capacite}"/>
+                        <h:outputText value="#{orphelinController.selected.capacite}" title="#{bundle.ViewOrphelinTitle_capacite}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_raisonNonTravail}"/>
+                        <h:outputText value="#{orphelinController.selected.raisonNonTravail}" title="#{bundle.ViewOrphelinTitle_raisonNonTravail}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_dureeChomage}"/>
+                        <h:outputText value="#{orphelinController.selected.dureeChomage}" title="#{bundle.ViewOrphelinTitle_dureeChomage}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_perspective}"/>
+                        <h:outputText value="#{orphelinController.selected.perspective}" title="#{bundle.ViewOrphelinTitle_perspective}"/>
+                        <h:outputText value="#{bundle.ViewOrphelinLabel_type}"/>
+                        <h:outputText value="#{orphelinController.selected.type}" title="#{bundle.ViewOrphelinTitle_type}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OrphelinViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

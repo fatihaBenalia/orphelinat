@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MediataireCreateDlg" widgetVar="MediataireCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMediataireTitle}">
+            <h:form id="MediataireCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mediataireController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMediataireLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{mediataireController.selected.nom}" title="#{bundle.CreateMediataireTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateMediataireLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{mediataireController.selected.prenom}" title="#{bundle.CreateMediataireTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateMediataireLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{mediataireController.selected.telephone}" title="#{bundle.CreateMediataireTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.CreateMediataireLabel_gmail}" for="gmail" />
+                        <p:inputText id="gmail" value="#{mediataireController.selected.gmail}" title="#{bundle.CreateMediataireTitle_gmail}" />
+                        <p:outputLabel value="#{bundle.CreateMediataireLabel_adresse}" for="adresse" />
+                        <p:inputText id="adresse" value="#{mediataireController.selected.adresse}" title="#{bundle.CreateMediataireTitle_adresse}" />
+                        <p:outputLabel value="#{bundle.CreateMediataireLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{mediataireController.selected.id}" title="#{bundle.CreateMediataireTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{mediataireController.create}" value="#{bundle.Save}" update="display,:MediataireListForm:datalist,:growl" oncomplete="handleSubmit(args,'MediataireCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MediataireCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

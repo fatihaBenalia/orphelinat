@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Activite" outcome="/activite/List.xhtml" />
+                            <p:menuitem value="ActiviteItem" outcome="/activiteItem/List.xhtml" />
+                            <p:menuitem value="Aide" outcome="/aide/List.xhtml" />
+                            <p:menuitem value="AideItem" outcome="/aideItem/List.xhtml" />
+                            <p:menuitem value="AssistanteSociale" outcome="/assistanteSociale/List.xhtml" />
+                            <p:menuitem value="Avocat" outcome="/avocat/List.xhtml" />
+                            <p:menuitem value="Caisse" outcome="/caisse/List.xhtml" />
+                            <p:menuitem value="CompteAssociationParrinage" outcome="/compteAssociationParrinage/List.xhtml" />
+                            <p:menuitem value="Dossier" outcome="/dossier/List.xhtml" />
+                            <p:menuitem value="EtatEthique" outcome="/etatEthique/List.xhtml" />
+                            <p:menuitem value="EtatPedagogique" outcome="/etatPedagogique/List.xhtml" />
+                            <p:menuitem value="EtatPedagogiqueItem" outcome="/etatPedagogiqueItem/List.xhtml" />
+                            <p:menuitem value="EtatSante" outcome="/etatSante/List.xhtml" />
+                            <p:menuitem value="EtatSanteMere" outcome="/etatSanteMere/List.xhtml" />
+                            <p:menuitem value="EtatSanteOrphelin" outcome="/etatSanteOrphelin/List.xhtml" />
+                            <p:menuitem value="Logement" outcome="/logement/List.xhtml" />
+                            <p:menuitem value="Materiel" outcome="/materiel/List.xhtml" />
+                            <p:menuitem value="Mediataire" outcome="/mediataire/List.xhtml" />
+                            <p:menuitem value="Membre" outcome="/membre/List.xhtml" />
+                            <p:menuitem value="Mere" outcome="/mere/List.xhtml" />
+                            <p:menuitem value="OperationMois" outcome="/operationMois/List.xhtml" />
+                            <p:menuitem value="Operationn" outcome="/operationn/List.xhtml" />
+                            <p:menuitem value="Orphelin" outcome="/orphelin/List.xhtml" />
+                            <p:menuitem value="Parametre" outcome="/parametre/List.xhtml" />
+                            <p:menuitem value="Parrain" outcome="/parrain/List.xhtml" />
+                            <p:menuitem value="Parrinage" outcome="/parrinage/List.xhtml" />
+                            <p:menuitem value="Pere" outcome="/pere/List.xhtml" />
+                            <p:menuitem value="Personne" outcome="/personne/List.xhtml" />
+                            <p:menuitem value="Philantrope" outcome="/philantrope/List.xhtml" />
+                            <p:menuitem value="ResponsableFamille" outcome="/responsableFamille/List.xhtml" />
+                            <p:menuitem value="ResponsableRegion" outcome="/responsableRegion/List.xhtml" />
+                            <p:menuitem value="User" outcome="/user/List.xhtml" />
+                            <p:menuitem value="description" outcome="/description/List.xhtml" />
+                            <p:menuitem value="CaisseMoisCaisse" outcome="/caisseMoisCaisse/List.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+          
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+         
+
+        </p:layout>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtatSanteMereViewDlg" widgetVar="EtatSanteMereViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEtatSanteMereTitle}">
+            <h:form id="EtatSanteMereViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etatSanteMereController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_etatSante}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.etatSante}" title="#{bundle.ViewEtatSanteMereTitle_etatSante}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_typeHandicape}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.typeHandicape}" title="#{bundle.ViewEtatSanteMereTitle_typeHandicape}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_etatHandicape}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.etatHandicape}" title="#{bundle.ViewEtatSanteMereTitle_etatHandicape}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_maladie}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.maladie}" title="#{bundle.ViewEtatSanteMereTitle_maladie}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_suivieMaladieChronique}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.suivieMaladieChronique}" title="#{bundle.ViewEtatSanteMereTitle_suivieMaladieChronique}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_suivieHandicape}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.suivieHandicape}" title="#{bundle.ViewEtatSanteMereTitle_suivieHandicape}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_suivieMaladieRepetitif}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.suivieMaladieRepetitif}" title="#{bundle.ViewEtatSanteMereTitle_suivieMaladieRepetitif}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_depense}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.depense}" title="#{bundle.ViewEtatSanteMereTitle_depense}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_besoin}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.besoin}" title="#{bundle.ViewEtatSanteMereTitle_besoin}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_mere}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.mere}" title="#{bundle.ViewEtatSanteMereTitle_mere}"/>
+                        <h:outputText value="#{bundle.ViewEtatSanteMereLabel_id}"/>
+                        <h:outputText value="#{etatSanteMereController.selected.id}" title="#{bundle.ViewEtatSanteMereTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EtatSanteMereViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

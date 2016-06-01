@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResponsableFamilleCreateDlg" widgetVar="ResponsableFamilleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateResponsableFamilleTitle}">
+            <h:form id="ResponsableFamilleCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{responsableFamilleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateResponsableFamilleLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{responsableFamilleController.selected.dossier}" >
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateResponsableFamilleLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{responsableFamilleController.selected.id}" title="#{bundle.CreateResponsableFamilleTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{responsableFamilleController.create}" value="#{bundle.Save}" update="display,:ResponsableFamilleListForm:datalist,:growl" oncomplete="handleSubmit(args,'ResponsableFamilleCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResponsableFamilleCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AssistanteSocialeEditDlg" widgetVar="AssistanteSocialeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAssistanteSocialeTitle}">
+            <h:form id="AssistanteSocialeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{assistanteSocialeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAssistanteSocialeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{assistanteSocialeController.selected.id}" title="#{bundle.EditAssistanteSocialeTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditAssistanteSocialeLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{assistanteSocialeController.selected.nom}" title="#{bundle.EditAssistanteSocialeTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditAssistanteSocialeLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{assistanteSocialeController.selected.prenom}" title="#{bundle.EditAssistanteSocialeTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditAssistanteSocialeLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{assistanteSocialeController.selected.telephone}" title="#{bundle.EditAssistanteSocialeTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.EditAssistanteSocialeLabel_gmail}" for="gmail" />
+                        <p:inputText id="gmail" value="#{assistanteSocialeController.selected.gmail}" title="#{bundle.EditAssistanteSocialeTitle_gmail}" />
+                        <p:outputLabel value="#{bundle.EditAssistanteSocialeLabel_adresse}" for="adresse" />
+                        <p:inputText id="adresse" value="#{assistanteSocialeController.selected.adresse}" title="#{bundle.EditAssistanteSocialeTitle_adresse}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{assistanteSocialeController.update}" value="#{bundle.Save}" update="display,:AssistanteSocialeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AssistanteSocialeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AssistanteSocialeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

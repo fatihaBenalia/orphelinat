@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParrainCreateDlg" widgetVar="ParrainCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateParrainTitle}">
+            <h:form id="ParrainCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parrainController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{parrainController.selected.id}" title="#{bundle.CreateParrainTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{parrainController.selected.nom}" title="#{bundle.CreateParrainTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{parrainController.selected.prenom}" title="#{bundle.CreateParrainTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{parrainController.selected.telephone}" title="#{bundle.CreateParrainTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_gmail}" for="gmail" />
+                        <p:inputText id="gmail" value="#{parrainController.selected.gmail}" title="#{bundle.CreateParrainTitle_gmail}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_adresse}" for="adresse" />
+                        <p:inputText id="adresse" value="#{parrainController.selected.adresse}" title="#{bundle.CreateParrainTitle_adresse}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_mediataire}" for="mediataire" />
+                        <p:selectOneMenu id="mediataire" value="#{parrainController.selected.mediataire}" >
+                            <f:selectItems value="#{mediataireController.itemsAvailableSelectOne}"
+                                           var="mediataireItem"
+                                           itemValue="#{mediataireItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{parrainController.create}" value="#{bundle.Save}" update="display,:ParrainListForm:datalist,:growl" oncomplete="handleSubmit(args,'ParrainCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParrainCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

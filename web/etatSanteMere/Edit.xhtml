@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtatSanteMereEditDlg" widgetVar="EtatSanteMereEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEtatSanteMereTitle}">
+            <h:form id="EtatSanteMereEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etatSanteMereController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_etatSante}" for="etatSante" />
+                        <p:selectOneMenu id="etatSante" value="#{etatSanteMereController.selected.etatSante}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{etatSanteController.itemsAvailableSelectOne}"
+                                           var="etatSanteItem"
+                                           itemValue="#{etatSanteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_typeHandicape}" for="typeHandicape" />
+                        <p:inputText id="typeHandicape" value="#{etatSanteMereController.selected.typeHandicape}" title="#{bundle.EditEtatSanteMereTitle_typeHandicape}" />
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_etatHandicape}" for="etatHandicape" />
+                        <p:inputText id="etatHandicape" value="#{etatSanteMereController.selected.etatHandicape}" title="#{bundle.EditEtatSanteMereTitle_etatHandicape}" />
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_maladie}" for="maladie" />
+                        <p:inputText id="maladie" value="#{etatSanteMereController.selected.maladie}" title="#{bundle.EditEtatSanteMereTitle_maladie}" />
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_suivieMaladieChronique}" for="suivieMaladieChronique" />
+                        <p:inputText id="suivieMaladieChronique" value="#{etatSanteMereController.selected.suivieMaladieChronique}" title="#{bundle.EditEtatSanteMereTitle_suivieMaladieChronique}" />
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_suivieHandicape}" for="suivieHandicape" />
+                        <p:inputText id="suivieHandicape" value="#{etatSanteMereController.selected.suivieHandicape}" title="#{bundle.EditEtatSanteMereTitle_suivieHandicape}" />
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_suivieMaladieRepetitif}" for="suivieMaladieRepetitif" />
+                        <p:inputText id="suivieMaladieRepetitif" value="#{etatSanteMereController.selected.suivieMaladieRepetitif}" title="#{bundle.EditEtatSanteMereTitle_suivieMaladieRepetitif}" />
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_depense}" for="depense" />
+                        <p:inputText id="depense" value="#{etatSanteMereController.selected.depense}" title="#{bundle.EditEtatSanteMereTitle_depense}" />
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_besoin}" for="besoin" />
+                        <p:inputText id="besoin" value="#{etatSanteMereController.selected.besoin}" title="#{bundle.EditEtatSanteMereTitle_besoin}" />
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_mere}" for="mere" />
+                        <p:selectOneMenu id="mere" value="#{etatSanteMereController.selected.mere}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mereController.itemsAvailableSelectOne}"
+                                           var="mereItem"
+                                           itemValue="#{mereItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEtatSanteMereLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{etatSanteMereController.selected.id}" title="#{bundle.EditEtatSanteMereTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{etatSanteMereController.update}" value="#{bundle.Save}" update="display,:EtatSanteMereListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EtatSanteMereEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtatSanteMereEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

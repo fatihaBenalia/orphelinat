@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MembreCreateDlg" widgetVar="MembreCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMembreTitle}">
+            <h:form id="MembreCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{membreController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{membreController.selected.dossier}" >
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{membreController.selected.id}" title="#{bundle.CreateMembreTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{membreController.selected.nom}" title="#{bundle.CreateMembreTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{membreController.selected.prenom}" title="#{bundle.CreateMembreTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_relationOrphelin}" for="relationOrphelin" />
+                        <p:inputText id="relationOrphelin" value="#{membreController.selected.relationOrphelin}" title="#{bundle.CreateMembreTitle_relationOrphelin}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_dateNaissance}" for="dateNaissance" />
+                        <p:calendar id="dateNaissance" pattern="MM/dd/yyyy" value="#{membreController.selected.dateNaissance}" title="#{bundle.EditMembreTitle_dateNaissance}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_profession}" for="profession" />
+                        <p:inputText id="profession" value="#{membreController.selected.profession}" title="#{bundle.CreateMembreTitle_profession}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_typeMetier}" for="typeMetier" />
+                        <p:inputText id="typeMetier" value="#{membreController.selected.typeMetier}" title="#{bundle.CreateMembreTitle_typeMetier}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_niveauScolaire}" for="niveauScolaire" />
+                        <p:inputText id="niveauScolaire" value="#{membreController.selected.niveauScolaire}" title="#{bundle.CreateMembreTitle_niveauScolaire}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_recruteur}" for="recruteur" />
+                        <p:inputText id="recruteur" value="#{membreController.selected.recruteur}" title="#{bundle.CreateMembreTitle_recruteur}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_ecole}" for="ecole" />
+                        <p:inputText id="ecole" value="#{membreController.selected.ecole}" title="#{bundle.CreateMembreTitle_ecole}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_salaire}" for="salaire" />
+                        <p:inputText id="salaire" value="#{membreController.selected.salaire}" title="#{bundle.CreateMembreTitle_salaire}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_moyenne}" for="moyenne" />
+                        <p:inputText id="moyenne" value="#{membreController.selected.moyenne}" title="#{bundle.CreateMembreTitle_moyenne}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_depenses}" for="depenses" />
+                        <p:inputText id="depenses" value="#{membreController.selected.depenses}" title="#{bundle.CreateMembreTitle_depenses}" />
+                        <p:outputLabel value="#{bundle.CreateMembreLabel_commentaire}" for="commentaire" />
+                        <p:inputText id="commentaire" value="#{membreController.selected.commentaire}" title="#{bundle.CreateMembreTitle_commentaire}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{membreController.create}" value="#{bundle.Save}" update="display,:MembreListForm:datalist,:growl" oncomplete="handleSubmit(args,'MembreCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MembreCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

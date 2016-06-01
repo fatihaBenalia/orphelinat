@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterielViewDlg" widgetVar="MaterielViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMaterielTitle}">
+            <h:form id="MaterielViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materielController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMaterielLabel_dossier}"/>
+                        <h:outputText value="#{materielController.selected.dossier}" title="#{bundle.ViewMaterielTitle_dossier}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_id}"/>
+                        <h:outputText value="#{materielController.selected.id}" title="#{bundle.ViewMaterielTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_etatMateriel}"/>
+                        <h:outputText value="#{materielController.selected.etatMateriel}" title="#{bundle.ViewMaterielTitle_etatMateriel}"/>
+                        <h:outputText value="#{bundle.ViewMaterielLabel_libelleMateriel}"/>
+                        <h:outputText value="#{materielController.selected.libelleMateriel}" title="#{bundle.ViewMaterielTitle_libelleMateriel}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MaterielViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

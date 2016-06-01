@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtatEthiqueViewDlg" widgetVar="EtatEthiqueViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEtatEthiqueTitle}">
+            <h:form id="EtatEthiqueViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etatEthiqueController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_dossier}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.dossier}" title="#{bundle.ViewEtatEthiqueTitle_dossier}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_id}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.id}" title="#{bundle.ViewEtatEthiqueTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_soutienScolaire}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.soutienScolaire}" title="#{bundle.ViewEtatEthiqueTitle_soutienScolaire}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_nourritureOrphelin}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.nourritureOrphelin}" title="#{bundle.ViewEtatEthiqueTitle_nourritureOrphelin}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_propreteHabille}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.propreteHabille}" title="#{bundle.ViewEtatEthiqueTitle_propreteHabille}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_propreteLogement}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.propreteLogement}" title="#{bundle.ViewEtatEthiqueTitle_propreteLogement}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_relationFamille}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.relationFamille}" title="#{bundle.ViewEtatEthiqueTitle_relationFamille}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_relationVoision}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.relationVoision}" title="#{bundle.ViewEtatEthiqueTitle_relationVoision}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_habillement}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.habillement}" title="#{bundle.ViewEtatEthiqueTitle_habillement}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_interetScolaire}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.interetScolaire}" title="#{bundle.ViewEtatEthiqueTitle_interetScolaire}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_commentaire}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.commentaire}" title="#{bundle.ViewEtatEthiqueTitle_commentaire}"/>
+                        <h:outputText value="#{bundle.ViewEtatEthiqueLabel_mere}"/>
+                        <h:outputText value="#{etatEthiqueController.selected.mere}" title="#{bundle.ViewEtatEthiqueTitle_mere}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EtatEthiqueViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParametreCreateDlg" widgetVar="ParametreCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateParametreTitle}">
+            <h:form id="ParametreCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parametreController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_dateApplication}" for="dateApplication" />
+                        <p:calendar id="dateApplication" pattern="MM/dd/yyyy" value="#{parametreController.selected.dateApplication}" title="#{bundle.EditParametreTitle_dateApplication}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_montantComplete}" for="montantComplete" />
+                        <p:inputText id="montantComplete" value="#{parametreController.selected.montantComplete}" title="#{bundle.CreateParametreTitle_montantComplete}" />
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_montantPartielle}" for="montantPartielle" />
+                        <p:inputText id="montantPartielle" value="#{parametreController.selected.montantPartielle}" title="#{bundle.CreateParametreTitle_montantPartielle}" />
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_alimentation}" for="alimentation" />
+                        <p:inputText id="alimentation" value="#{parametreController.selected.alimentation}" title="#{bundle.CreateParametreTitle_alimentation}" />
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_habillement}" for="habillement" />
+                        <p:inputText id="habillement" value="#{parametreController.selected.habillement}" title="#{bundle.CreateParametreTitle_habillement}" />
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_matelasEtCouvertures}" for="matelasEtCouvertures" />
+                        <p:inputText id="matelasEtCouvertures" value="#{parametreController.selected.matelasEtCouvertures}" title="#{bundle.CreateParametreTitle_matelasEtCouvertures}" />
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_sante}" for="sante" />
+                        <p:inputText id="sante" value="#{parametreController.selected.sante}" title="#{bundle.CreateParametreTitle_sante}" />
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_scolarité}" for="scolarité" />
+                        <p:inputText id="scolarité" value="#{parametreController.selected.scolarité}" title="#{bundle.CreateParametreTitle_scolarité}" />
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_sacrifice}" for="sacrifice" />
+                        <p:inputText id="sacrifice" value="#{parametreController.selected.sacrifice}" title="#{bundle.CreateParametreTitle_sacrifice}" />
+                        <p:outputLabel value="#{bundle.CreateParametreLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{parametreController.selected.id}" title="#{bundle.CreateParametreTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{parametreController.create}" value="#{bundle.Save}" update="display,:ParametreListForm:datalist,:growl" oncomplete="handleSubmit(args,'ParametreCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParametreCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

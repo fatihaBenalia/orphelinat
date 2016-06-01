@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PereCreateDlg" widgetVar="PereCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePereTitle}">
+            <h:form id="PereCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pereController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePereLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{pereController.selected.dossier}" >
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePereLabel_travailavantDeces}" for="travailavantDeces" />
+                        <p:inputText id="travailavantDeces" value="#{pereController.selected.travailavantDeces}" title="#{bundle.CreatePereTitle_travailavantDeces}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_recruteur}" for="recruteur" />
+                        <p:inputText id="recruteur" value="#{pereController.selected.recruteur}" title="#{bundle.CreatePereTitle_recruteur}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_cnss}" for="cnss" />
+                        <p:inputText id="cnss" value="#{pereController.selected.cnss}" title="#{bundle.CreatePereTitle_cnss}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_avocat}" for="avocat" />
+                        <p:selectOneMenu id="avocat" value="#{pereController.selected.avocat}" >
+                            <f:selectItems value="#{avocatController.itemsAvailableSelectOne}"
+                                           var="avocatItem"
+                                           itemValue="#{avocatItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePereLabel_numCnss}" for="numCnss" />
+                        <p:inputText id="numCnss" value="#{pereController.selected.numCnss}" title="#{bundle.CreatePereTitle_numCnss}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_dateNaissance}" for="dateNaissance" />
+                        <p:calendar id="dateNaissance" pattern="MM/dd/yyyy" value="#{pereController.selected.dateNaissance}" title="#{bundle.EditPereTitle_dateNaissance}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePereLabel_dateDeces}" for="dateDeces" />
+                        <p:calendar id="dateDeces" pattern="MM/dd/yyyy" value="#{pereController.selected.dateDeces}" title="#{bundle.EditPereTitle_dateDeces}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePereLabel_raisonDeces}" for="raisonDeces" />
+                        <p:inputText id="raisonDeces" value="#{pereController.selected.raisonDeces}" title="#{bundle.CreatePereTitle_raisonDeces}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{pereController.selected.id}" title="#{bundle.CreatePereTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{pereController.selected.nom}" title="#{bundle.CreatePereTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{pereController.selected.prenom}" title="#{bundle.CreatePereTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{pereController.selected.telephone}" title="#{bundle.CreatePereTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_gmail}" for="gmail" />
+                        <p:inputText id="gmail" value="#{pereController.selected.gmail}" title="#{bundle.CreatePereTitle_gmail}" />
+                        <p:outputLabel value="#{bundle.CreatePereLabel_adresse}" for="adresse" />
+                        <p:inputText id="adresse" value="#{pereController.selected.adresse}" title="#{bundle.CreatePereTitle_adresse}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pereController.create}" value="#{bundle.Save}" update="display,:PereListForm:datalist,:growl" oncomplete="handleSubmit(args,'PereCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PereCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

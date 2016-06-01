@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <br/><br/> <br/>
+        <p:growl id="growl" life="3000" />
+
+        <h1><h:outputText value="Gestion Des Dossiers" style="font-size: 25px; " /></h1>
+
+
+  <h:form id="hi" >
+          <h:panelGrid columns="6" >
+          
+
+
+                
+                    <p:outputLabel  value="Parrain  :" for="parrain" />
+                    <p:inputText id="parrain"   value="#{parrinageController.getParrain1().id}"   />
+                    <p:outputLabel  value="Parrain Non Existe :" for="b1" />
+                    <p:commandButton id="b1" icon="ui-icon-plusthick" type="button" onclick="PF('dlg3').show();" />
+                    <p:outputLabel  value="Parrain Existe :" for="b2" />
+                    <p:commandButton  id="b2" icon="ui-icon-pin-w" type="button" onclick="PF('dlg2').show();" />
+
+                    <p:outputLabel  value="Mediataire :"  for="mediataire"/>
+                    <p:inputText id="mediataire" value="#{parrinageController.getParrain1().mediataire.id}"  />
+                    <p:outputLabel  value="Dossier :"  for="dossier"/>
+                    <p:inputText id="dossier" value="#{parrinageController.getDossierrr().id}"   />
+                    <p:outputLabel  value="type :" for="hq" />
+
+                    <p:selectOneMenu value="#{parrinageController.selected.type}" id="hq" >
+                        <f:selectItem itemLabel="--Select" itemValue="#{null}" />
+                        <f:selectItem itemLabel="complete" itemValue="complete" />
+                        <f:selectItem itemLabel="partielle" itemValue="partielle" />
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Date Debut Du Parrinage" for="debutPar" />
+                    <p:calendar   id="debutPar" pattern="MM/dd/yyyy" value="#{parrinageController.selected.debutPar}" title="#{bundle.EditParrinageTitle_debutPar}"  showOn="button"/>
+                    <p:outputLabel value="Date Fin Du Parrinage" for="finPar"  />
+                    <p:calendar id="finPar"  pattern="MM/dd/yyyy" value="#{parrinageController.selected.finPar}" title="#{bundle.EditParrinageTitle_finPar}"  showOn="button"/>
+                    <p:outputLabel value="Date Prise Du Dossier" for="priseDossier" />
+                    <p:calendar id="priseDossier"   pattern="MM/dd/yyyy" value="#{parrinageController.selected.priseDossier}" title="#{bundle.EditParrinageTitle_priseDossier}"  showOn="button"/>
+
+
+
+                    <p:outputLabel value="#{bundle.CreateParrinageLabel_montant}" for="mont"  />
+                    <p:inputText id="mont" value="#{parrinageController.selected.montant}" title="#{bundle.CreateParrinageTitle_montant}"  />
+                    <p:outputLabel value="Nombre De Mois Du Montant Données" for="nbr"  />
+                    <p:inputText id="nbr" value="#{parrinageController.selected.nbrjours1}" title="#{bundle.CreateParrinageTitle_montant}" />
+
+                            
+               
+          
+                <p:commandButton  style="margin-bottom: 10px;" actionListener="#{parrinageController.ajouterParrinageeee()}" update=":growl" value="Ajouter Parrinage" ajax="false"  />
+          
+             </h:panelGrid> 
+         </h:form> 
+        <h:form>
+            
+            
+                <p:commandButton  style="margin-bottom: 10px;" actionListener="#{parrinageController.affiche()}" update=":growl" value="Ajouter Parrinage"  />
+
+</h:form>
+        <h:form>
+
+            <p:dialog header="Ajouter Nouveau Parrain" widgetVar="dlg3" showEffect="explode"  height="300" width="300">
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:outputLabel value="#{bundle.CreateParrainLabel_nom}" for="nom" />
+                    <p:inputText id="nom" value="#{parrainController.selected.nom}" title="#{bundle.CreateParrainTitle_nom}" />
+                    <p:outputLabel value="#{bundle.CreateParrainLabel_prenom}" for="prenom" />
+                    <p:inputText id="prenom" value="#{parrainController.selected.prenom}" title="#{bundle.CreateParrainTitle_prenom}" />
+                    <p:outputLabel value="#{bundle.CreateParrainLabel_telephone}" for="telephone" />
+                    <p:inputText id="telephone" value="#{parrainController.selected.telephone}" title="#{bundle.CreateParrainTitle_telephone}" />
+                    <p:outputLabel value="#{bundle.CreateParrainLabel_gmail}" for="gmail" />
+                    <p:inputText id="gmail" value="#{parrainController.selected.gmail}" title="#{bundle.CreateParrainTitle_gmail}" />
+                    <p:outputLabel value="#{bundle.CreateParrainLabel_adresse}" for="adresse" />
+                    <p:inputText id="adresse" value="#{parrainController.selected.adresse}" title="#{bundle.CreateParrainTitle_adresse}" />
+                    <p:outputLabel value="#{bundle.CreateParrainLabel_mediataire}" for="mediataire" />
+
+                    <p:selectOneMenu id="mediataire" value="#{parrainController.selected.mediataire}" >
+                        <f:selectItems value="#{mediataireController.itemsAvailableSelectOne}"
+                                       var="mediataireItem"
+                                       itemValue="#{mediataireItem}"/>
+                    </p:selectOneMenu>
+                    <br/>
+                    <p:commandButton value="save" style="width: 80px; margin-left: 20px;" update=":hi"  onclick="dlg3.hide()" actionListener="#{parrainController.createParrain()}" />
+                </h:panelGrid>
+            </p:dialog>
+
+        </h:form>   
+
+
+        <p:dialog header="La Recherche D'un Parrain" widgetVar="dlg2" showEffect="explode"   width="1000">
+            <h:form id="qq">
+                <h:panelGrid columns="6" style="margin-bottom:10px" cellpadding="5">
+                    <p:outputLabel value="#{bundle.CreateParrainLabel_nom}" for="nom" />
+                    <p:inputText id="nom" value="#{parrainController.nom}" title="#{bundle.CreateParrainTitle_nom}" />
+                    <p:outputLabel value="#{bundle.CreateParrainLabel_prenom}" for="prenom" />
+                    <p:inputText id="prenom" value="#{parrainController.prenom}" title="#{bundle.CreateParrainTitle_prenom}" />
+
+                    <br/>
+                    <p:commandButton value="--Rechercher--" actionListener="#{parrainController.rechrcher()}" update=":qq:datalist" icon="ui-icon-search" style="width: 120px; margin-left: 20px;margin-bottom: 10px;" />
+                </h:panelGrid>              
+                <p:dataTable id="datalist" value="#{parrainController.items}" var="item"
+                             selectionMode="single" selection="#{parrainController.selected}"
+                             paginator="true"
+                             rowKey="#{item.id}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             >
+
+                    <p:ajax event="rowSelect"   />
+                    <p:ajax event="rowUnselect" />
+
+
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListParrainTitle_compteParrain}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.mediataire}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListParrainTitle_id}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListParrainTitle_nom}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nom}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListParrainTitle_prenom}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.prenom}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListParrainTitle_telephone}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.telephone}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListParrainTitle_gmail}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.gmail}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListParrainTitle_adresse}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.adresse}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+
+                <p:commandButton value="--Valider--" update=":hi" actionListener="#{parrainController.selection()}" onclick="dlg2.hide()"  icon="ui-icon-check" style="width: 120px; margin-left: 820px;margin-bottom: 10px;" />
+            </h:form> 
+        </p:dialog>
+        <br/>
+
+        <br/><br/><br/>   
+
+
+
+
+        <br/>
+
+
+    </h:body>
+
+
+</html>
+

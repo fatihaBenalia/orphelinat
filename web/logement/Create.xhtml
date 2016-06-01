@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogementCreateDlg" widgetVar="LogementCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLogementTitle}">
+            <h:form id="LogementCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{logementController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{logementController.selected.dossier}" >
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{logementController.selected.id}" title="#{bundle.CreateLogementTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_residenseAvantDeces}" for="residenseAvantDeces" />
+                        <p:inputText id="residenseAvantDeces" value="#{logementController.selected.residenseAvantDeces}" title="#{bundle.CreateLogementTitle_residenseAvantDeces}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_raisonChangementLog}" for="raisonChangementLog" />
+                        <p:inputText id="raisonChangementLog" value="#{logementController.selected.raisonChangementLog}" title="#{bundle.CreateLogementTitle_raisonChangementLog}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_typeLog}" for="typeLog" />
+                        <p:inputText id="typeLog" value="#{logementController.selected.typeLog}" title="#{bundle.CreateLogementTitle_typeLog}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_nbrChambre}" for="nbrChambre" />
+                        <p:inputText id="nbrChambre" value="#{logementController.selected.nbrChambre}" title="#{bundle.CreateLogementTitle_nbrChambre}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_surface}" for="surface" />
+                        <p:inputText id="surface" value="#{logementController.selected.surface}" title="#{bundle.CreateLogementTitle_surface}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_typePossession}" for="typePossession" />
+                        <p:inputText id="typePossession" value="#{logementController.selected.typePossession}" title="#{bundle.CreateLogementTitle_typePossession}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_montantGage}" for="montantGage" />
+                        <p:inputText id="montantGage" value="#{logementController.selected.montantGage}" title="#{bundle.CreateLogementTitle_montantGage}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_montantLocation}" for="montantLocation" />
+                        <p:inputText id="montantLocation" value="#{logementController.selected.montantLocation}" title="#{bundle.CreateLogementTitle_montantLocation}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_autreType}" for="autreType" />
+                        <p:inputText id="autreType" value="#{logementController.selected.autreType}" title="#{bundle.CreateLogementTitle_autreType}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_eau}" for="eau" />
+                        <p:inputText id="eau" value="#{logementController.selected.eau}" title="#{bundle.CreateLogementTitle_eau}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_elec}" for="elec" />
+                        <p:inputText id="elec" value="#{logementController.selected.elec}" title="#{bundle.CreateLogementTitle_elec}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_eauEgout}" for="eauEgout" />
+                        <p:inputText id="eauEgout" value="#{logementController.selected.eauEgout}" title="#{bundle.CreateLogementTitle_eauEgout}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_montantEau}" for="montantEau" />
+                        <p:inputText id="montantEau" value="#{logementController.selected.montantEau}" title="#{bundle.CreateLogementTitle_montantEau}" />
+                        <p:outputLabel value="#{bundle.CreateLogementLabel_montantElec}" for="montantElec" />
+                        <p:inputText id="montantElec" value="#{logementController.selected.montantElec}" title="#{bundle.CreateLogementTitle_montantElec}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logementController.create}" value="#{bundle.Save}" update="display,:LogementListForm:datalist,:growl" oncomplete="handleSubmit(args,'LogementCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LogementCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ActiviteItemEditDlg" widgetVar="ActiviteItemEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditActiviteItemTitle}">
+            <h:form id="ActiviteItemEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{activiteItemController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditActiviteItemLabel_activite}" for="activite" />
+                        <p:selectOneMenu id="activite" value="#{activiteItemController.selected.activite}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{activiteController.itemsAvailableSelectOne}"
+                                           var="activiteItem"
+                                           itemValue="#{activiteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditActiviteItemLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{activiteItemController.selected.id}" title="#{bundle.EditActiviteItemTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditActiviteItemLabel_profession}" for="profession" />
+                        <p:inputText id="profession" value="#{activiteItemController.selected.profession}" title="#{bundle.EditActiviteItemTitle_profession}" />
+                        <p:outputLabel value="#{bundle.EditActiviteItemLabel_weekend}" for="weekend" />
+                        <p:inputText id="weekend" value="#{activiteItemController.selected.weekend}" title="#{bundle.EditActiviteItemTitle_weekend}" />
+                        <p:outputLabel value="#{bundle.EditActiviteItemLabel_recruteur}" for="recruteur" />
+                        <p:inputText id="recruteur" value="#{activiteItemController.selected.recruteur}" title="#{bundle.EditActiviteItemTitle_recruteur}" />
+                        <p:outputLabel value="#{bundle.EditActiviteItemLabel_dureeTravail}" for="dureeTravail" />
+                        <p:inputText id="dureeTravail" value="#{activiteItemController.selected.dureeTravail}" title="#{bundle.EditActiviteItemTitle_dureeTravail}" />
+                        <p:outputLabel value="#{bundle.EditActiviteItemLabel_capacite}" for="capacite" />
+                        <p:inputText id="capacite" value="#{activiteItemController.selected.capacite}" title="#{bundle.EditActiviteItemTitle_capacite}" />
+                        <p:outputLabel value="#{bundle.EditActiviteItemLabel_membre}" for="membre" />
+                        <p:selectOneMenu id="membre" value="#{activiteItemController.selected.membre}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{membreController.itemsAvailableSelectOne}"
+                                           var="membreItem"
+                                           itemValue="#{membreItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{activiteItemController.update}" value="#{bundle.Save}" update="display,:ActiviteItemListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ActiviteItemEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ActiviteItemEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

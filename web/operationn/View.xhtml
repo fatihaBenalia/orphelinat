@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperationnViewDlg" widgetVar="OperationnViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOperationnTitle}">
+            <h:form id="OperationnViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operationnController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOperationnLabel_etatValide}"/>
+                        <h:outputText value="#{operationnController.selected.etatValide}" title="#{bundle.ViewOperationnTitle_etatValide}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_date1}"/>
+                        <h:outputText value="#{operationnController.selected.date1}" title="#{bundle.ViewOperationnTitle_date1}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_date2}"/>
+                        <h:outputText value="#{operationnController.selected.date2}" title="#{bundle.ViewOperationnTitle_date2}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_nbrMois}"/>
+                        <h:outputText value="#{operationnController.selected.nbrMois}" title="#{bundle.ViewOperationnTitle_nbrMois}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_type}"/>
+                        <h:outputText value="#{operationnController.selected.type}" title="#{bundle.ViewOperationnTitle_type}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_caisse}"/>
+                        <h:outputText value="#{operationnController.selected.caisse}" title="#{bundle.ViewOperationnTitle_caisse}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_descriptionCai}"/>
+                        <h:outputText value="#{operationnController.selected.descriptionCai}" title="#{bundle.ViewOperationnTitle_descriptionCai}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_descriptionOper}"/>
+                        <h:outputText value="#{operationnController.selected.descriptionOper}" title="#{bundle.ViewOperationnTitle_descriptionOper}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_responsable}"/>
+                        <h:outputText value="#{operationnController.selected.responsable}" title="#{bundle.ViewOperationnTitle_responsable}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_fournisseur}"/>
+                        <h:outputText value="#{operationnController.selected.fournisseur}" title="#{bundle.ViewOperationnTitle_fournisseur}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_mediataire}"/>
+                        <h:outputText value="#{operationnController.selected.mediataire}" title="#{bundle.ViewOperationnTitle_mediataire}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_debit}"/>
+                        <h:outputText value="#{operationnController.selected.debit}" title="#{bundle.ViewOperationnTitle_debit}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_credit}"/>
+                        <h:outputText value="#{operationnController.selected.credit}" title="#{bundle.ViewOperationnTitle_credit}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_montant}"/>
+                        <h:outputText value="#{operationnController.selected.montant}" title="#{bundle.ViewOperationnTitle_montant}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_numCheque}"/>
+                        <h:outputText value="#{operationnController.selected.numCheque}" title="#{bundle.ViewOperationnTitle_numCheque}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_numFacture}"/>
+                        <h:outputText value="#{operationnController.selected.numFacture}" title="#{bundle.ViewOperationnTitle_numFacture}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_numReleve}"/>
+                        <h:outputText value="#{operationnController.selected.numReleve}" title="#{bundle.ViewOperationnTitle_numReleve}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_photo}"/>
+                        <h:outputText value="#{operationnController.selected.photo}" title="#{bundle.ViewOperationnTitle_photo}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_etat}"/>
+                        <h:outputText value="#{operationnController.selected.etat}" title="#{bundle.ViewOperationnTitle_etat}"/>
+                        <h:outputText value="#{bundle.ViewOperationnLabel_id}"/>
+                        <h:outputText value="#{operationnController.selected.id}" title="#{bundle.ViewOperationnTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OperationnViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

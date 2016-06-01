@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PereViewDlg" widgetVar="PereViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPereTitle}">
+            <h:form id="PereViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pereController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPereLabel_dossier}"/>
+                        <h:outputText value="#{pereController.selected.dossier}" title="#{bundle.ViewPereTitle_dossier}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_travailavantDeces}"/>
+                        <h:outputText value="#{pereController.selected.travailavantDeces}" title="#{bundle.ViewPereTitle_travailavantDeces}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_recruteur}"/>
+                        <h:outputText value="#{pereController.selected.recruteur}" title="#{bundle.ViewPereTitle_recruteur}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_cnss}"/>
+                        <h:outputText value="#{pereController.selected.cnss}" title="#{bundle.ViewPereTitle_cnss}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_avocat}"/>
+                        <h:outputText value="#{pereController.selected.avocat}" title="#{bundle.ViewPereTitle_avocat}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_numCnss}"/>
+                        <h:outputText value="#{pereController.selected.numCnss}" title="#{bundle.ViewPereTitle_numCnss}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_dateNaissance}"/>
+                        <h:outputText value="#{pereController.selected.dateNaissance}" title="#{bundle.ViewPereTitle_dateNaissance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPereLabel_dateDeces}"/>
+                        <h:outputText value="#{pereController.selected.dateDeces}" title="#{bundle.ViewPereTitle_dateDeces}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPereLabel_raisonDeces}"/>
+                        <h:outputText value="#{pereController.selected.raisonDeces}" title="#{bundle.ViewPereTitle_raisonDeces}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_id}"/>
+                        <h:outputText value="#{pereController.selected.id}" title="#{bundle.ViewPereTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_nom}"/>
+                        <h:outputText value="#{pereController.selected.nom}" title="#{bundle.ViewPereTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_prenom}"/>
+                        <h:outputText value="#{pereController.selected.prenom}" title="#{bundle.ViewPereTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_telephone}"/>
+                        <h:outputText value="#{pereController.selected.telephone}" title="#{bundle.ViewPereTitle_telephone}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_gmail}"/>
+                        <h:outputText value="#{pereController.selected.gmail}" title="#{bundle.ViewPereTitle_gmail}"/>
+                        <h:outputText value="#{bundle.ViewPereLabel_adresse}"/>
+                        <h:outputText value="#{pereController.selected.adresse}" title="#{bundle.ViewPereTitle_adresse}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PereViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CaisseMoisCaisseCreateDlg" widgetVar="CaisseMoisCaisseCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCaisseMoisCaisseTitle}">
+            <h:form id="CaisseMoisCaisseCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{caisseMoisCaisseController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCaisseMoisCaisseLabel_dete}" for="dete" />
+                        <p:inputText id="dete" value="#{caisseMoisCaisseController.selected.dete}" title="#{bundle.CreateCaisseMoisCaisseTitle_dete}" />
+                        <p:outputLabel value="#{bundle.CreateCaisseMoisCaisseLabel_depense}" for="depense" />
+                        <p:inputText id="depense" value="#{caisseMoisCaisseController.selected.depense}" title="#{bundle.CreateCaisseMoisCaisseTitle_depense}" />
+                        <p:outputLabel value="#{bundle.CreateCaisseMoisCaisseLabel_profit}" for="profit" />
+                        <p:inputText id="profit" value="#{caisseMoisCaisseController.selected.profit}" title="#{bundle.CreateCaisseMoisCaisseTitle_profit}" />
+                        <p:outputLabel value="#{bundle.CreateCaisseMoisCaisseLabel_entree}" for="entree" />
+                        <p:inputText id="entree" value="#{caisseMoisCaisseController.selected.entree}" title="#{bundle.CreateCaisseMoisCaisseTitle_entree}" />
+                        <p:outputLabel value="#{bundle.CreateCaisseMoisCaisseLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{caisseMoisCaisseController.selected.id}" title="#{bundle.CreateCaisseMoisCaisseTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{caisseMoisCaisseController.create}" value="#{bundle.Save}" update="display,:CaisseMoisCaisseListForm:datalist,:growl" oncomplete="handleSubmit(args,'CaisseMoisCaisseCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CaisseMoisCaisseCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

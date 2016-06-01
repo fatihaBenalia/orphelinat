@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierEditDlg" widgetVar="DossierEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDossierTitle}">
+            <h:form id="DossierEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dossierController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDossierLabel_montantDepenseSanter}" for="montantDepenseSanter" />
+                        <p:inputText id="montantDepenseSanter" value="#{dossierController.selected.montantDepenseSanter}" title="#{bundle.EditDossierTitle_montantDepenseSanter}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_laid}" for="laid" />
+                        <p:inputText id="laid" value="#{dossierController.selected.laid}" title="#{bundle.EditDossierTitle_laid}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_compteAssociationParrinage}" for="compteAssociationParrinage" />
+                        <p:selectOneMenu id="compteAssociationParrinage" value="#{dossierController.selected.compteAssociationParrinage}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{compteAssociationParrinageController.itemsAvailableSelectOne}"
+                                           var="compteAssociationParrinageItem"
+                                           itemValue="#{compteAssociationParrinageItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_etat}" for="etat" />
+                        <p:inputText id="etat" value="#{dossierController.selected.etat}" title="#{bundle.EditDossierTitle_etat}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_nbrOrphelin}" for="nbrOrphelin" />
+                        <p:inputText id="nbrOrphelin" value="#{dossierController.selected.nbrOrphelin}" title="#{bundle.EditDossierTitle_nbrOrphelin}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_nbrMembre}" for="nbrMembre" />
+                        <p:inputText id="nbrMembre" value="#{dossierController.selected.nbrMembre}" title="#{bundle.EditDossierTitle_nbrMembre}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_indice}" for="indice" />
+                        <p:inputText id="indice" value="#{dossierController.selected.indice}" title="#{bundle.EditDossierTitle_indice}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{dossierController.selected.id}" title="#{bundle.EditDossierTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_dateDossier}" for="dateDossier" />
+                        <p:calendar id="dateDossier" pattern="MM/dd/yyyy" value="#{dossierController.selected.dateDossier}" title="#{bundle.EditDossierTitle_dateDossier}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_mere}" for="mere" />
+                        <p:selectOneMenu id="mere" value="#{dossierController.selected.mere}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{mereController.itemsAvailableSelectOne}"
+                                           var="mereItem"
+                                           itemValue="#{mereItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_pere}" for="pere" />
+                        <p:selectOneMenu id="pere" value="#{dossierController.selected.pere}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pereController.itemsAvailableSelectOne}"
+                                           var="pereItem"
+                                           itemValue="#{pereItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_responsableFamille}" for="responsableFamille" />
+                        <p:selectOneMenu id="responsableFamille" value="#{dossierController.selected.responsableFamille}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{responsableFamilleController.itemsAvailableSelectOne}"
+                                           var="responsableFamilleItem"
+                                           itemValue="#{responsableFamilleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_numDossier}" for="numDossier" />
+                        <p:inputText id="numDossier" value="#{dossierController.selected.numDossier}" title="#{bundle.EditDossierTitle_numDossier}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{dossierController.selected.numero}" title="#{bundle.EditDossierTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_nomFamille}" for="nomFamille" />
+                        <p:inputText id="nomFamille" value="#{dossierController.selected.nomFamille}" title="#{bundle.EditDossierTitle_nomFamille}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_region}" for="region" />
+                        <p:inputText id="region" value="#{dossierController.selected.region}" title="#{bundle.EditDossierTitle_region}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_responsableRegion}" for="responsableRegion" />
+                        <p:selectOneMenu id="responsableRegion" value="#{dossierController.selected.responsableRegion}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{responsableRegionController.itemsAvailableSelectOne}"
+                                           var="responsableRegionItem"
+                                           itemValue="#{responsableRegionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_adresseActuelle}" for="adresseActuelle" />
+                        <p:inputText id="adresseActuelle" value="#{dossierController.selected.adresseActuelle}" title="#{bundle.EditDossierTitle_adresseActuelle}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_etatPedagogique}" for="etatPedagogique" />
+                        <p:selectOneMenu id="etatPedagogique" value="#{dossierController.selected.etatPedagogique}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{etatPedagogiqueController.itemsAvailableSelectOne}"
+                                           var="etatPedagogiqueItem"
+                                           itemValue="#{etatPedagogiqueItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_etatEthique}" for="etatEthique" />
+                        <p:selectOneMenu id="etatEthique" value="#{dossierController.selected.etatEthique}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{etatEthiqueController.itemsAvailableSelectOne}"
+                                           var="etatEthiqueItem"
+                                           itemValue="#{etatEthiqueItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_etatSante}" for="etatSante" />
+                        <p:selectOneMenu id="etatSante" value="#{dossierController.selected.etatSante}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{etatSanteController.itemsAvailableSelectOne}"
+                                           var="etatSanteItem"
+                                           itemValue="#{etatSanteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_logement}" for="logement" />
+                        <p:selectOneMenu id="logement" value="#{dossierController.selected.logement}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{logementController.itemsAvailableSelectOne}"
+                                           var="logementItem"
+                                           itemValue="#{logementItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_activite}" for="activite" />
+                        <p:selectOneMenu id="activite" value="#{dossierController.selected.activite}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{activiteController.itemsAvailableSelectOne}"
+                                           var="activiteItem"
+                                           itemValue="#{activiteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_aide}" for="aide" />
+                        <p:selectOneMenu id="aide" value="#{dossierController.selected.aide}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{aideController.itemsAvailableSelectOne}"
+                                           var="aideItem"
+                                           itemValue="#{aideItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_assistanteSociale1}" for="assistanteSociale1" />
+                        <p:selectOneMenu id="assistanteSociale1" value="#{dossierController.selected.assistanteSociale1}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{assistanteSocialeController.itemsAvailableSelectOne}"
+                                           var="assistanteSociale1Item"
+                                           itemValue="#{assistanteSociale1Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_assistanteSociale2}" for="assistanteSociale2" />
+                        <p:selectOneMenu id="assistanteSociale2" value="#{dossierController.selected.assistanteSociale2}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{assistanteSocialeController.itemsAvailableSelectOne}"
+                                           var="assistanteSociale2Item"
+                                           itemValue="#{assistanteSociale2Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDossierLabel_remarque}" for="remarque" />
+                        <p:inputText id="remarque" value="#{dossierController.selected.remarque}" title="#{bundle.EditDossierTitle_remarque}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_proposition}" for="proposition" />
+                        <p:inputText id="proposition" value="#{dossierController.selected.proposition}" title="#{bundle.EditDossierTitle_proposition}" />
+                        <p:outputLabel value="#{bundle.EditDossierLabel_montantTotal}" for="montantTotal" />
+                        <p:inputText id="montantTotal" value="#{dossierController.selected.montantTotal}" title="#{bundle.EditDossierTitle_montantTotal}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dossierController.update}" value="#{bundle.Save}" update="display,:DossierListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DossierEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DossierEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtatPedagogiqueItemCreateDlg" widgetVar="EtatPedagogiqueItemCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEtatPedagogiqueItemTitle}">
+            <h:form id="EtatPedagogiqueItemCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etatPedagogiqueItemController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_etatPedagogique}" for="etatPedagogique" />
+                        <p:selectOneMenu id="etatPedagogique" value="#{etatPedagogiqueItemController.selected.etatPedagogique}" >
+                            <f:selectItems value="#{etatPedagogiqueController.itemsAvailableSelectOne}"
+                                           var="etatPedagogiqueItem"
+                                           itemValue="#{etatPedagogiqueItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_orphelin}" for="orphelin" />
+                        <p:selectOneMenu id="orphelin" value="#{etatPedagogiqueItemController.selected.orphelin}" >
+                            <f:selectItems value="#{orphelinController.itemsAvailableSelectOne}"
+                                           var="orphelinItem"
+                                           itemValue="#{orphelinItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_relationMere}" for="relationMere" />
+                        <p:inputText id="relationMere" value="#{etatPedagogiqueItemController.selected.relationMere}" title="#{bundle.CreateEtatPedagogiqueItemTitle_relationMere}" />
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_relationFrere}" for="relationFrere" />
+                        <p:inputText id="relationFrere" value="#{etatPedagogiqueItemController.selected.relationFrere}" title="#{bundle.CreateEtatPedagogiqueItemTitle_relationFrere}" />
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_relationVoision}" for="relationVoision" />
+                        <p:inputText id="relationVoision" value="#{etatPedagogiqueItemController.selected.relationVoision}" title="#{bundle.CreateEtatPedagogiqueItemTitle_relationVoision}" />
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_moeur}" for="moeur" />
+                        <p:inputText id="moeur" value="#{etatPedagogiqueItemController.selected.moeur}" title="#{bundle.CreateEtatPedagogiqueItemTitle_moeur}" />
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_habillement}" for="habillement" />
+                        <p:inputText id="habillement" value="#{etatPedagogiqueItemController.selected.habillement}" title="#{bundle.CreateEtatPedagogiqueItemTitle_habillement}" />
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_interetScolaire}" for="interetScolaire" />
+                        <p:inputText id="interetScolaire" value="#{etatPedagogiqueItemController.selected.interetScolaire}" title="#{bundle.CreateEtatPedagogiqueItemTitle_interetScolaire}" />
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_commentaire}" for="commentaire" />
+                        <p:inputText id="commentaire" value="#{etatPedagogiqueItemController.selected.commentaire}" title="#{bundle.CreateEtatPedagogiqueItemTitle_commentaire}" />
+                        <p:outputLabel value="#{bundle.CreateEtatPedagogiqueItemLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{etatPedagogiqueItemController.selected.id}" title="#{bundle.CreateEtatPedagogiqueItemTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{etatPedagogiqueItemController.create}" value="#{bundle.Save}" update="display,:EtatPedagogiqueItemListForm:datalist,:growl" oncomplete="handleSubmit(args,'EtatPedagogiqueItemCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtatPedagogiqueItemCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

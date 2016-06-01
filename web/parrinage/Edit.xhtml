@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParrinageEditDlg" widgetVar="ParrinageEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditParrinageTitle}">
+            <h:form id="ParrinageEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parrinageController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_nbrjours1}" for="nbrjours1" />
+                        <p:inputText id="nbrjours1" value="#{parrinageController.selected.nbrjours1}" title="#{bundle.EditParrinageTitle_nbrjours1}" />
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_parrain}" for="parrain" />
+                        <p:selectOneMenu id="parrain" value="#{parrinageController.selected.parrain}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{parrainController.itemsAvailableSelectOne}"
+                                           var="parrainItem"
+                                           itemValue="#{parrainItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{parrinageController.selected.montant}" title="#{bundle.EditParrinageTitle_montant}" />
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_dossier}" for="dossier" />
+                        <p:selectOneMenu id="dossier" value="#{parrinageController.selected.dossier}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
+                                           var="dossierItem"
+                                           itemValue="#{dossierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_debutPar}" for="debutPar" />
+                        <p:calendar id="debutPar" pattern="MM/dd/yyyy" value="#{parrinageController.selected.debutPar}" title="#{bundle.EditParrinageTitle_debutPar}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_finPar}" for="finPar" />
+                        <p:calendar id="finPar" pattern="MM/dd/yyyy" value="#{parrinageController.selected.finPar}" title="#{bundle.EditParrinageTitle_finPar}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_priseDossier}" for="priseDossier" />
+                        <p:calendar id="priseDossier" pattern="MM/dd/yyyy" value="#{parrinageController.selected.priseDossier}" title="#{bundle.EditParrinageTitle_priseDossier}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{parrinageController.selected.type}" title="#{bundle.EditParrinageTitle_type}" />
+                        <p:outputLabel value="#{bundle.EditParrinageLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{parrinageController.selected.id}" title="#{bundle.EditParrinageTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{parrinageController.update}" value="#{bundle.Save}" update="display,:ParrinageListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParrinageEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParrinageEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

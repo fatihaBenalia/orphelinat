@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ActiviteItemViewDlg" widgetVar="ActiviteItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewActiviteItemTitle}">
+            <h:form id="ActiviteItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{activiteItemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewActiviteItemLabel_activite}"/>
+                        <h:outputText value="#{activiteItemController.selected.activite}" title="#{bundle.ViewActiviteItemTitle_activite}"/>
+                        <h:outputText value="#{bundle.ViewActiviteItemLabel_id}"/>
+                        <h:outputText value="#{activiteItemController.selected.id}" title="#{bundle.ViewActiviteItemTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewActiviteItemLabel_profession}"/>
+                        <h:outputText value="#{activiteItemController.selected.profession}" title="#{bundle.ViewActiviteItemTitle_profession}"/>
+                        <h:outputText value="#{bundle.ViewActiviteItemLabel_weekend}"/>
+                        <h:outputText value="#{activiteItemController.selected.weekend}" title="#{bundle.ViewActiviteItemTitle_weekend}"/>
+                        <h:outputText value="#{bundle.ViewActiviteItemLabel_recruteur}"/>
+                        <h:outputText value="#{activiteItemController.selected.recruteur}" title="#{bundle.ViewActiviteItemTitle_recruteur}"/>
+                        <h:outputText value="#{bundle.ViewActiviteItemLabel_dureeTravail}"/>
+                        <h:outputText value="#{activiteItemController.selected.dureeTravail}" title="#{bundle.ViewActiviteItemTitle_dureeTravail}"/>
+                        <h:outputText value="#{bundle.ViewActiviteItemLabel_capacite}"/>
+                        <h:outputText value="#{activiteItemController.selected.capacite}" title="#{bundle.ViewActiviteItemTitle_capacite}"/>
+                        <h:outputText value="#{bundle.ViewActiviteItemLabel_membre}"/>
+                        <h:outputText value="#{activiteItemController.selected.membre}" title="#{bundle.ViewActiviteItemTitle_membre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ActiviteItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

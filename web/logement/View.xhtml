@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogementViewDlg" widgetVar="LogementViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLogementTitle}">
+            <h:form id="LogementViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{logementController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLogementLabel_dossier}"/>
+                        <h:outputText value="#{logementController.selected.dossier}" title="#{bundle.ViewLogementTitle_dossier}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_id}"/>
+                        <h:outputText value="#{logementController.selected.id}" title="#{bundle.ViewLogementTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_residenseAvantDeces}"/>
+                        <h:outputText value="#{logementController.selected.residenseAvantDeces}" title="#{bundle.ViewLogementTitle_residenseAvantDeces}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_raisonChangementLog}"/>
+                        <h:outputText value="#{logementController.selected.raisonChangementLog}" title="#{bundle.ViewLogementTitle_raisonChangementLog}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_typeLog}"/>
+                        <h:outputText value="#{logementController.selected.typeLog}" title="#{bundle.ViewLogementTitle_typeLog}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_nbrChambre}"/>
+                        <h:outputText value="#{logementController.selected.nbrChambre}" title="#{bundle.ViewLogementTitle_nbrChambre}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_surface}"/>
+                        <h:outputText value="#{logementController.selected.surface}" title="#{bundle.ViewLogementTitle_surface}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_typePossession}"/>
+                        <h:outputText value="#{logementController.selected.typePossession}" title="#{bundle.ViewLogementTitle_typePossession}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_montantGage}"/>
+                        <h:outputText value="#{logementController.selected.montantGage}" title="#{bundle.ViewLogementTitle_montantGage}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_montantLocation}"/>
+                        <h:outputText value="#{logementController.selected.montantLocation}" title="#{bundle.ViewLogementTitle_montantLocation}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_autreType}"/>
+                        <h:outputText value="#{logementController.selected.autreType}" title="#{bundle.ViewLogementTitle_autreType}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_eau}"/>
+                        <h:outputText value="#{logementController.selected.eau}" title="#{bundle.ViewLogementTitle_eau}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_elec}"/>
+                        <h:outputText value="#{logementController.selected.elec}" title="#{bundle.ViewLogementTitle_elec}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_eauEgout}"/>
+                        <h:outputText value="#{logementController.selected.eauEgout}" title="#{bundle.ViewLogementTitle_eauEgout}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_montantEau}"/>
+                        <h:outputText value="#{logementController.selected.montantEau}" title="#{bundle.ViewLogementTitle_montantEau}"/>
+                        <h:outputText value="#{bundle.ViewLogementLabel_montantElec}"/>
+                        <h:outputText value="#{logementController.selected.montantElec}" title="#{bundle.ViewLogementTitle_montantElec}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LogementViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

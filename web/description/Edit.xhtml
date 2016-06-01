@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DescriptionEditDlg" widgetVar="DescriptionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDescriptionTitle}">
+            <h:form id="DescriptionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{descriptionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDescriptionLabel_idCaise}" for="idCaise" />
+                        <p:inputText id="idCaise" value="#{descriptionController.selected.idCaise}" title="#{bundle.EditDescriptionTitle_idCaise}" />
+                        <p:outputLabel value="#{bundle.EditDescriptionLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{descriptionController.selected.description}" title="#{bundle.EditDescriptionTitle_description}" />
+                        <p:outputLabel value="#{bundle.EditDescriptionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{descriptionController.selected.id}" title="#{bundle.EditDescriptionTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{descriptionController.update}" value="#{bundle.Save}" update="display,:DescriptionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DescriptionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DescriptionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
