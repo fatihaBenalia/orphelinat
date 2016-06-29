@@ -103,7 +103,7 @@ public class Mediataire implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Mediataire[ id=" + id + " ]";
+        return id +"";
     }
     
 }

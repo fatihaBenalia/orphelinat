@@ -45,29 +45,40 @@ public class OperationMoisController implements Serializable {
         System.out.println("hahoooooowa" + parametre.toString());
     }
 
+    
+    public void affichww(){
+        System.out.println("haaa dkhaaaaal");
+    }
+    
     public void action1() throws JRException, IOException {
         int res = ejbFacade.addOperationDeMoi();
         Cliquer cliquer = cliquerFacade.find(1);
         if (res > 0) {
+            System.out.println("hahwaa rjj3o 1");
             cliquer.setRes(1);
+            cliquer.setTest(2);
             cliquerFacade.edit(cliquer);
-          ejbFacade.generatePdf();
-        FacesContext.getCurrentInstance().getResponseComplete();
-            JsfUtil.addSuccessMessage("hadchi howa hadak");
+            System.out.println("hahwaa rjj3o 1");
+//            cliquerFacade.edit(cliquer);
+//          ejbFacade.generatePdf();
+//        FacesContext.getCurrentInstance().getResponseComplete();
+            JsfUtil.addSuccessMessage("L'alimentation pour les dossier parrainée completement est Bien validé");
         } else {
-            JsfUtil.addErrorMessage("hadchi madaz");
+            JsfUtil.addErrorMessage("Error !! ");
         }
     }
 
     public void action2() throws JRException, IOException {
+        System.out.println("hwhaaa dkhal");
         int res = ejbFacade.DossierDeEtat2();
         Cliquer cliquer = cliquerFacade.find(1);
         if (res > 0) {
             cliquer.setRes2(1);
+            cliquer.setTest(2);
             cliquerFacade.edit(cliquer);
-            JsfUtil.addSuccessMessage("hadchi howa hadak");
+            JsfUtil.addSuccessMessage("L'alimentation pour les dossier parrainée partielement est Bien validé");
         } else {
-            JsfUtil.addErrorMessage("hadchi madaz");
+            JsfUtil.addErrorMessage("Error !!");
         }
     }
 
@@ -76,11 +87,12 @@ public class OperationMoisController implements Serializable {
         Cliquer cliquer = cliquerFacade.find(1);
         if (res > 0) {
             cliquer.setRes3(1);
+            cliquer.setTest(2);
             cliquerFacade.edit(cliquer);
-            JsfUtil.addSuccessMessage("hadchi howa hadak");
+            JsfUtil.addSuccessMessage("L'alimentation pour les dossier abandonnée est Bien validé");
 
         } else {
-            JsfUtil.addErrorMessage("hadchi madaz");
+            JsfUtil.addErrorMessage("Error !!");
         }
     }
 

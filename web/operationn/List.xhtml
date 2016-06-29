@@ -15,10 +15,13 @@
 
         <ui:define name="body">
 
-            <h1><h:outputText value="Gestion Des Resources :" style="font-size: 25px; " /></h1>      
             <br/><br/><br/><br/>
 
+            <h:form>
 
+
+
+            </h:form>
 
             <style>
 
@@ -123,44 +126,159 @@
                     color:#000;
                 }
             </style>
-            <h1><h:outputText value="Comptabilité Sociale :" style="font-size: 16px; " /></h1> 
-            <ul id="menu-demo2" style="margin-top: -50px;">
+            <style>
+
+                #menu-demo3, #menu-demo3 ul{
+                    padding:0;
+                    margin:0;
+                    list-style:none;
+                    text-align:center;
+                }
+                #menu-demo3 li{
+                    display:inline-block;
+                    position:relative;
+                    border-radius:8px 8px 0 0;
+                }
+                #menu-demo3 ul li{
+                    display:inherit;
+                    border-radius:0;
+                }
+                #menu-demo3 ul li:hover{
+                    border-radius:0;
+                }
+                #menu-demo3 ul li:last-child{
+                    border-radius:0 0 8px 8px;
+                }
+                #menu-demo3 ul{
+                    position:absolute;
+                    z-index: 1000;
+                    max-height:0;
+                    left: 0;
+                    right: 0;
+                    overflow:hidden;
+                    -moz-transition: .8s all .3s;
+                    -webkit-transition: .8s all .3s;
+                    transition: .8s all .3s;
+                }
+                #menu-demo3 li:hover ul{
+                    max-height:15em;
+                }
+                /* background des liens menus */
+                #menu-demo3 li:first-child{
+                    background-color: #65537A;
+                    background-image:-webkit-linear-gradient(top, #65537A 0%, #2A2333 100%);
+                    background-image:linear-gradient(to bottom, #65537A 0%, #2A2333 100%);
+                }
+                #menu-demo3 li:nth-child(2){
+                    background-color: #729EBF;
+                    background-image: -webkit-linear-gradient(top, #729EBF 0%, #333A40 100%);
+                    background-image:linear-gradient(to bottom, #729EBF 0%, #333A40 100%);
+                }
+                #menu-demo3 li:nth-child(3){
+                    background-color: #F6AD1A;
+                    background-image:-webkit-linear-gradient(top, #F6AD1A 0%, #9F391A 100%);
+                    background-image:linear-gradient(to bottom, #F6AD1A 0%, #9F391A 100%);
+                }
+                #menu-demo3 li:last-child{
+                    background-color: #CFFF6A;
+                    background-image:-webkit-linear-gradient(top, #CFFF6A 0%, #677F35 100%);
+                    background-image:linear-gradient(to bottom, #CFFF6A 0%, #677F35 100%);
+                }
+                /* background des liens sous menus */
+                #menu-demo3 li:first-child li{
+                    background:#2A2333;
+                }
+                #menu-demo3 li:nth-child(2) li{
+                    background:#333A40;
+                }
+                #menu-demo3 li:nth-child(3) li{
+                    background:#9F391A;
+                }
+                #menu-demo3 li:last-child li{
+                    background:#677F35;
+                }
+                /* background des liens menus et sous menus au survol */
+                #menu-demo3 li:first-child:hover, #menu-demo3 li:first-child li:hover{
+                    background:#65537A;
+                }
+                #menu-demo3 li:nth-child(2):hover, #menu-demo3 li:nth-child(2) li:hover{
+                    background:#729EBF;
+                }
+                #menu-demo3 li:nth-child(3):hover, #menu-demo3 li:nth-child(3) li:hover{
+                    background:#F6AD1A;
+                }
+                #menu-demo3 li:last-child:hover, #menu-demo3 li:last-child li:hover{
+                    background:#CFFF6A;
+                }
+                /* les a href */
+                #menu-demo3 a{
+                    text-decoration:none;
+                    display:block;
+                    padding:8px 32px;
+                    color:#fff;
+                    font-family:arial;
+                }
+                #menu-demo3 ul a{
+                    padding:8px 0;
+                }
+                #menu-demo3 li:hover li a{
+                    color:#fff;
+                    text-transform:inherit;
+                }
+                #menu-demo3 li:hover a, #menu-demo3 li li:hover a{
+                    color:#000;
+                }
+            </style>
+            <br/>
+            <h:form style="margin-left: 1280px;margin-top: -75px;">
+
+
+                <p:dock position="top" itemWidth="80" maxWidth="30"  >
+
+                    <p:menuitem  icon="/images/ttt.png" action="/operationn/Menu.xhtml" value="Retour" style="color: #004a80; font-weight: bolder;font-size: 17px;"  />
+                </p:dock>                   
+            </h:form>
+            <h1><h:outputText value=" --- Comptabilité Sociale --- " style="font-size: 16px; margin-left: 580px; margin-top: -60px;position: absolute; " /></h1> <br/>
+            <ul id="menu-demo2" style="margin-top: -30px;">
                 <li><a href="#">La Somme Des Revenues</a>
 
                 </li>
                 <li><a href="#">La Somme Des Depenses</a>
 
                 </li>
-                <li><a href="#">La Somme Des Detes</a>
+                <li><a href="#">La Somme Des Dettes</a>
 
                 </li>
                 <li><a href="#">La Somme Des Profits</a>
 
                 </li>
             </ul>
-            <div><h1><h:outputText value="Comptabilité De Gestion :" style="font-size: 16px;margin-top: 50px;position: absolute; " /></h1></div>
-            <ul id="menu-demo2" style="margin-top: 50px;">
+
+            <div><h1><h:outputText value=" --- Comptabilité De Gestion --- " style="font-size: 16px; margin-left: 570px; margin-top: 50px;position: absolute; " /></h1></div>
+
+            <ul id="menu-demo3" style="margin-top: 100px; position : absolute; margin-left: 268px;" >
                 <li><a href="#">La Somme Des Revenues</a>
 
                 </li>
                 <li><a href="#">La Somme Des Depenses</a>
 
                 </li>
-                <li><a href="#">La Somme Des Detes</a>
+                <li><a href="#">La Somme Des Dettes</a>
 
                 </li>
                 <li><a href="#">La Somme Des Profits</a>
 
                 </li>
             </ul>
-            <h:form id="halcais1" style="margin-left: 268px; ">
+            <h:form id="halcais1" style="margin-left: 268px; margin-top: -14px; position: absolute;">
 
                 <p:inputText value="#{caisseController.getMontEntree()}"  id="enter" style="width:200px; " readonly="true" />
                 <p:inputText value="#{caisseController.getMontdepense()}"  id="dep" style="width:203px; margin-left: 3px; " readonly="true"  />
                 <p:inputText value="#{caisseController.getMontDete()}"  id="dete" style="width:177px; margin-left: 2px; " readonly="true" />
                 <p:inputText value="#{caisseController.getMontProfit()}"  id="profi" style="width:179px; margin-left: 3px; " readonly="true" />
             </h:form>
-            <h:form  id="halcais2" style="margin-left: 268px; margin-top: -106px;  ">
+            <br/><br/><br/>  <br/><br/><br/>
+            <h:form  id="halcais2" style="margin-left: 268px;  position: absolute; margin-top: 48px; ">
 
                 <p:inputText value="#{caisseController.getMontEntree1()}"  id="enter1" style="width:200px; " readonly="true" />
                 <p:inputText value="#{caisseController.getMontdepense1()}"  id="dep1" style="width:203px; margin-left: 3px; " readonly="true"  />
@@ -168,9 +286,9 @@
                 <p:inputText value="#{caisseController.getMontProfit1()}"  id="profi1" style="width:179px; margin-left: 3px; " readonly="true" />
             </h:form>
             <br/><br/><br/><br/><br/><br/>
-            <h:form style="margin-top: 20px; margin-left: 240px;">
-                <h:outputLabel for="ch" value="Ajouter Nouveau Operation :"   style="  font-size: 16px; margin-left: 205px;font-weight: bold ; " />&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton  icon="ui-icon-plus"   value="Creer" type="button" onclick="PF('dlg4').show();"  update=":OperationnCreateForm:datalist" />
+            <h:form style="margin-top: 20px; margin-left: 240px;font-size: 20px;  ">
+                <h:outputLabel for="ch" value=" --- Ajouter Nouveau Operation --- "   style="  font-size: 20px; margin-left: 278px;font-weight: bold ; " /> &nbsp;&nbsp;&nbsp;
+                <br/><p:commandButton  icon="ui-icon-plus"   value="Creer Operation"  action="#{operationnController.goPaqge2()}"  style="margin-left: 370px; width: 160px; height: 35px;" />
 
                 <br/>
 
@@ -180,7 +298,7 @@
             <h:form id="OperationnListForm">
 
                 <p:fieldset legend="Partie De Recherche :"  style="width:900px; margin-left: 180px; " >
-                    <h:panelGrid columns="4" style=" margin-left: 120px;" >                        
+                    <p:panelGrid columns="4" style=" margin-left: 30px;" >                        
                         <p:outputLabel for="ch" value="Type Operation :"   style="  font-size: 18px; font-weight: bold ; " />
                         <p:selectOneMenu value="#{operationnController.operation.type}" id="ch" style="margin-left: 40px;" >
                             <f:selectItem itemLabel=" -- select --" itemValue="#{null}"/>
@@ -205,15 +323,15 @@
                         </p:selectOneMenu>
 
 
-                    </h:panelGrid>
-                    <p:commandButton icon="ui-icon-search" actionListener="#{operationnController.rechercheByCritere()}" update=":OperationnListForm:datalist" value="-- Rechercher --" style="margin-left: 340px;" />
+                    </p:panelGrid>
+                    <p:commandButton icon="ui-icon-search" actionListener="#{operationnController.rechercheByCritere()}" update=":OperationnListForm:datalist" value="-- Rechercher --" style="margin-left: 750px;  margin-bottom:100px  position: absolute; " />
 
                 </p:fieldset>
 
                 <br/> <br/><br/><br/>
 
 
-                <p:panel header="#{bundle.ListOperationnTitle}">
+                <p:panel header="La Liste Des Operations">
                     <p:dataTable id="datalist" value="#{operationnController.items}" var="item"
                                  selectionMode="single" selection="#{operationnController.selected}"
                                  paginator="true"
@@ -222,8 +340,10 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:ajax event="rowSelect"   update="utton createButton createButton1 aliment"/>
+                        <p:ajax event="rowUnselect" update="utton createButton createButton1 aliment"/>
+
 
                         <p:column>
                             <f:facet name="header">
@@ -241,12 +361,7 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListOperationnTitle_nbrMois}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nbrMois}"/>
-                        </p:column>
+                      
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListOperationnTitle_type}"/>
@@ -259,12 +374,7 @@
                             </f:facet>
                             <h:outputText value="#{item.caisse}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListOperationnTitle_descriptionCai}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.descriptioncaise}"/>
-                        </p:column>
+                     
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListOperationnTitle_descriptionOper}"/>
@@ -326,30 +436,29 @@
                             <h:outputText value="#{item.numReleve}"/>
                         </p:column>
 
+
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListOperationnTitle_etat}"/>
+                                <h:outputText value="Modifier"/>
                             </f:facet>
-                            <h:outputText value="#{item.etat}"/>
+                            <p:commandButton icon="ui-icon-pencil" update="datalist,:OperationnCreateForm1,:growl" rendered="#{!item.type.equals('dete')}"   id="createButton" oncomplete="PF('OperationnCreateDialog1').show()"  />
+                            <p:commandButton icon="ui-icon-circle-check" update=":OperationnListForm:datalist,:growl" rendered="#{item.type.equals('dete') and item.etatDete == 1 }"  id="createButton1" actionListener="#{operationnController.valideDete()}" />
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Facture"/>
                             </f:facet>
                             <p:tab  title="Ajouter un pdf" id="infoPhoto">
-                                <p:commandButton rendered="#{operationnController.resultat(item) == 1}"    id="utton" value="Ajouter Facture"  actionListener="#{operationnController.setSelected(item)}" oncomplete="PF('PopUp').show()" />
-                            <p:link value="Voir Facture" rendered="#{operationnController.resultat(item) == -1}" href="/myFile/#{item.photo}" style="display: inline"  />
+                                <p:commandButton rendered="#{operationnController.resultat(item) == 1}"    id="utton" value="Ajouter Facture"  actionListener="#{operationnController.setSelected(item)}" oncomplete="PF('PopUp1').show()" />
+                                <p:link value="Voir Facture"   rendered="#{operationnController.resultat(item) == -1}" href="/myFile/#{item.photo}" style="display: inline" target="_link"/>
 
                             </p:tab >
                             <br/>
                         </p:column>
-                     
+
 
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{operationnController.prepareCreate}" update=":OperationnCreateForm" oncomplete="PF('OperationnCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":OperationnViewForm" oncomplete="PF('OperationnViewDialog').show()" disabled="#{empty operationnController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":OperationnEditForm" oncomplete="PF('OperationnEditDialog').show()" disabled="#{empty operationnController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{operationnController.destroy}" update=":growl,datalist" disabled="#{empty operationnController.selected}"/>
+                            <p:commandButton  icon="ui-icon-plus"   value="Valider L'Alimentation Mensuel" id="aliment" oncomplete="PF('OperationnEditDialog1').show()"  style="margin-left: -50px; width: 300px; height: 40px; color: lightcoral; font-weight: bold; " />
                         </f:facet>
                         <br/><br/> <br/><br/> <br/><br/> <br/><br/>
                     </p:dataTable>
@@ -358,27 +467,43 @@
 
             </h:form>
 
-
+            <p:dialog id="OperationnCreateDlg1" widgetVar="OperationnCreateDialog1" modal="true" resizable="false" appendTo="@(body)" header="Modifier le Montant d'une operation">
+                <h:form id="OperationnCreateForm1">
+                    <h:panelGroup id="display">
+                        <p:panelGrid columns="4" rendered="#{operationnController.selected != null}">
+                            <p:outputLabel value="Montant Ancien"   />
+                            <p:outputLabel value="#{operationnController.selected.montant}"   />
+                            <p:outputLabel value="Nouveau Montant" for="nbrMois" />
+                            <p:inputText id="nbrMois" value="#{operationnController.selected.montant}" title="#{bundle.CreateOperationnTitle_nbrMois}" />
+                        </p:panelGrid>
+                        <p:commandButton actionListener="#{operationnController.afficheer()}" value="Modifier" update=":OperationnListForm:datalist,:growl" />
+                        <p:commandButton value="Annuler" onclick="OperationnCreateDialog.hide()"/>
+                    </h:panelGroup>
+                </h:form>
+            </p:dialog>
 
             <h:form>
 
-                <p:dialog header="Ajouter Nouveau Operation (Sociale / Gestion)" widgetVar="dlg4" showEffect="explode"  height="290" width="900">
+                <p:dialog header="Ajouter Nouveau Operation (Sociale / Gestion)" widgetVar="dlg4" showEffect="explode" appendTo="@(body)" resizable="false" modal="true" height="370" width="1070">
+                    <br/>
 
-                    <h:panelGrid columns="6" style="margin-bottom:10px; margin-left: 10px;" >
+                    <p:panelGrid columns="6" style="margin-bottom:10px; margin-left:50px;" >
 
-                        <p:outputLabel value="Type D'operation :" for="type" />
-                        <p:selectOneMenu value="#{operationnController.selected.type}" id="type" style="margin-left: 10px;">
-                            <f:selectItem itemLabel=" -- select --"/>
-                            <f:selectItem itemLabel="Depense" itemValue="depense" />
-                            <f:selectItem itemLabel="Revenue" itemValue="revenue" />
-                            <f:selectItem itemLabel="Dete" itemValue="dete" />
-                        </p:selectOneMenu>
+                        <p:outputLabel value="Type Caisse :" for="typCais"  />
+
+                        <p:selectOneMenu  id="typCais"  value="#{operationnController.typeCaiss}"  >
+                            <f:selectItem itemLabel=" -- select --"  />
+                            <f:selectItem itemValue="sociale" itemLabel="Sociale" />
+                            <f:selectItem itemValue="gestion" itemLabel="Gestion" />
+                            <p:ajax  process="typCais"  listener="#{operationnController.trouverCaisse()}"  update="rr" ></p:ajax>
+
+                        </p:selectOneMenu> 
 
                         <p:outputLabel value="Caisse" for="rr" />
 
                         <p:selectOneMenu  id="rr"  value="#{operationnController.selected.caisse.id}"  >
                             <f:selectItem itemLabel=" -- select --"  />
-                            <f:selectItems value="#{caisseController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{operationnController.caissses}"
                                            var="caisseItem"
                                            itemValue="#{caisseItem}"/>
                             <p:ajax  process="rr"  listener="#{operationnController.findByCaise()}"  update="qq" ></p:ajax>
@@ -393,6 +518,14 @@
                                            var="caisseItem"
                                            itemValue="#{caisseItem}"/>
                         </p:selectOneMenu> 
+
+                        <p:outputLabel value="Type D'operation :" for="type" />
+                        <p:selectOneMenu value="#{operationnController.selected.type}" id="type" style="margin-left: 10px;">
+                            <f:selectItem itemLabel=" -- select --"/>
+                            <f:selectItem itemLabel="Depense" itemValue="depense" />
+                            <f:selectItem itemLabel="Revenue" itemValue="revenue" />
+                            <f:selectItem itemLabel="Dete" itemValue="dete" />
+                        </p:selectOneMenu>
 
                         <p:outputLabel value="   Date Operation  :" for="date1" />
                         <p:calendar id="date1" pattern="MM/dd/yyyy" value="#{operationnController.selected.date1}" title="#{bundle.EditOperationnTitle_date1}"  showOn="button"/>
@@ -438,24 +571,62 @@
                         <p:inputText id="numFacture" value="#{operationnController.selected.numFacture}" title="#{bundle.CreateOperationnTitle_numFacture}" />
                         <p:outputLabel value="#{bundle.CreateOperationnLabel_numReleve}" for="numReleve" />
                         <p:inputText id="numReleve" value="#{operationnController.selected.numReleve}" title="#{bundle.CreateOperationnTitle_numReleve}" />
-                        <p:outputLabel value="#{bundle.CreateOperationnLabel_photo}" for="photo" />
-                        <p:inputText id="photo" value="#{operationnController.selected.photo}" title="#{bundle.CreateOperationnTitle_photo}" />
-                        <p:outputLabel value="#{bundle.CreateOperationnLabel_etat}" for="etat" />
-                        <p:inputText id="etat" value="#{operationnController.selected.etat}" title="#{bundle.CreateOperationnTitle_etat}" />
+                    </p:panelGrid>
+                    <br/><br/>
+                    <p:panelGrid columns="3" style="margin-bottom:10px; margin-left: 240px;" >
 
-                        <p:commandButton  icon="ui-icon-plus" actionListener="#{operationnController.createOperation()}" value="Ajouter" update=":OperationnListForm:datalist,:growl,:halcais1,:halcais2"  />
-                        <p:commandButton  icon="ui-icon-plus" actionListener="#{operationnController.generatePdf()}" value="Imprimer"  ajax="false" />
-                        <p:commandButton value="Annuler" onclick="dlg4.hide()"/>
-                    </h:panelGrid>
+                        <p:commandButton  icon="ui-icon-plus" actionListener="#{operationnController.createOperation()}" value="Ajouter L'operation" update=":growl"  style="margin-bottom: 15px;" />
+                        <p:commandButton  icon="ui-icon-plus" actionListener="#{operationnController.generatePdf()}" value="Imprimer L'operation"  ajax="false" style="margin-bottom: 15px;" />
+                        <p:commandButton value="Annuler" onclick="dlg4.hide()" style="margin-bottom: 15px;" />
+
+                    </p:panelGrid>
+
+                </p:dialog>
+                <br/><br/><br/><br/><br/><br/>
+            </h:form>
+            <h:form>
+
+                <p:dialog header="Alimentations Mensuels" widgetVar="dlg6" showEffect="explode" appendTo="@(body)" resizable="false" modal="true" height="250" width="900">
+                    <br/>
+                    <br/>
+                    <p:panelGrid columns="2" style="margin-bottom:10px; margin-left:50px; width:800px;" >
+
+                        <p:outputLabel value="Dossiers Parrinées Par :"  style="color: yellowgreen; font-weight: bolder;" />
+                        <p:outputLabel value="Valider L'operation :"  style="color: yellowgreen; font-weight: bolder;" />
+                        <p:outputLabel value="600 DH" />
+                        <h:form id="OperationMoisListForm">
+
+                            <p:commandButton id="hadanum" value="Valider L'operation" disabled="#{cliquerController.clicker1()==1}" action="#{operationMoisController.affichww()}" update=":growl"
+                                             style="margin-left: 30px;"></p:commandButton>
+
+                        </h:form>
+
+                        <p:outputLabel value="300 DH" />
+                        <h:form id="OperationMoisListForm2">
+
+                            <p:commandButton id="hadanum" value="Valider L'operation" disabled="#{cliquerController.clicker2()==1}" action="#{operationMoisController.action2()}" update=":growl"
+                                             style="margin-left: 30px;" ></p:commandButton>
+
+                        </h:form>
+                        <p:outputLabel value="Familles Abandonnées" />
+                        <h:form id="OperationMoisListForm3">
+
+                            <p:commandButton id="hadanum" value="Valider L'operation" disabled="#{cliquerController.clicker3()==1}" action="#{operationMoisController.action3()}" update=":growl"
+                                              style="margin-left: 30px;" ></p:commandButton>
+
+                        </h:form>
+
+                    </p:panelGrid>
+
                 </p:dialog>
                 <br/><br/><br/><br/><br/><br/>
             </h:form>
 
 
-            <ui:include src="Create.xhtml"/>
-            <ui:include src="Edit.xhtml"/>
-            <ui:include src="View.xhtml"/>
-            <ui:include src="/addPdf/AddExcel.xhtml"/>
+
+            <ui:include src="ValiderAlimentation.xhtml"/>
+            <ui:include src="Create_1.xhtml"/>
+            <ui:include src="../addPdf/Create.xhtml"/>
         </ui:define>
     </ui:composition>
 

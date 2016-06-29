@@ -17,11 +17,11 @@
 
             <p:dock position="top" itemWidth="80" maxWidth="30"  >
 
-                <p:menuitem  icon="/images/retour.png" action="/parrinage/GestionDossiers.xhtml"   />
+                <p:menuitem  icon="/images/retour.png" action="/parrinage/GestionDossiers.xhtml" actionListener="#{dossierController.editerDossier()}"  />
             </p:dock>                   
         </h:form>
 
-<br/><br/><br/>
+        <br/><br/><br/>
         <h:form id="hi" >
             <p:fieldset legend="Ajouter Une Parrinage"  style="width: 1000px; margin-left: 90px;">
                 <h:panelGrid columns="6" >
@@ -51,27 +51,16 @@
                     <p:outputLabel value="Date Prise Du Dossier" for="priseDossier" />
                     <p:calendar id="priseDossier"   pattern="MM/dd/yyyy" value="#{parrinageController.selected.priseDossier}" title="#{bundle.EditParrinageTitle_priseDossier}"  showOn="button"/>
 
-
-
                     <p:outputLabel value="#{bundle.CreateParrinageLabel_montant}" for="mont"  />
                     <p:inputText id="mont" value="#{parrinageController.selected.montant}" title="#{bundle.CreateParrinageTitle_montant}"  />
                     <p:outputLabel value="Nombre De Mois Du Montant Données" for="nbr"  />
                     <p:inputText id="nbr" value="#{parrinageController.selected.nbrjours1}" title="#{bundle.CreateParrinageTitle_montant}" />
-
-
-
-
                     <p:commandButton  style="margin-bottom: 10px;" actionListener="#{parrinageController.ajouterParrinageeee()}" update=":growl" value="Ajouter Parrinage" ajax="false"  />
 
                 </h:panelGrid> 
             </p:fieldset>
         </h:form> 
-        <h:form>
 
-
-            <p:commandButton  style="margin-bottom: 10px;" actionListener="#{parrinageController.affiche()}" update=":growl" value="Ajouter Parrinage"  />
-
-        </h:form>
         <h:form>
 
             <p:dialog header="Ajouter Nouveau Parrain" widgetVar="dlg3" showEffect="explode"  height="300" width="300">

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParrinageEditDlg" widgetVar="ParrinageEditDialog1" modal="true" resizable="false" appendTo="@(body)" header="Voir Information Du Parrain et Mediataire"  showEffect="explode"  height="290" width="720">
+            <h:form id="ParrinageEditForm1">
+                <h:panelGroup id="display">
+                   <p:fieldset legend="Information Du Parrin"  style="width:200px; margin-left: 30px; height: 200px;" >
+                    <br/>
+                    <p:panelGrid columns="2" >
+
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_nom}" for="nom" style="color:yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="nom" value="#{parrinageController.getParrinage().parrain.nom}" readonly="true" title="#{bundle.CreateParrainTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_prenom}" for="prenom" style="color:yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="prenom" value="#{parrinageController.getParrinage().parrain.prenom}"  readonly="true" title="#{bundle.CreateParrainTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_telephone}" for="telephone" style="color:yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="telephone" value="#{parrinageController.getParrinage().parrain.telephone}"  readonly="true" title="#{bundle.CreateParrainTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_gmail}" for="gmail" style="color:yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="gmail" value="#{parrinageController.getParrinage().parrain.gmail}" readonly="true" title="#{bundle.CreateParrainTitle_gmail}" />
+                    </p:panelGrid>
+                    <br/><br/>
+                    <p:commandButton value="Envoyer Message Mail Au Parrain"  style="color: darkblue; font-weight: bolder;" action="#{parrinageController.goPage()}" />
+                  
+                   </p:fieldset>
+                <p:fieldset legend="Information Du Médiateur "  style="width:200px; margin-left: 380px; height: 200px; margin-top: -215px;" >
+                    <br/>
+                    <p:panelGrid columns="2" >
+
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_nom}" for="nom1" style="color:yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="nom1" value="#{parrinageController.getParrinage().parrain.mediataire.nom}" readonly="true" title="#{bundle.CreateParrainTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_prenom}" for="prenom1" style="color:yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="prenom1" value="#{parrinageController.getParrinage().parrain.mediataire.prenom}"  readonly="true" title="#{bundle.CreateParrainTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_telephone}" for="telephone1" style="color:yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="telephone1" value="#{parrinageController.getParrinage().parrain.mediataire.telephone}"  readonly="true" title="#{bundle.CreateParrainTitle_telephone}" />
+                        <p:outputLabel value="#{bundle.CreateParrainLabel_gmail}" for="gmail1" style="color:yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="gmail1" value="#{parrinageController.getParrinage().parrain.mediataire.gmail}" readonly="true" title="#{bundle.CreateParrainTitle_gmail}" />
+                    </p:panelGrid>
+                    <br/><br/>
+                    <p:commandButton value="Envoyer Message Mail Au Médiateur"   action="#{parrinageController.goPage1()}" style="width: 250px;color: darkblue; font-weight: bolder;" />
+                </p:fieldset>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

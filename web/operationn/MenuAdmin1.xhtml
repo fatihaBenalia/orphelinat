@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOperationnTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <br/><br/><br/><br/>
+
+
+
+            <style>
+
+                #menu-demo2, #menu-demo2 ul{
+                    padding:0;
+                    margin:0;
+                    list-style:none;
+                    text-align:center;
+                    font-size: 17px;
+                    font-weight: bold;
+                }
+                #menu-demo2 li{
+                    display:inline-block;
+                    position:relative;
+                    border-radius:8px 8px 8px 8px;
+                }
+                #menu-demo2 ul li{
+                    display:inherit;
+                    border-radius:0;
+                }
+                #menu-demo2 ul li:hover{
+                    border-radius:0;
+                }
+                #menu-demo2 ul li:last-child{
+                    border-radius:0 0 8px 8px;
+                }
+                #menu-demo2 ul{
+                    position:absolute;
+                    z-index: 1000;
+                    max-height:0;
+                    left: 0;
+                    right: 0;
+                    overflow:hidden;
+                    -moz-transition: .8s all .3s;
+                    -webkit-transition: .8s all .3s;
+                    transition: .8s all .3s;
+                }
+                #menu-demo2 li:hover ul{
+                    max-height:15em;
+                }
+                /* background des liens menus */
+
+                #menu-demo2 li:last-child{
+                    background-color: bisque;
+                    background-image:-webkit-linear-gradient(top, bisque 0%, lightcoral 100%);
+                    background-image:linear-gradient(to bottom, bisque 0%, lightcoral 100%);
+                }
+                /* background des liens sous menus */
+
+                #menu-demo2 li:last-child li{
+                    background:lightcoral;
+                }
+                /* background des liens menus et sous menus au survol */
+
+                #menu-demo2 li:last-child:hover, #menu-demo2 li:last-child li:hover{
+                    background:bisque;
+                }
+                /* les a href */
+                #menu-demo2 a{
+                    text-decoration:none;
+                    display:block;
+                    color:#fff;
+                    font-family:arial;
+                }
+                #menu-demo2 ul a{
+                    padding:8px 0;
+
+                }
+                #menu-demo2 li:hover li a{
+                    color:#fff;
+                    text-transform:inherit;
+                    text-align: center;
+
+
+                }
+                #menu-demo2 li:hover a, #menu-demo2 li li:hover a{
+                    color:#000;
+
+                </style>
+
+                <style>
+                    #menu-demo3, #menu-demo3 ul{
+                        padding:0;
+                        margin:0;
+                        list-style:none;
+                        text-align:center;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+                    #menu-demo3 li{
+                        display:inline-block;
+                        position:relative;
+                        border-radius:8px 8px 8px 8px;
+                    }
+                    #menu-demo3 ul li{
+                        display:inherit;
+                        border-radius:0;
+                    }
+                    #menu-demo3 ul li:hover{
+                        border-radius:0;
+                    }
+                    #menu-demo3 ul li:last-child{
+                        border-radius:0 0 8px 8px;
+                    }
+                    #menu-demo3 ul{
+                        position:absolute;
+                        z-index: 1000;
+                        max-height:0;
+                        left: 0;
+                        right: 0;
+                        overflow:hidden;
+                        -moz-transition: .8s all .3s;
+                        -webkit-transition: .8s all .3s;
+                        transition: .8s all .3s;
+                    }
+                    #menu-demo3 li:hover ul{
+                        max-height:15em;
+                    }
+                    /* background des liens menus */
+
+                    #menu-demo3 li:last-child{
+                        background-color: gold;
+                        background-image:-webkit-linear-gradient(top, indianred 0%, gold 100%);
+                        background-image:linear-gradient(to bottom, indianred 0%, gold 100%);
+                    }
+                    /* background des liens sous menus */
+
+                    #menu-demo3 li:last-child li{
+                        background:indianred;
+                    }
+                    /* background des liens menus et sous menus au survol */
+
+                    #menu-demo3 li:last-child:hover, #menu-demo3 li:last-child li:hover{
+                        background:gold;
+                    }
+                    /* les a href */
+                    #menu-demo3 a{
+                        text-decoration:none;
+                        display:block;
+                        color:#fff;
+                        font-family:arial;
+                    }
+                    #menu-demo3 ul a{
+                        padding:8px 0;
+
+                    }
+                    #menu-demo3 li:hover li a{
+                        color:#fff;
+                        text-transform:inherit;
+                        text-align: center;
+
+
+                    }
+                    #menu-demo3 li:hover a, #menu-demo3 li li:hover a{
+                        color:#000;
+                    }
+                </style>
+                <style>
+                    #menu-demo4, #menu-demo4 ul{
+                        padding:0;
+                        margin:0;
+                        list-style:none;
+                        text-align:center;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+                    #menu-demo4 li{
+                        display:inline-block;
+                        position:relative;
+                        border-radius:8px 8px 8px 8px;
+                    }
+                    #menu-demo4 ul li{
+                        display:inherit;
+                        border-radius:0;
+                    }
+                    #menu-demo4 ul li:hover{
+                        border-radius:0;
+                    }
+                    #menu-demo4 ul li:last-child{
+                        border-radius:0 0 8px 8px;
+                    }
+                    #menu-demo4 ul{
+                        position:absolute;
+                        z-index: 1000;
+                        max-height:0;
+                        left: 0;
+                        right: 0;
+                        overflow:hidden;
+                        -moz-transition: .8s all .3s;
+                        -webkit-transition: .8s all .3s;
+                        transition: .8s all .3s;
+                    }
+                    #menu-demo4 li:hover ul{
+                        max-height:15em;
+                    }
+                    /* background des liens menus */
+
+                    #menu-demo4 li:last-child{
+                        background-color: #CFFF6A;
+                        background-image:-webkit-linear-gradient(top, #CFFF6A 0%, #677F35 100%);
+                        background-image:linear-gradient(to bottom, #CFFF6A 0%, #677F35 100%);
+                    }
+                    /* background des liens sous menus */
+
+                    #menu-demo4 li:last-child li{
+                        background:#677F35;
+                    }
+                    /* background des liens menus et sous menus au survol */
+
+                    #menu-demo4 li:last-child:hover, #menu-demo4 li:last-child li:hover{
+                        background:#CFFF6A;
+                    }
+                    /* les a href */
+                    #menu-demo4 a{
+                        text-decoration:none;
+                        display:block;
+                        color:#fff;
+                        font-family:arial;
+                    }
+                    #menu-demo4 ul a{
+                        padding:8px 0;
+
+                    }
+                    #menu-demo4 li:hover li a{
+                        color:#fff;
+                        text-transform:inherit;
+                        text-align: center;
+
+
+                    }
+                    #menu-demo4 li:hover a, #menu-demo4 li li:hover a{
+                        color:#000;
+                    }
+                </style>
+                <style>
+                    #menu-demo5, #menu-demo5 ul{
+                        padding:0;
+                        margin:0;
+                        list-style:none;
+                        text-align:center;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+                    #menu-demo5 li{
+                        display:inline-block;
+                        position:relative;
+                        border-radius:8px 8px 8px 8px;
+                    }
+                    #menu-demo5 ul li{
+                        display:inherit;
+                        border-radius:0;
+                    }
+                    #menu-demo5 ul li:hover{
+                        border-radius:0;
+                    }
+                    #menu-demo5 ul li:last-child{
+                        border-radius:0 0 8px 8px;
+                    }
+                    #menu-demo5 ul{
+                        position:absolute;
+                        z-index: 1000;
+                        max-height:0;
+                        left: 0;
+                        right: 0;
+                        overflow:hidden;
+                        -moz-transition: .8s all .3s;
+                        -webkit-transition: .8s all .3s;
+                        transition: .8s all .3s;
+                    }
+                    #menu-demo5 li:hover ul{
+                        max-height:15em;
+                    }
+                    /* background des liens menus */
+
+                    #menu-demo5 li:last-child{
+                        background-color: paleturquoise;
+                        background-image:-webkit-linear-gradient(top, paleturquoise 0%, lightseagreen 100%);
+                        background-image:linear-gradient(to bottom, paleturquoise 0%, lightseagreen 100%);
+                    }
+                    /* background des liens sous menus */
+
+                    #menu-demo5 li:last-child li{
+                        background:lightseagreen;
+                    }
+                    /* background des liens menus et sous menus au survol */
+
+                    #menu-demo5 li:last-child:hover, #menu-demo5 li:last-child li:hover{
+                        background:paleturquoise;
+                    }
+                    /* les a href */
+                    #menu-demo5 a,er{
+                        text-decoration:none;
+                        display:block;
+                        color:#fff;
+                        font-family:arial;
+                    }
+                    #menu-demo5 ul a,er{
+                        padding:8px 0;
+
+                    }
+                    #menu-demo5 li:hover li a,er{
+                        color:#fff;
+                        text-transform:inherit;
+                        text-align: center;
+
+
+                    }
+                    #menu-demo5 li:hover a,er, #menu-demo5 li li:hover a{
+                        color:#000;
+                    }
+                </style>
+
+                
+                <h:form style="margin-left: 1280px;margin-top: -60px;">
+
+
+                    <p:dock position="top" itemWidth="80" maxWidth="30"  >
+
+                        <p:menuitem  icon="/images/ttt.png" action="/operationn/MenuAdmin.xhtml" value="Retour" style="color: #004a80; font-weight: bolder;font-size: 17px;"  />
+                    </p:dock>                   
+                </h:form>
+                <br/><br/><br/><br/><br/>
+                <h:form >
+                    <ul id="menu-demo2" style="margin-top: -50px;">
+
+                        <li style="margin-left: -350px; margin-top: 30px; width: 200px; height: 205px; ">
+
+                            <a href="#" > <img src="operationn/dossier.png" style="width: 140px; height: 140px; margin-top: 20px;" /> </a>
+                            <p:commandLink value="Gestion Des Dossiers "  style="font-weight: bolder; font-size: 24px;" action="/parrinage/GestionDossiers.xhtml"/>
+
+                        </li>
+                    </ul>  
+
+                    <ul id="menu-demo3" style="margin-top: -234px;">
+                        <li style="margin-left: 190px; margin-top: 30px; width: 200px; height: 205px; ">
+
+                            <a href="#" > <img src="operationn/money.png" style="width: 140px; height: 140px; margin-top: 20px;" /> </a>
+                            <p:commandLink value="Gestion Des Caisses "  style="font-weight: bolder; font-size: 24px;" action="/operationn/List.xhtml"/>
+                        </li>
+                    </ul> 
+                    <ul id="menu-demo4" style="margin-left: -350px; margin-top: -110px;">
+                        <li style=" margin-top: 170px; width: 200px; height: 205px; ">
+
+                            <a href="#" > <img src="operationn/sta.png" style="width: 140px; height: 140px; margin-top: 20px;" /> </a>
+                            <p:commandLink value="Statistique actuelle des Caisses  "  style="font-weight: bolder; font-size: 24px;" action="/operationn/StatistiqueCaisseSociale.xhtml"/>
+
+                        </li>
+                    </ul> 
+                    <ul id="menu-demo5" style="margin-top: -105px;">
+                        <li style="margin-left: 190px; margin-top: -100px; width: 200px; height: 205px; ">
+
+                            <a href="#" > <img src="operationn/operation.png" style="width: 140px; height: 140px; margin-top: 20px;" /></a>
+                            <p:commandLink value="Statistique Des Caisses Pour Chaque Mois  "  style="font-weight: bolder; font-size: 24px;" action="/operationn/CaisseMois.xhtml"/>
+
+                        </li>
+                    </ul> 
+
+                </h:form> 
+
+
+
+
+            </ui:define>
+        </ui:composition>
+
+    </html>

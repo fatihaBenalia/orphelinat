@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CaisseCreateDlg" widgetVar="CaisseCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Creer Nouveau Caisse">
+            <h:form id="CaisseCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{caisseController.selected != null}">
+                        <p:outputLabel value="Nom De La Caisse" for="id" style="color: yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="id" value="#{caisseController.selected.id}" title="#{bundle.CreateCaisseTitle_id}" />
+                        <p:outputLabel value="Type Caisse(sociale/gestion)" for="type" style="color: yellowgreen; font-weight: bolder;" />
+                        <p:selectOneMenu id="type" value="#{caisseController.selected.type}" >
+                            <f:selectItem itemLabel="Sociale" itemValue="sociale" />
+                            <f:selectItem itemLabel="Gestion" itemValue="gestion" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCaisseLabel_dete}" for="dete" style="color: yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="dete" value="#{caisseController.selected.dete}"  readonly="true" title="#{bundle.CreateCaisseTitle_dete}" />
+                        <p:outputLabel value="#{bundle.CreateCaisseLabel_depense}" for="depense" style="color: yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="depense" value="#{caisseController.selected.depense}"  readonly="true" title="#{bundle.CreateCaisseTitle_depense}" />
+                        <p:outputLabel value="#{bundle.CreateCaisseLabel_profit}" for="profit" style="color: yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="profit" value="#{caisseController.selected.profit}" readonly="true" title="#{bundle.CreateCaisseTitle_profit}" />
+                        <p:outputLabel value="#{bundle.CreateCaisseLabel_entree}" for="entree" style="color: yellowgreen; font-weight: bolder;" />
+                        <p:inputText id="entree" value="#{caisseController.selected.entree}" readonly="true" title="#{bundle.CreateCaisseTitle_entree}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{caisseController.creerCaisse()}" style="color: coral; font-weight: bolder;" value="Ajouter" update="display,:growl" oncomplete="handleSubmit(args,'CaisseCreateDialog');"/>
+
+                    <p:commandButton value="Annuler" onclick="CaisseCreateDialog.hide()" style="color: coral; font-weight: bolder;"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

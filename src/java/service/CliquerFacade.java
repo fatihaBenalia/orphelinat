@@ -29,7 +29,7 @@ public class CliquerFacade extends AbstractFacade<Cliquer> {
     public CliquerFacade() {
         super(Cliquer.class);
     }
-      @Schedule(dayOfMonth = "13", hour = "01", minute = "0", second = "0")
+      @Schedule(dayOfMonth = "13", hour = "15", minute = "01", second = "0")
     public void modifier() {
 
         System.out.println("haaa hwaa res");
@@ -37,8 +37,9 @@ public class CliquerFacade extends AbstractFacade<Cliquer> {
         cliquer.setRes(2);
         cliquer.setRes3(2);
         cliquer.setRes2(2);
+        cliquer.setTest(1);
         System.out.println("haaa hwaa res" + cliquer.getRes());
        edit(cliquer);
     }
-    
+         
 }

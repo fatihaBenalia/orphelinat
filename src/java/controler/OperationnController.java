@@ -1,5 +1,6 @@
 package controler;
 
+import bean.ArchiveOperation;
 import bean.Caisse;
 import bean.Description;
 import bean.Operationn;
@@ -11,6 +12,7 @@ import service.OperationnFacade;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -43,6 +45,80 @@ public class OperationnController implements Serializable {
     private Caisse caisse;
     private Operationn operation;
     private String typeOp;
+    private String typeCaiss;
+    private List<Caisse> caissses;
+    private List<ArchiveOperation> archives;
+    private List<Operationn> operationns;
+    private static int nbrOp;
+
+    public List<Operationn> getOperationns() {
+        if(operationns == null){
+            operationns = ejbFacade.listOperation();
+        }
+        return operationns;
+    }
+    public void getOperationns1() {
+        System.out.println("haniiii hnaa f op1");
+            operationns = ejbFacade.listOperation();
+            archives = new ArrayList();
+}
+
+    public void setOperationns(List<Operationn> operationns) {
+        this.operationns = operationns;
+    }
+    
+    
+    
+
+    public int getNbrOp() {
+        int nbr;
+        nbr = ejbFacade.findOperation();
+        return nbrOp = nbr;
+    }
+
+    public List<ArchiveOperation> getArchives() {
+        if (archives == null) {
+            archives = new ArrayList();
+        }
+        return archives;
+    }
+
+    public void setArchives(List<ArchiveOperation> archives) {
+        this.archives = archives;
+    }
+
+    public List<Caisse> getCaissses() {
+        if (caissses == null) {
+            caissses = new ArrayList();
+        }
+        return caissses;
+    }
+
+    public void setCaissses(List<Caisse> caissses) {
+        this.caissses = caissses;
+    }
+
+    public String getTypeCaiss() {
+        return typeCaiss;
+    }
+
+    public void setTypeCaiss(String typeCaiss) {
+        this.typeCaiss = typeCaiss;
+    }
+
+    public String goPageCreate() {
+        return "/operationn/List_1.xhtml";
+    }
+
+    public void trouverCaisse() {
+        System.out.println("haa type dyal lcaisse " + typeCaiss);
+//        if(selected != null){
+//        selected.setTypeOperation(typeCaiss);
+//        ejbFacade.edit(selected);
+//        }
+        caissses = ejbFacade.findCaisse(typeCaiss);
+
+    }
 
     public String getTypeOp() {
         return typeOp;
@@ -106,6 +182,7 @@ public class OperationnController implements Serializable {
     }
 
     public void setSelected(Operationn selected) {
+        System.out.println("hanniiiiiiiiiiiiiii" + selected);
         this.selected = selected;
     }
 
@@ -240,7 +317,7 @@ public class OperationnController implements Serializable {
 //            ejbFacade.generatePdf(selected);
 //            FacesContext.getCurrentInstance().getResponseComplete();
             JsfUtil.addSuccessMessage("l'Operation Est Ajoutee Avec Succes");
-
+            selected = null;
         } else {
             JsfUtil.addErrorMessage("Verifier Le Solde De Votre Caisse !!");
         }
@@ -276,16 +353,19 @@ public class OperationnController implements Serializable {
 /////////////////////////////////
 
     public void upload(FileUploadEvent event) throws Exception {
+        Date date = new Date();
         double x = System.currentTimeMillis();
         ServerConfigUtil.upload(event.getFile(), ServerConfigUtil.getEtudiantFilePath(true), x + ".pdf");
         String path = ServerConfigUtil.getEtudiantFilePath(true) + "\\" + x + ".pdf";
         System.out.println(path);
         selected.setPhoto(x + ".pdf");
+        selected.setEtatDete(2);
+        selected.setDate2(date);
         ejbFacade.edit(selected);
     }
 
     public int resultat(Operationn op) {
-        if (op.getPhoto().equals("")) {
+        if (op.getPhoto() == null) {
 
             return 1;
         } else {
@@ -299,11 +379,46 @@ public class OperationnController implements Serializable {
         } else {
             List<Operationn> lista = ejbFacade.selectOperCaisse();
             if (lista != null) {
-                System.out.println("haaaaaa lista op"+lista);
+                System.out.println("haaaaaa lista op" + lista);
                 return items = lista;
             }
         }
         return null;
     }
 
+    public String goPaqge2() {
+        return "/operationn/List_1.xhtml";
+    }
+
+    public void afficheer() {
+        int res = ejbFacade.modifierMontOperationf(selected);
+        System.out.println("haaaaaaaaaa res" + res);
+        if (res > 0) {
+            JsfUtil.addSuccessMessage("le montant d'operation est modifier avec success");
+        } else {
+            JsfUtil.addErrorMessage("error !! ");
+        }
+    }
+
+    public void valideDete() {
+        int res = ejbFacade.validerDete(selected);
+        System.out.println("haaaaaaaaaa res" + res);
+        if (res > 0) {
+            JsfUtil.addSuccessMessage("le dette est validé avec sucess");
+        } else {
+            JsfUtil.addErrorMessage("vous avez pas l'argent assez pour valider ce dette !! ");
+        }
+    }
+
+    public void afficheer1() {
+        ejbFacade.modifierMontOperation(selected);
+
+    }
+
+    public void voirDetails() {
+        System.out.println("haani details");
+        archives = ejbFacade.voirDetails(selected);
+    }
+
+   
 }

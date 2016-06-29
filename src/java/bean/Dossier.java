@@ -40,11 +40,11 @@ public class Dossier implements Serializable {
     @OneToOne
     private Pere pere;
     @OneToOne
-    private ResponsableFamille responsableFamille;
+    private ResponsableFamille responsableFamille;//
     private String numDossier;
-    private String numero;
-    private String nomFamille;
-    private String region;
+    private String numero;//
+    private String nomFamille;//
+    private String region;//
     @ManyToOne
     private ResponsableRegion responsableRegion;
     private String adresseActuelle;
@@ -67,9 +67,9 @@ public class Dossier implements Serializable {
     @OneToOne
     private Aide aide;
     @ManyToOne
-    private AssistanteSociale assistanteSociale1;
+    private AssistanteSociale assistanteSociale1;//
     @ManyToOne
-    private AssistanteSociale assistanteSociale2;
+    private AssistanteSociale assistanteSociale2;//
     private String remarque;
     private String proposition;
     private double montantTotal;

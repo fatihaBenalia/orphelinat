@@ -3,8 +3,8 @@ package controler;
 import bean.User;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import controler.util.SessionUtil;
 import service.UserFacade;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -22,16 +22,40 @@ import javax.faces.convert.FacesConverter;
 @Named("userController")
 @SessionScoped
 public class UserController implements Serializable {
-
+    
     @EJB
     private service.UserFacade ejbFacade;
     private List<User> items = null;
     private User selected;
+    private String login;
+    private String pass;
+public String deconnect(){
+    return "index.xhtml";
+}
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
     public UserController() {
     }
 
     public User getSelected() {
+        if (selected == null) {
+            selected = new User();
+
+        }
         return selected;
     }
 
@@ -109,7 +133,7 @@ public class UserController implements Serializable {
         }
     }
 
-    public User getUser(java.lang.Long id) {
+    public User getUser(java.lang.String id) {
         return getFacade().find(id);
     }
 
@@ -134,13 +158,13 @@ public class UserController implements Serializable {
             return controller.getUser(getKey(value));
         }
 
-        java.lang.Long getKey(String value) {
-            java.lang.Long key;
-            key = Long.valueOf(value);
+        java.lang.String getKey(String value) {
+            java.lang.String key;
+            key = String.valueOf(value);
             return key;
         }
 
-        String getStringKey(java.lang.Long value) {
+        String getStringKey(java.lang.String value) {
             StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
@@ -162,4 +186,52 @@ public class UserController implements Serializable {
 
     }
 
+    public void affiche() {
+        System.out.println("hahwa ");
+    }
+
+
+    
+    public String affich(){
+        int res = ejbFacade.affiche(selected.getId(), selected.getPassword());
+         
+         if (res == 1) {
+             selected = SessionUtil.getUser();
+             System.out.println("hahwaa selected dyalna "+selected.getType());
+            System.out.println("hadaa l admin");
+            return "/operationn/MenuAdmin.xhtml";
+        }
+
+        if (res == 2) {
+            selected = SessionUtil.getUser();
+            System.out.println("hahwaa selected dyalna "+selected.getType());
+            System.out.println("haanii hnaa");
+            return "/operationn/Menu.xhtml";
+        }else{
+            JsfUtil.addErrorMessage("Verifier Vos Données !!");
+        }
+        return null;
+    }
+
+    public String connecter() {
+
+        System.out.println("haa selected1" + selected.getId());
+        System.out.println("haa selected2" + selected.getPassword());
+        affiche();
+        System.out.println("hahwaa raydkhal lmethode");
+        affiche();
+     int res= 0;
+        if (res == 1) {
+            System.out.println("hadaa l admin");
+            return null;
+        }
+
+        if (res == 2) {
+            System.out.println("haanii hnaa");
+            return "/operationn/Menu.xhtml";
+        }
+       
+        return null;
+
+    }
 }

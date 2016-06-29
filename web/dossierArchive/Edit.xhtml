@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DossierArchiveEditDlg" widgetVar="DossierArchiveEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDossierArchiveTitle}">
+            <h:form id="DossierArchiveEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dossierArchiveController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{dossierArchiveController.selected.numero}" title="#{bundle.EditDossierArchiveTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_nomFamille}" for="nomFamille" />
+                        <p:inputText id="nomFamille" value="#{dossierArchiveController.selected.nomFamille}" title="#{bundle.EditDossierArchiveTitle_nomFamille}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_region}" for="region" />
+                        <p:inputText id="region" value="#{dossierArchiveController.selected.region}" title="#{bundle.EditDossierArchiveTitle_region}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_assistanteSociale1}" for="assistanteSociale1" />
+                        <p:inputText id="assistanteSociale1" value="#{dossierArchiveController.selected.assistanteSociale1}" title="#{bundle.EditDossierArchiveTitle_assistanteSociale1}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_responsableFamille}" for="responsableFamille" />
+                        <p:inputText id="responsableFamille" value="#{dossierArchiveController.selected.responsableFamille}" title="#{bundle.EditDossierArchiveTitle_responsableFamille}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{dossierArchiveController.selected.date}" title="#{bundle.EditDossierArchiveTitle_date}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_dateDossier}" for="dateDossier" />
+                        <p:calendar id="dateDossier" pattern="MM/dd/yyyy" value="#{dossierArchiveController.selected.dateDossier}" title="#{bundle.EditDossierArchiveTitle_dateDossier}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_adresseActuelle}" for="adresseActuelle" />
+                        <p:inputText id="adresseActuelle" value="#{dossierArchiveController.selected.adresseActuelle}" title="#{bundle.EditDossierArchiveTitle_adresseActuelle}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_nbrMembre}" for="nbrMembre" />
+                        <p:inputText id="nbrMembre" value="#{dossierArchiveController.selected.nbrMembre}" title="#{bundle.EditDossierArchiveTitle_nbrMembre}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_nbrOrphelin}" for="nbrOrphelin" />
+                        <p:inputText id="nbrOrphelin" value="#{dossierArchiveController.selected.nbrOrphelin}" title="#{bundle.EditDossierArchiveTitle_nbrOrphelin}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_etat}" for="etat" />
+                        <p:inputText id="etat" value="#{dossierArchiveController.selected.etat}" title="#{bundle.EditDossierArchiveTitle_etat}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_mere}" for="mere" />
+                        <p:inputText id="mere" value="#{dossierArchiveController.selected.mere}" title="#{bundle.EditDossierArchiveTitle_mere}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_pere}" for="pere" />
+                        <p:inputText id="pere" value="#{dossierArchiveController.selected.pere}" title="#{bundle.EditDossierArchiveTitle_pere}" />
+                        <p:outputLabel value="#{bundle.EditDossierArchiveLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{dossierArchiveController.selected.id}" title="#{bundle.EditDossierArchiveTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dossierArchiveController.update}" value="#{bundle.Save}" update="display,:DossierArchiveListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DossierArchiveEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DossierArchiveEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8f17c2f-b052-4858-962c-a4eca204d6f5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" backcolor="#CCCCCC" hAlign="Center" vAlign="Middle" isBold="false">
+		<box>
+			<pen lineWidth="1.0"/>
+			<topPen lineWidth="1.0"/>
+			<leftPen lineWidth="1.0"/>
+			<bottomPen lineWidth="1.0"/>
+			<rightPen lineWidth="1.0"/>
+		</box>
+	</style>
+	<style name="style2" forecolor="#000066" backcolor="#CCCCFF">
+		<pen lineStyle="Dotted"/>
+		<box>
+			<pen lineWidth="1.0" lineStyle="Dotted"/>
+			<topPen lineWidth="1.0" lineStyle="Dotted"/>
+			<leftPen lineWidth="1.0" lineStyle="Dotted"/>
+			<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+			<rightPen lineWidth="1.0" lineStyle="Dotted"/>
+		</box>
+	</style>
+	<style name="style3" forecolor="#000066" isBold="true"/>
+	<style name="style4" forecolor="#000066" backcolor="#CCCCFF">
+		<pen lineWidth="1.0" lineStyle="Dotted"/>
+		<box>
+			<pen lineWidth="1.0" lineStyle="Dotted"/>
+			<topPen lineWidth="1.0" lineStyle="Dotted"/>
+			<leftPen lineWidth="1.0" lineStyle="Dotted"/>
+			<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+			<rightPen lineWidth="1.0" lineStyle="Dotted"/>
+		</box>
+	</style>
+	<parameter name="p1" class="java.lang.String"/>
+	<parameter name="p2" class="java.lang.String"/>
+	<parameter name="p3" class="java.lang.Integer"/>
+	<parameter name="p4" class="java.lang.Double"/>
+	<parameter name="p5" class="java.util.Date"/>
+	<field name="debutPar" class="java.util.Date"/>
+	<field name="finPar" class="java.util.Date"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="montant" class="java.lang.Double"/>
+	<field name="nbrjours1" class="java.lang.Integer"/>
+	<field name="totMontant" class="java.lang.Double"/>
+	<field name="typePaiement" class="java.lang.String"/>
+	<field name="numCheque" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="cb72e45b-bfe2-45b1-9772-e826edc6a038" style="style4" x="153" y="12" width="223" height="20"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[  Bilan Parrain Pour Un Dossier]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="147" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8c58afb7-272b-442f-ab41-0611facf05e1" style="style3" x="79" y="37" width="182" height="20"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_Nom Et Prenom Du Parrain :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0907f23a-2314-43c5-80a3-727f5d9bf2de" x="274" y="37" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7700c74b-ec83-4505-968b-031989ee63fe" x="274" y="57" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3a12cc27-90bf-47ee-9807-16cd37ec872f" x="274" y="77" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a1b2c533-e825-46cf-8eeb-cc8db570ecb1" x="274" y="97" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="03000fef-b84d-4cf7-9ad2-f6eb54bddd93" style="style3" x="79" y="57" width="182" height="20"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_Nom De La Famille Parrinée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="29f9088a-dbb7-4d30-b1a4-b74853f4ac31" style="style3" x="79" y="77" width="182" height="20"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_Nombre De Mois Non Parrinée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3478ac8e-e198-4790-b0fd-453d3c26dccc" style="style3" x="79" y="97" width="182" height="20"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_Contribution De La Caisse :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="668a7ccd-ef72-426c-bf9b-e8f64c8dc903" style="style3" x="347" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marrakech, Le :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2ee40ee4-5527-44d7-995c-db548584ac6b" x="447" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p5}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="147" splitType="Stretch">
+			<textField>
+				<reportElement uuid="7d7f69e7-edf7-4ddd-aaa7-433316ec01c3" style="style1" x="20" y="81" width="72" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{debutPar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="58244a64-485b-471c-bceb-d4c1597bd3a9" style="style1" mode="Opaque" x="20" y="61" width="72" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[debutPar]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0b92bd0d-be86-474a-95c7-810901e69010" style="style1" x="92" y="81" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{finPar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b71bb13d-0e62-4819-bf29-99a5d05b6df7" style="style1" mode="Opaque" x="92" y="61" width="61" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[finPar]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="df2b7c7d-18a4-4eed-a14c-298c2299b866" style="style1" x="153" y="81" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="97b63b3e-1183-4bdd-9cdb-8bfb97f13f2f" style="style1" mode="Opaque" x="153" y="61" width="62" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[type]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="dd044708-2b36-4669-a4e6-323e529f2e04" style="style1" x="215" y="81" width="59" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b04c9c97-a89b-48f7-a19c-87a65839a451" style="style1" mode="Opaque" x="215" y="61" width="59" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[montant]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c695b98c-aee1-4d1a-bb72-e553639f5f45" style="style1" x="274" y="81" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nbrjours1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="68b60e18-b6ba-47d0-ad52-0cfb345abbe4" style="style1" mode="Opaque" x="274" y="61" width="62" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[nbrjours1]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="55d58338-37c9-437b-902f-3d508ace4f8d" style="style1" x="336" y="81" width="59" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{totMontant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1b6ce020-0ce2-48bd-8996-6b4313dfa504" style="style1" mode="Opaque" x="336" y="61" width="59" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[totMontant]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8e223e8f-7ec4-4e65-8abb-225dae9ff7dc" style="style1" x="395" y="81" width="64" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{typePaiement}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e5b20fb9-71e2-4415-8380-3fb2c342e9ec" style="style1" mode="Opaque" x="395" y="61" width="64" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[typePaiement]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e3e40542-ecc8-4502-8e0f-6e1e8214eb06" style="style1" x="459" y="81" width="70" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numCheque}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="18f3c5a8-321d-4a73-8902-8584c39a92ba" style="style1" mode="Opaque" x="459" y="61" width="70" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[numCheque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0e49fa62-c057-41a8-b16d-2ec930846653" style="style2" x="187" y="14" width="160" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[      La Liste Des Parrinage ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="33" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

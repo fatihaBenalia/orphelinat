@@ -16,66 +16,25 @@
         <p:growl id="growl" life="3000" />
 
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
-                <h:form id="menuForm">
-                    <p:menubar>
-                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                        <p:submenu label="#{bundle.Maintenance}">
-                            <p:menuitem value="Activite" outcome="/activite/List.xhtml" />
-                            <p:menuitem value="ActiviteItem" outcome="/activiteItem/List.xhtml" />
-                            <p:menuitem value="Aide" outcome="/aide/List.xhtml" />
-                            <p:menuitem value="AideItem" outcome="/aideItem/List.xhtml" />
-                            <p:menuitem value="AssistanteSociale" outcome="/assistanteSociale/List.xhtml" />
-                            <p:menuitem value="Avocat" outcome="/avocat/List.xhtml" />
-                            <p:menuitem value="Caisse" outcome="/caisse/List.xhtml" />
-                            <p:menuitem value="CompteAssociationParrinage" outcome="/compteAssociationParrinage/List.xhtml" />
-                            <p:menuitem value="Dossier" outcome="/dossier/List.xhtml" />
-                            <p:menuitem value="EtatEthique" outcome="/etatEthique/List.xhtml" />
-                            <p:menuitem value="EtatPedagogique" outcome="/etatPedagogique/List.xhtml" />
-                            <p:menuitem value="EtatPedagogiqueItem" outcome="/etatPedagogiqueItem/List.xhtml" />
-                            <p:menuitem value="EtatSante" outcome="/etatSante/List.xhtml" />
-                            <p:menuitem value="EtatSanteMere" outcome="/etatSanteMere/List.xhtml" />
-                            <p:menuitem value="EtatSanteOrphelin" outcome="/etatSanteOrphelin/List.xhtml" />
-                            <p:menuitem value="Logement" outcome="/logement/List.xhtml" />
-                            <p:menuitem value="Materiel" outcome="/materiel/List.xhtml" />
-                            <p:menuitem value="Mediataire" outcome="/mediataire/List.xhtml" />
-                            <p:menuitem value="Membre" outcome="/membre/List.xhtml" />
-                            <p:menuitem value="Mere" outcome="/mere/List.xhtml" />
-                            <p:menuitem value="OperationMois" outcome="/operationMois/List.xhtml" />
-                            <p:menuitem value="Operationn" outcome="/operationn/List.xhtml" />
-                            <p:menuitem value="Orphelin" outcome="/orphelin/List.xhtml" />
-                            <p:menuitem value="Parametre" outcome="/parametre/List.xhtml" />
-                            <p:menuitem value="Parrain" outcome="/parrain/List.xhtml" />
-                            <p:menuitem value="Parrinage" outcome="/parrinage/List.xhtml" />
-                            <p:menuitem value="Pere" outcome="/pere/List.xhtml" />
-                            <p:menuitem value="Personne" outcome="/personne/List.xhtml" />
-                            <p:menuitem value="Philantrope" outcome="/philantrope/List.xhtml" />
-                            <p:menuitem value="ResponsableFamille" outcome="/responsableFamille/List.xhtml" />
-                            <p:menuitem value="ResponsableRegion" outcome="/responsableRegion/List.xhtml" />
-                            <p:menuitem value="User" outcome="/user/List.xhtml" />
-                            <p:menuitem value="description" outcome="/description/List.xhtml" />
-                            <p:menuitem value="CaisseMoisCaisse" outcome="/caisseMoisCaisse/List.xhtml" />
-                        </p:submenu>
-                        <p:submenu label="Gestion Dossier" >
-                           <p:menuitem value="Gestion Des Dossiers" outcome="/parrinage/GestionDossiers.xhtml" />  
-                           <p:menuitem value="Gestion Des Aliementations" outcome="/parrinage/GestionDossiers.xhtml" />  
-                           <p:menuitem value="Archive Des Dossiers" outcome="/parrinage/GestionDossiers.xhtml" />  
-                        </p:submenu>
-                        <p:submenu label="Gestion Des Caisses" >
-                           <p:menuitem value="Gestion Des Dossiers" outcome="/parrinage/GestionDossiers.xhtml" />  
-                           <p:menuitem value="Statistique actuelle Des Caisses" outcome="/operationn/Statistique Caisse Sociale.xhtml" />  
-                           <p:menuitem value="Archive Des Dossiers" outcome="/operationn/Statistique Caisse Sociale.xhtml" />  
-                        </p:submenu>
+            <p:layoutUnit position="north" size="65" header="L'Association Marocaine Pour La Prise En Charge De l'orphelin">
+                <div ></div>
+                <h:form id="ddf" >
+                    <p:menubar style="height: 33px;">
+
+                        <p:menuitem value="Bienvenue Mr/Mme à Votre Compte"  style=" font-size: 16px;color: darkblue; font-weight: bolder;" />
+                        <p:menuitem id="dd"   update="ddf"  rendered="#{userController.selected.type.equals('admin')}"   value="Nombre d'opérations modifiées : #{operationnController.nbrOp}"  style=" font-size: 18px;color:lightcoral;  margin-left: 520px;"  />
+                        <p:menuitem   icon="ui-icon-power"  value="Deconnecter"  style=" font-size: 20px;margin-top: -40px;color: darkblue; padding: 11px; margin-left: 1180px;" action="#{userController.deconnect()}"  />
+
                     </p:menubar>
                 </h:form>
             </p:layoutUnit>
 
-          
+
 
             <p:layoutUnit position="center">
                 <ui:insert name="body"/>
             </p:layoutUnit>
-         
+
 
         </p:layout>
 

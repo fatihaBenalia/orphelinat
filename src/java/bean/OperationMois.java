@@ -32,13 +32,12 @@ public class OperationMois implements Serializable {
     @ManyToOne
     private Caisse caisse;
     private String description;
-    private int etat;//wach 7atina f dossier wla hazina
-
-    public int getEtat() {
+    private String etat;//wach 7atina f dossier wla hazina debit ou credit
+    public String getEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
     

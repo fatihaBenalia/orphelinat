@@ -8,41 +8,40 @@
 
     <ui:composition>
 
-        <p:dialog id="ParrinageEditDlg" widgetVar="ParrinageEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditParrinageTitle}">
-            <h:form id="ParrinageEditForm">
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{parrinageController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_nbrjours1}" for="nbrjours1" />
-                        <p:inputText id="nbrjours1" value="#{parrinageController.selected.nbrjours1}" title="#{bundle.EditParrinageTitle_nbrjours1}" />
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_parrain}" for="parrain" />
-                        <p:selectOneMenu id="parrain" value="#{parrinageController.selected.parrain}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{parrainController.itemsAvailableSelectOne}"
-                                           var="parrainItem"
-                                           itemValue="#{parrainItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_montant}" for="montant" />
-                        <p:inputText id="montant" value="#{parrinageController.selected.montant}" title="#{bundle.EditParrinageTitle_montant}" />
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_dossier}" for="dossier" />
-                        <p:selectOneMenu id="dossier" value="#{parrinageController.selected.dossier}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{dossierController.itemsAvailableSelectOne}"
-                                           var="dossierItem"
-                                           itemValue="#{dossierItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_debutPar}" for="debutPar" />
-                        <p:calendar id="debutPar" pattern="MM/dd/yyyy" value="#{parrinageController.selected.debutPar}" title="#{bundle.EditParrinageTitle_debutPar}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_finPar}" for="finPar" />
-                        <p:calendar id="finPar" pattern="MM/dd/yyyy" value="#{parrinageController.selected.finPar}" title="#{bundle.EditParrinageTitle_finPar}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_priseDossier}" for="priseDossier" />
-                        <p:calendar id="priseDossier" pattern="MM/dd/yyyy" value="#{parrinageController.selected.priseDossier}" title="#{bundle.EditParrinageTitle_priseDossier}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_type}" for="type" />
-                        <p:inputText id="type" value="#{parrinageController.selected.type}" title="#{bundle.EditParrinageTitle_type}" />
-                        <p:outputLabel value="#{bundle.EditParrinageLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{parrinageController.selected.id}" title="#{bundle.EditParrinageTitle_id}" />
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{parrinageController.update}" value="#{bundle.Save}" update="display,:ParrinageListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParrinageEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="ParrinageEditDialog.hide()"/>
+        <p:dialog id="ParrinageEditDlg2" widgetVar="ParrinageEditDialog2" modal="true" resizable="false" appendTo="@(body)" header="Les Etats D'un Dossier"   >
+           <h:form id="ParrinageEditForm2">
+                <h:panelGroup id="display"  >
+                    <p:panel header="La Liste" style="width: 500px;"  >
+                        <p:dataTable id="datalist" value="#{dossierController.archivees}" var="item"
+                                     selectionMode="single" selection="#{dossierArchiveController.selected}"
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     >
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDossierArchiveTitle_date}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDossierArchiveTitle_etat}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.etat}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    <p:commandButton value="Actualiser" actionListener="#{dossierController.voirArchiveDossier()}" />
+
+                    </p:panel>
+
                 </h:panelGroup>
             </h:form>
         </p:dialog>

@@ -50,4 +50,37 @@ public class ParametreFacade extends AbstractFacade<Parametre> {
         System.out.println("hahooooooooowa=============>" + parametre.getHabillement());
         return parametre;
     }
+
+    public List<Parametre> selectParametre() {
+    long res = findAll().size();
+    String req = " select p from Parametre p where p.id = '" + res + "' ";
+    List<Parametre> lista = em.createQuery(req).getResultList();
+    return lista;
+    }
+
+    public int modParametre(Parametre parametre) {
+        Date date = new Date();
+        Parametre loaded = find(parametre.getId());
+        if(loaded != null){
+            loaded.setAlimentation(parametre.getAlimentation());
+            loaded.setHabillement(parametre.getHabillement());
+            loaded.setMatelasEtCouvertures(parametre.getMatelasEtCouvertures());
+            loaded.setMontantComplete(parametre.getMontantComplete());
+            loaded.setMontantPartielle(parametre.getMontantPartielle());
+            loaded.setSacrifice(parametre.getSacrifice());
+            loaded.setSante(parametre.getSante());
+            loaded.setScolarité(parametre.getScolarité());
+            loaded.setDateApplication(date);
+            edit(loaded);
+            return 1;
+        }
+        return -1;
+    }
+    
+    public int createPar(Parametre parametre){
+        Date date = new Date();
+        parametre.setDateApplication(date);
+        create(parametre);
+        return 1;
+    }
 }

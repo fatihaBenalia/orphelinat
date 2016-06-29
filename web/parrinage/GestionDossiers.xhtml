@@ -14,289 +14,283 @@
         </ui:define>
         <h1><h:outputText value="Gestion Des Dossiers" style="font-size: 25px; " /></h1>
 
-<ui:define name="body">
+        <ui:define name="body">
 
 
-        <h:form  >
-  
-            <br/><br/>
-            <p:fieldset legend="Partie De Recherche :"  style="width:1000px; margin-left: 130px; " >
-                <h:panelGrid columns="4" style=" margin-left: 120px;" >                        
-                    <p:outputLabel for="ch" value="Type Parrinage D'un Dossier :"   style="  font-size: 18px; font-weight: bold ; " />
-                    <p:selectOneMenu value="#{dossierController.nesDossier.etat}" id="ch" style="margin-left: 40px;" >
-                        <f:selectItem itemLabel=" -- select --" />
-                        <f:selectItem itemLabel="Complete par un seul parrin" itemValue="1" />
-                        <f:selectItem itemLabel="Complete par un deux parrins" itemValue="1" />
-                        <f:selectItem itemLabel="Partielle par 2 parrains" itemValue="2" />
-                        <f:selectItem itemLabel="    abandonnee    " itemValue="4" />
-                        <f:selectItem itemLabel="   Caisse        " itemValue="5" />
-                    </p:selectOneMenu>
-                    <p:outputLabel value="Numero Dossier :" for="num"   style="  font-size: 18px; font-weight: bold ; margin-left: 90px; "/>
-                    <p:inputText id="num" value="#{dossierController.nesDossier.numDossier}" title="#{bundle.CreateOperationnTitle_etatValide}" />
-                    <p:outputLabel value="Nom Famille :" for="nomFam"   style="  font-size: 18px; font-weight: bold ; "/>
-                    <p:inputText id="nomFam" value="#{dossierController.nesDossier.nomFamille}"  style="margin-left: 40px;"  title="#{bundle.CreateOperationnTitle_etatValide}" />
-                    <p:outputLabel value="Region :" for="region"   style="  font-size: 18px; font-weight: bold ; margin-left: 90px; "/>
-                    <p:inputText id="region" value="#{dossierController.nesDossier.region}" title="#{bundle.CreateOperationnTitle_etatValide}" />
+            <h:form style="margin-left: 1280px;margin-top: -5px;">
 
-                </h:panelGrid>
-                <p:commandButton icon="ui-icon-search" actionListener="#{dossierController.rechercheByCritere()}" value="-- Rechercher --" style="margin-left: 340px;" update=":DossierListForm:datalist" />
 
-            </p:fieldset>
-            <br/><br/><br/>
+                <p:dock position="top" itemWidth="80" maxWidth="30"  >
+
+                    <p:menuitem  icon="/images/ttt.png" action="/operationn/Menu.xhtml" value="Retour" style="color: #004a80; font-weight: bolder;font-size: 17px;"  />
+                </p:dock>                   
+            </h:form>
+
+            <h:form  >
+
+                <br/><br/><br/><br/>
+                <p:fieldset legend="Partie De Recherche :"  style="width:1000px; margin-left: 130px;color: yellowgreen; font-weight: bolder; " >
+                    <h:panelGrid columns="4" style=" margin-left: 120px;" >                        
+                        <p:outputLabel for="ch" value="Type Parrainage D'un Dossier :"   style="  font-size: 18px; font-weight: bold ; " />
+                        <p:selectOneMenu value="#{dossierController.nesDossier.etat}" id="ch" style="margin-left: 40px;" >
+                            <f:selectItem itemLabel=" -- select --" />
+                            <f:selectItem itemLabel="Complete par un seul parrin" itemValue="1" />
+                            <f:selectItem itemLabel="Complete par deux parrins" itemValue="2" />
+                            <f:selectItem itemLabel="Partielle" itemValue="3" />
+
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Numero Dossier :" for="num"   style="  font-size: 18px; font-weight: bold ; margin-left: 90px; "/>
+                        <p:inputText id="num" value="#{dossierController.nesDossier.numDossier}" title="#{bundle.CreateOperationnTitle_etatValide}" />
+                        <p:outputLabel value="Nom Famille :" for="nomFam"   style="  font-size: 18px; font-weight: bold ; "/>
+                        <p:inputText id="nomFam" value="#{dossierController.nesDossier.nomFamille}"  style="margin-left: 40px;"  title="#{bundle.CreateOperationnTitle_etatValide}" />
+                        <p:outputLabel value="Region :" for="region"   style="  font-size: 18px; font-weight: bold ; margin-left: 90px; "/>
+                        <p:inputText id="region" value="#{dossierController.nesDossier.region}" title="#{bundle.CreateOperationnTitle_etatValide}" />
+
+                    </h:panelGrid>
+                    <p:commandButton icon="ui-icon-search" actionListener="#{dossierController.rechercheByCritere()}" value="-- Rechercher --" style="margin-left: 340px; width: 200px; font-weight: bolder;color: darkblue;" update=":DossierListForm:datalist" />
+                    <p:commandButton  actionListener="#{dossierController.getItems1()}" value="-- Actualiser --" style="margin-left: 30px;position : absolute; margin-top: -90px; width: 200px; font-weight: bolder;color: darkblue;" update=":DossierListForm:datalist" />
+
+                </p:fieldset>
+                <br/><br/><br/>
 
             </h:form>
             <h:form id="DossierListForm" >
-            <p:panel header="La Liste Des Dossiers" >
-                <p:dataTable id="datalist" value="#{dossierController.items}" var="item"
-                             selectionMode="single" selection="#{dossierController.selected}"
-                             paginator="true"
-                             rowKey="#{item.id}"
-                             rows="10"
-                             rowsPerPageTemplate="10,20,30,40,50"
-                             editable="true" 
-                             editMode="cell" widgetVar="cellCars"
+                <p:panel header="La Liste Des Dossiers" >
+                    <p:dataTable id="datalist" value="#{dossierController.items}" var="item"
+                                 selectionMode="single" selection="#{dossierController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 editable="true" 
+                                 editMode="cell" widgetVar="cellCars"
 
-                             >
-
-                    <p:ajax event="cellEdit" listener="#{dossierController.onCellEdit}" update=":growl" />
-                    <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } " >
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListDossierTitle_compteAssociationParrinage}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.compteAssociationParrinage}"/>
-                    </p:column>
-                    <p:column style="background: #{item.laid == 0 ? ' coral ' : ' '  } " >
-                        <f:facet name="header">
-                            <h:outputText value="id"/>
-                        </f:facet>
-                        <h:outputText value="#{item.id}"/>
-                    </p:column>
-                    <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } " >
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListDossierTitle_etat}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.etat}"/>
-                    </p:column>
-                    <p:column headerText="Etat Du Dossier" style="background: #{item.laid == 0  ? ' coral ' : ' '  } ;width: 100px; "   >
-                        <p:cellEditor>
+                                 >
+                        <p:ajax event="rowSelect"   update=" editButton2"/>
+                        <p:ajax event="rowUnselect" update=" editButton2"/>
+                        <p:ajax event="cellEdit" listener="#{dossierController.onCellEdit}" update=":growl,:DossierListForm:datalist" />
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
                             <f:facet name="header">
-                                <f:facet name="output"><h:outputText value="Etat"/></f:facet>
+                                <h:outputText value="Numero"/>
                             </f:facet>
-                            <f:facet name="input" >
-                                <p:selectOneMenu value="#{item.etat}" id="ff" >
-                                    <f:selectItem itemLabel="parrinee avec 300 dh" itemValue="1" />
-                                    <f:selectItem itemLabel="parrinee avec 600dh par 2 parrains" itemValue="2" />
-                                    <f:selectItem itemLabel="parrinee avec 600dh" itemValue="3" />
-                                    <f:selectItem itemLabel="    abandonnee    " itemValue="4" />
-                                    <f:selectItem itemLabel="   Caisse        " itemValue="5" />
-                                </p:selectOneMenu>
+                            <h:outputText value="#{item.numero}"/>
+                        </p:column>
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
+                            <f:facet name="header">
+                                <h:outputText value="Nom Famille"/>
                             </f:facet>
+                            <h:outputText value="#{item.nomFamille}"/>
+                        </p:column>
 
-                        </p:cellEditor>
-                    </p:column>
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
+                            <p:cellEditor>
+                                <f:facet name="header">
+                                    <f:facet name="output"><h:outputText value="Etat"/></f:facet>
+                                </f:facet>
+                                <f:facet name="input" >
+                                    <p:selectOneMenu value="#{item.etat}" id="ff" >
+                                        <f:selectItem itemLabel="parrinée partiellement" itemValue="1" />
+                                        <f:selectItem itemLabel="parrinée complètement par 2 parrains" itemValue="2" />
+                                        <f:selectItem itemLabel="parrinée complètement par un seul parrain" itemValue="3" />
+                                        <f:selectItem itemLabel="   abandonnée    " itemValue="4" />
+                                        <f:selectItem itemLabel="   Ramener au service sociale        " itemValue="-1" />
+                                    </p:selectOneMenu>
+                                </f:facet>
+
+                            </p:cellEditor>
+                        </p:column>
 
 
-                    <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } " >
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListDossierTitle_nbrOrphelin}"/>
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierTitle_nbrOrphelin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nbrOrphelin}"/>
+                        </p:column>
+
+
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierTitle_dateDossier}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDossier}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
+                            <f:facet name="header">
+                                <h:outputText value="Adresse Actuelle"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresseActuelle}"/>
+                        </p:column>
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierTitle_region}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.region}"/>
+                        </p:column>
+
+
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
+                            <f:facet name="header">
+                                <h:outputText value="Mere"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mere.nom}"/>
+                        </p:column>
+
+                        <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '    || item.laid == -6  and item.etat == 5 ? ' darkgoldenrod ' : ' ' || item.laid == -6  and item.etat == 4 ? ' darkgoldenrod ' : ' ' }" >
+                            <f:facet name="header">
+                                <h:outputText value="Responsable Region"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsableRegion.nom}"/>
+                        </p:column>
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Details"/>
+                            </f:facet>
+                            <p:commandButton value="Voir Details" actionListener="#{dossierController.selectParrinage(item)}" update=":ParrinageListForm:datalist" />
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton value="Ajouter Parrinage Pour Un Dossier"  action="#{dossierController.registerDossier()}" style="color: darkblue; font-weight: bolder;" />
+                            <p:commandButton value="Voir Les Parrinages D'un Parrain Pour Un Dossier" action="#{dossierController.registerDossierPourParrain()}" style="color: darkblue; font-weight: bolder;"   />
+                            <p:commandButton id="editButton2" actionListener="#{dossierController.voirArchiveDossier()}"  icon="ui-icon-pencil" value="Voir L'archive du Dossier" update=":ParrinageEditForm2" oncomplete="PF('ParrinageEditDialog2').show()" disabled="#{empty parrinageController.selected}"  style="color: darkblue; font-weight: bolder;" />
+
                         </f:facet>
-                        <h:outputText value="#{item.nbrOrphelin}"/>
-                    </p:column>
+                    </p:dataTable>
+
+                    <p:contextMenu for=":DossierListForm:datalist" widgetVar="cMenu">   
+                        <p:menuitem  icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
+                        <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/> 
+                    </p:contextMenu> 
+                </p:panel>
+
+            </h:form>
 
 
-                    <p:column style="background: #{item.laid == 0 ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListDossierTitle_dateDossier}"/>
+
+
+            <h:form id="ParrinageListForm"  style="width: 1000px;margin-left: 160px;">
+                <br/><br/>
+
+
+                <p:panel header="La Liste Des Parrinages Pour Un Dossier">
+                    <p:dataTable id="datalist" value="#{dossierController.selected.parrinages}" var="item"
+                                 selectionMode="single" selection="#{parrinageController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+
+                                 >
+
+                        <p:ajax event="rowSelect"   update=" editButton1 "/>
+                        <p:ajax event="rowUnselect" update=" editButton1 "/>
+
+                        <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                            <f:facet name="header">
+                                <h:outputText value="Parrain"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parrain.nom}"/>
+                        </p:column>
+                        <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                            <f:facet name="header">
+                                <h:outputText value="Montant"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montant}"/>
+                        </p:column>
+
+                        <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                            <f:facet name="header">
+                                <h:outputText value="DebutPar"/>
+                            </f:facet>
+                            <h:outputText value="#{item.debutPar}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                            <f:facet name="header">
+                                <h:outputText value="FinPar"/>
+                            </f:facet>
+                            <h:outputText value="#{item.finPar}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                            <f:facet name="header">
+                                <h:outputText value="Type"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}"/>
+                        </p:column>
+                        <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                            <f:facet name="header">
+                                <h:outputText value="Nombre De Mois"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nbrjours1}"/>
+                        </p:column>
+                        <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
+                            <f:facet name="header">
+                                <h:outputText value="Mediataire"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parrain.mediataire.nom}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="editButton1" actionListener="#{parrinageController.enregisterSelected()}"  icon="ui-icon-pencil" value="Voir Les Informations D'un Parrain / Mediataire" update=":ParrinageEditForm1" oncomplete="PF('ParrinageEditDialog1').show()" disabled="#{empty parrinageController.selected}"  style="color: darkblue; font-weight: bolder;" />
+
                         </f:facet>
-                        <h:outputText value="#{item.dateDossier}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
-                    </p:column>
-
-                    <p:column style="background: #{item.laid == 0 ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListDossierTitle_nomFamille}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nomFamille}"/>
-                    </p:column>
-                    <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListDossierTitle_region}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.region}"/>
-                    </p:column>
+                    </p:dataTable> 
+                </p:panel>
+            </h:form>
 
 
-                    <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListDossierTitle_logement}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.logement}"/>
-                    </p:column>
+            <p:dialog header="Archive Dossier Selon L'etat" widgetVar="dlg8" showEffect="explode" appendTo="@(body)" resizable="false" modal="true" height="260" width="1200">
+                <br/>
+                <h:form id="ArchiveCreateForm1">
+                    <p:panel header="#{bundle.ListDossierArchiveTitle}">
+                        <p:dataTable id="datalist" value="#{dossierArchiveController.items}" var="item"
+                                     selectionMode="single" selection="#{dossierArchiveController.selected}"
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     >
 
-                    <p:column style="background: #{item.laid == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListDossierTitle_montantTotal}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.montantTotal}"/>
-                    </p:column>
-                    <p:column >
-                        <f:facet name="header">
-                            <h:outputText value="Details"/>
-                        </f:facet>
-                        <p:commandButton value="okk" actionListener="#{dossierController.selectParrinage(item)}" update=":ParrinageListForm:datalist" />
-                    </p:column>
-                    <f:facet name="footer">
-                        <p:commandButton value="Ajouter Parrinage Pour Un Dossier"  action="#{dossierController.registerDossier()}"/>
-                    </f:facet>
-                </p:dataTable>
 
-                <p:contextMenu for=":DossierListForm:datalist" widgetVar="cMenu">   
-                    <p:menuitem  icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
-                    <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/> 
-                </p:contextMenu> 
-            </p:panel>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDossierArchiveTitle_date}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
 
-        </h:form>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDossierArchiveTitle_etat}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.etat}"/>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </p:panel>
+
+
+                </h:form>
+
+            </p:dialog>
 
 
 
+            <br/> <br/>
 
-        <h:form id="ParrinageListForm"  style="width: 1000px;margin-left: 160px;">
-            <br/><br/>
-
-            <p:fieldset legend="Partie De Recherche :"  style="width: 900px;margin-left: 40px;" >
-                <h:panelGrid columns="8" style=" margin-left: 150px;" >                        
-
-                    <p:outputLabel value="Nom Du Mediataire :" for="nommed"   style="  font-size: 18px; font-weight: bold ;"/>
-                    <p:inputText id="nommed" value="#{parrinageController.parrinage1.parrain.mediataire.nom}" title="#{bundle.CreateOperationnTitle_etatValide}" style=" margin-left: 30px;" />
-                    <p:outputLabel value="Nom Du Parrain :" for="nomPar"   style="  font-size: 18px; font-weight: bold ; margin-left: 30px; " />
-                    <p:inputText id="nomPar" value="#{parrinageController.parrinage1.parrain.nom}"    title="#{bundle.CreateOperationnTitle_etatValide}" style=" margin-left: 30px;" />
-
-                </h:panelGrid>
-                <p:commandButton icon="ui-icon-search" actionListener="#{parrinageController.rechercheByCritere()}" value="-- Rechercher --"  />
-                <p:commandButton actionListener="#{parrinageController.rechercheByCritere()}" value="-- Imprimer La Liste Des Parrinages D'un Parrin --" style=" margin-left: 40px;" update=":ParrinageListForm:datalist"  />
-
-            </p:fieldset>
             <br/>
 
 
-            <p:panel header="La Liste Des Parrinages Pour Un Dossier">
-                <p:dataTable id="datalist" value="#{dossierController.selected.parrinages}" var="item"
-                             selectionMode="single" selection="#{parrinageController.selected}"
-                             paginator="true"
-                             rowKey="#{item.id}"
-                             rows="10"
-                             rowsPerPageTemplate="10,20,30,40,50"
-
-                             >
-                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="Parrain"/>
-                        </f:facet>
-                        <h:outputText value="#{item.parrain}"/>
-                    </p:column>
-                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="Montant"/>
-                        </f:facet>
-                        <h:outputText value="#{item.montant}"/>
-                    </p:column>
-
-                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="DebutPar"/>
-                        </f:facet>
-                        <h:outputText value="#{item.debutPar}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="FinPar"/>
-                        </f:facet>
-                        <h:outputText value="#{item.finPar}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
-                    </p:column>
-
-                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="Type"/>
-                        </f:facet>
-                        <h:outputText value="#{item.type}"/>
-                    </p:column>
-                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="nbr"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nbrjours1}"/>
-                    </p:column>
-                    <p:column style="background: #{item.nbrjours1 == 0  ? ' coral ' : ' '  } ">
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:outputText value="#{item.parrain.mediataire.nom}"/>
-                    </p:column>
-                    <f:facet name="footer">
-                        <p:commandButton    value="Voir Les Informations D'un Parrain / Mediataire"  type="button" onclick="PF('dlg4').show();" />
-
-                    </f:facet>
-                </p:dataTable> 
-            </p:panel>
-        </h:form>
-
-
-
-        <h:form>
-
-            <p:dialog header="Voir Information Du Parrain et Mediataire" widgetVar="dlg4" showEffect="explode"  height="290" width="720">
-                <p:fieldset legend="Information Du Parrin"  style="width:200px; margin-left: 30px; height: 200px;" >
-                    <br/>
-                    <p:panelGrid columns="2" >
-
-                        <p:outputLabel value="#{bundle.CreateParrainLabel_nom}" for="nom" />
-                        <p:inputText id="nom" value="#{parrinageController.getParrinage().parrain.nom}" readonly="true" title="#{bundle.CreateParrainTitle_nom}" />
-                        <p:outputLabel value="#{bundle.CreateParrainLabel_prenom}" for="prenom" />
-                        <p:inputText id="prenom" value="#{parrinageController.getParrinage().parrain.prenom}"  readonly="true" title="#{bundle.CreateParrainTitle_prenom}" />
-                        <p:outputLabel value="#{bundle.CreateParrainLabel_telephone}" for="telephone" />
-                        <p:inputText id="telephone" value="#{parrinageController.getParrinage().parrain.telephone}"  readonly="true" title="#{bundle.CreateParrainTitle_telephone}" />
-                        <p:outputLabel value="#{bundle.CreateParrainLabel_gmail}" for="gmail" />
-                        <p:inputText id="gmail" value="#{parrinageController.getParrinage().parrain.gmail}" readonly="true" title="#{bundle.CreateParrainTitle_gmail}" />
-                    </p:panelGrid>
-                    <br/><br/>
-                    <p:commandButton value="Envoyer Message Gmail Au Parrain" action="#{parrinageController.goPage()}" />
-                </p:fieldset>
-                <p:fieldset legend="Information Du Mediataire"  style="width:200px; margin-left: 380px; height: 200px; margin-top: -215px;" >
-                    <br/>
-                    <p:panelGrid columns="2" >
-
-                        <p:outputLabel value="#{bundle.CreateParrainLabel_nom}" for="nom1" />
-                        <p:inputText id="nom1" value="#{parrinageController.getParrinage().parrain.mediataire.nom}" readonly="true" title="#{bundle.CreateParrainTitle_nom}" />
-                        <p:outputLabel value="#{bundle.CreateParrainLabel_prenom}" for="prenom1" />
-                        <p:inputText id="prenom1" value="#{parrinageController.getParrinage().parrain.mediataire.prenom}"  readonly="true" title="#{bundle.CreateParrainTitle_prenom}" />
-                        <p:outputLabel value="#{bundle.CreateParrainLabel_telephone}" for="telephone1" />
-                        <p:inputText id="telephone1" value="#{parrinageController.getParrinage().parrain.mediataire.telephone}"  readonly="true" title="#{bundle.CreateParrainTitle_telephone}" />
-                        <p:outputLabel value="#{bundle.CreateParrainLabel_gmail}" for="gmail1" />
-                        <p:inputText id="gmail1" value="#{parrinageController.getParrinage().parrain.mediataire.gmail}" readonly="true" title="#{bundle.CreateParrainTitle_gmail}" />
-                    </p:panelGrid>
-                    <br/><br/>
-                    <p:commandButton value="Envoyer Message Gmail Au Mediataire"  action="#{parrinageController.goPage()}" style="width: 250px;" />
-                </p:fieldset>
-
-            </p:dialog>
-            <br/><br/><br/><br/><br/><br/>
-        </h:form>
-
-
-
-
-
-        <br/> <br/>
-
-        <br/>
-
-
+            <ui:include src="Edit_1.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
 
 
         </ui:define>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOperationnTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+
+            <h:form style="margin-left: 1280px;">
+
+
+                <p:dock position="top" itemWidth="80" maxWidth="30"  >
+
+                    <p:menuitem  icon="/images/ttt.png" action="/operationn/List.xhtml" value="Retour" style="color: #004a80; font-weight: bolder;font-size: 17px;"  />
+                </p:dock>                   
+            </h:form>
+            
+            <h1><h:outputText value=" -- Ajouter Nouvelle Operation -- " style="font-size: 25px;margin-left: 440px;color: yellowgreen; font-weight: bolder;margin-top: -50px; " /></h1>      
+            <br/><br/><br/><br/>
+
+
+            <h:form style="margin-top: -70px;">
+                <p:fieldset legend="Ajouter Parrainage"  style=" margin-left: 120px; width: 1070px; " >
+
+                    <p:panelGrid columns="6" style="margin-bottom:10px; margin-left:50px;color: yellowgreen; font-weight: bolder; "   >
+
+                        <p:outputLabel value="Type Caisse :" for="typCais" />
+
+                        <p:selectOneMenu  id="typCais"  value="#{operationnController.typeCaiss}"  >
+                            <f:selectItem itemLabel=" -- select --"  />
+                            <f:selectItem itemValue="sociale" itemLabel="Sociale" />
+                            <f:selectItem itemValue="gestion" itemLabel="Gestion" />
+                            <p:ajax  process="typCais"  listener="#{operationnController.trouverCaisse()}"  update="rr" ></p:ajax>
+
+                        </p:selectOneMenu> 
+
+                        <p:outputLabel value="Caisse" for="rr" />
+
+                        <p:selectOneMenu  id="rr"  value="#{operationnController.selected.caisse.id}"  >
+                            <f:selectItem itemLabel=" -- select --"  />
+                            <f:selectItems value="#{operationnController.caissses}"
+                                           var="caisseItem"
+                                           itemValue="#{caisseItem}"/>
+                            <p:ajax  process="rr"  listener="#{operationnController.findByCaise()}"  update="qq" ></p:ajax>
+
+                        </p:selectOneMenu>
+
+
+
+                        <p:outputLabel value="Description" for="qq" />
+                        <p:selectOneMenu  id="qq"  value="#{operationnController.selected.descriptionCai}"  >
+                            <f:selectItem itemLabel=" -- selectDescription --"  />
+                            <f:selectItems value="#{operationnController.description}"
+                                           var="caisseItem"
+                                           itemValue="#{caisseItem}"/>
+                        </p:selectOneMenu> 
+
+                        <p:outputLabel value="Type D'operation :" for="type" />
+                        <p:selectOneMenu value="#{operationnController.selected.type}" id="type" style="margin-left: 10px;">
+                            <f:selectItem itemLabel=" -- select --"/>
+                            <f:selectItem itemLabel="Depense" itemValue="depense" />
+                            <f:selectItem itemLabel="Revenue" itemValue="revenue" />
+                            <f:selectItem itemLabel="Dete" itemValue="dete" />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="   Date Operation  :" for="date1" />
+                        <p:calendar id="date1" pattern="MM/dd/yyyy" value="#{operationnController.selected.date1}" title="#{bundle.EditOperationnTitle_date1}"  showOn="button"/>
+                        <p:outputLabel value="Date Virement :" for="date2" />
+                        <p:calendar id="date2" pattern="MM/dd/yyyy" value="#{operationnController.selected.date2}" title="#{bundle.EditOperationnTitle_date2}"  showOn="button"/>
+                        <p:outputLabel value="Mois :" for="nbrMois" />
+                        <p:selectOneMenu value="#{operationnController.selected.nbrMois}" id="nbrMois"  >
+
+                            <f:selectItem itemLabel=" -- select --"/>
+                            <f:selectItem itemLabel="Mois 1" itemValue="1"   />
+                            <f:selectItem itemLabel="Mois 2" itemValue="2"   />
+                            <f:selectItem itemLabel="Mois 3" itemValue="3"   />
+                            <f:selectItem itemLabel="Mois 4" itemValue="4"   />
+                            <f:selectItem itemLabel="Mois 5" itemValue="5"   />
+                            <f:selectItem itemLabel="Mois 6" itemValue="6"   />
+                            <f:selectItem itemLabel="Mois 7" itemValue="7"   />
+                            <f:selectItem itemLabel="Mois 8" itemValue="8"   />
+                            <f:selectItem itemLabel="Mois 9" itemValue="9"   />
+                            <f:selectItem itemLabel="Mois 10" itemValue="10"   />
+                            <f:selectItem itemLabel="Mois 11" itemValue="11"   />
+                            <f:selectItem itemLabel="Mois 12" itemValue="12"   />
+                        </p:selectOneMenu>
+
+
+
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_descriptionOper}" for="descriptionOper" />
+                        <p:inputText id="descriptionOper" value="#{operationnController.selected.descriptionOper}" title="#{bundle.CreateOperationnTitle_descriptionOper}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_responsable}" for="responsable" />
+                        <p:inputText id="responsable" value="#{operationnController.selected.responsable}" title="#{bundle.CreateOperationnTitle_responsable}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_fournisseur}" for="fournisseur" />
+                        <p:inputText id="fournisseur" value="#{operationnController.selected.fournisseur}" title="#{bundle.CreateOperationnTitle_fournisseur}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_mediataire}" for="mediataire" />
+                        <p:inputText id="mediataire" value="#{operationnController.selected.mediataire}" title="#{bundle.CreateOperationnTitle_mediataire}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_debit}" for="debit" />
+                        <p:inputText id="debit" value="#{operationnController.selected.debit}" title="#{bundle.CreateOperationnTitle_debit}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_credit}" for="credit" />
+                        <p:inputText id="credit" value="#{operationnController.selected.credit}" title="#{bundle.CreateOperationnTitle_credit}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{operationnController.selected.montant}" title="#{bundle.CreateOperationnTitle_montant}" />
+                        <p:outputLabel value="Type Paiement" for="typai" />
+                        <p:selectOneMenu value="#{operationnController.selected.typePaiement}" id="typai" style="margin-left: 10px;">
+                            <f:selectItem itemLabel=" -- select --"/>
+                            <f:selectItem itemLabel="Chèque" itemValue="cheque" />
+                            <f:selectItem itemLabel="Espèce" itemValue="espece" />
+                           
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numCheque}" for="numCheque"  />
+                        <p:inputText id="numCheque" value="#{operationnController.selected.numCheque}" readonly="true" title="#{bundle.CreateOperationnTitle_numCheque}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numFacture}" for="numFacture" />
+                        <p:inputText id="numFacture" value="#{operationnController.selected.numFacture}" title="#{bundle.CreateOperationnTitle_numFacture}" />
+                        <p:outputLabel value="#{bundle.CreateOperationnLabel_numReleve}" for="numReleve" />
+                        <p:inputText id="numReleve" value="#{operationnController.selected.numReleve}" title="#{bundle.CreateOperationnTitle_numReleve}" />
+                    </p:panelGrid>
+                    <br/><br/>
+                    <p:panelGrid columns="3" style="margin-bottom:10px; margin-left: 240px;" >
+
+                        <p:commandButton  icon="ui-icon-plus" actionListener="#{operationnController.createOperation()}" value="Ajouter L'operation" update=":growl"  style="margin-bottom: 15px; color: yellowgreen; font-weight: bolder;" />
+                        <p:commandButton  icon="ui-icon-plus" actionListener="#{operationnController.generatePdf()}" value="Télécharger le formulaire de l'opération"  ajax="false" style="margin-bottom: 15px;color: yellowgreen; font-weight: bolder;" />
+                        <p:commandButton value="Annuler" onclick="dlg4.hide()" style="margin-bottom: 15px;color: yellowgreen; font-weight: bolder;" />
+
+                    </p:panelGrid>
+
+                </p:fieldset>
+                <br/><br/><br/>
+            </h:form>
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>

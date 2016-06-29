@@ -11,7 +11,10 @@ import java.io.IOException;
 import service.ParrinageFacade;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +27,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import net.sf.jasperreports.engine.JRException;
+import pdfUtil.PdfUtil;
 
 @Named("parrinageController")
 @SessionScoped
@@ -31,12 +35,53 @@ public class ParrinageController implements Serializable {
 
     @EJB
     private service.ParrinageFacade ejbFacade;
+ 
     private List<Parrinage> items = null;
     private Parrinage selected;
     private Parrinage parrinage1;
     private String message;
     private String objet;
     private String email;
+    private int nbrMonth;
+    private double moisNonPaye;
+    private String nomPrenom;
+    private Date date;
+
+    public Date getDate() {
+        return date = new Date();
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+
+    
+    public String getNomPrenom() {
+        return nomPrenom;
+    }
+
+    public void setNomPrenom(String nomPrenom) {
+        this.nomPrenom = nomPrenom;
+    }
+    
+    
+    public double getMoisNonPaye() {
+        return moisNonPaye;
+    }
+
+    public void setMoisNonPaye(double moisNonPaye) {
+        this.moisNonPaye = moisNonPaye;
+    }
+    
+    
+    public int getNbrMonth() {
+        return nbrMonth;
+    }
+
+    public void setNbrMonth(int nbrMonth) {
+        this.nbrMonth = nbrMonth;
+    }
 
     public String getMessage() {
         return message;
@@ -61,11 +106,9 @@ public class ParrinageController implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
+
     public Parrinage getParrinage1() {
-        if(parrinage1 == null){
+        if (parrinage1 == null) {
             parrinage1 = new Parrinage();
         }
         return parrinage1;
@@ -75,30 +118,42 @@ public class ParrinageController implements Serializable {
         this.parrinage1 = parrinage1;
     }
 
-    
-    
     public ParrinageController() {
     }
 
     public Parrinage getSelected() {
-        if(selected == null){
-            selected= new Parrinage();
+        if (selected == null) {
+            SessionUtil.registerParrinage(selected);
+            selected = new Parrinage();
         }
         return selected;
     }
 
-    public void enregisterSelected(){
+    public void enregisterSelected() {
+        System.out.println("haaa lparrinage" + selected.getId());
         SessionUtil.registerParrinage(selected);
+
     }
-    public Parrinage getParrinage(){
-      return  SessionUtil.getParrinage();
+
+    public void affiche1() {
+        System.out.println("hanii dkhalt lcontroller");
     }
-    
-    public String goPage(){
-    enregisterSelected();
-    return "/EnvoyerEmail.xhtml";
+
+    public Parrinage getParrinage() {
+        return SessionUtil.getParrinage();
     }
-    
+
+    public String goPage() {
+        enregisterSelected();
+        return "/parrinage/EnvoyerEmail1.xhtml";
+    }
+   
+
+    public String goPage1() {
+        enregisterSelected();
+        return "/parrinage/EnvoyerEmail2.xhtml";
+    }
+
     public void setSelected(Parrinage selected) {
         this.selected = selected;
     }
@@ -225,17 +280,19 @@ public class ParrinageController implements Serializable {
         }
 
     }
-    
-    
-         public Parrain getParrain1(){
-       Parrain par=SessionUtil.getParrin();
-     return par;
+
+    public Parrain getParrain1() {
+        Parrain par = SessionUtil.getParrin();
+        return par;
     }
-     public Parrain getParrain(){
-       Parrain parrain=SessionUtil.getParrin();
-         System.out.println("haa lparrain"+parrain.getNom());
-     return parrain;
+
+    public Parrain getParrain() {
+        Parrain parrain = SessionUtil.getParrin();
+        System.out.println("haa lparrain" + parrain.getNom());
+        return parrain;
     }
+
+   
 //    
 //    public void ajouterParrinagee(){
 //       int res= ejbFacade.ajouterNouveauParrinage(selected);
@@ -247,34 +304,73 @@ public class ParrinageController implements Serializable {
 //       }
 //       selected=null;
 //    }
-    
-    public Dossier getDossierrr(){
-    Dossier dos=SessionUtil.getDossier();
-    return dos;
-}
-  public void affiche(){
-      System.out.println("haniiiiiiiiiiiiiiii");
-  }
-    public void ajouterParrinageeee() throws JRException, IOException{
-        System.out.println("ha 7naahnaa");
-        int res=ejbFacade.ajouterNouveauParrinage(selected);
-        
-         if(res>0){
-              ejbFacade.generatePdf(selected);
-            FacesContext.getCurrentInstance().getResponseComplete();
-           JsfUtil.addSuccessMessage(" La Parrinage Est Ajouté Avec Sucess");
-       }else{
-           JsfUtil.addErrorMessage("error!");
-       }
+
+    public Dossier getDossierrr() {
+        Dossier dos = SessionUtil.getDossier();
+        return dos;
     }
 
-    public void rechercheByCritere(){
-        items = ejbFacade.rechercheByCritere(parrinage1);
+    public void affiche() {
+        System.out.println("haniiiiiiiiiiiiiiii");
+    }
+
+    public void ajouterParrinageeee() throws JRException, IOException {
+        System.out.println("ha 7naahnaa");
+        int res = ejbFacade.ajouterNouveauParrinage(selected);
+
+        if (res > 0) {
+//            ejbFacade.generatePdf(selected);
+//            FacesContext.getCurrentInstance().getResponseComplete();
+            JsfUtil.addSuccessMessage(" La Parrinage Est Ajouté Avec Sucess");
+        } else {
+            JsfUtil.addErrorMessage("error!");
+        }
+    }
+
+     public String getParrain2() {
+        if (parrinage1.getParrain().getNom() != null && !parrinage1.getParrain().getNom().equals("")) {
+        String prenom = ejbFacade.getNomParrain(parrinage1.getParrain().getNom());
+        String parrain1 = parrinage1.getParrain().getNom()+" "+ prenom;
+         return parrain1;  
+        } else {
+        return null;
+            
+        }
+
     }
     
-    public void envoyerMessage(){
-        Mail.sendMail("fatihaabenaliaa@gmail.com","fatiha123456", email, objet, message);
+    public void rechercheByCritere() {
+        System.out.println("haniiii haniiii haniiii");
+        items = ejbFacade.rechercheByCritere(parrinage1);
+        nomPrenom = ejbFacade.getNomParrain(parrinage1.getParrain().getNom());
+        if (!items.isEmpty()) {
+            nbrMonth = ejbFacade.nbrMonth(items);
+            moisNonPaye = ejbFacade.moisNonPaye(nbrMonth);
+            System.out.println("hanii f controller" + nbrMonth);
+            System.out.println("haaa howa tamaan li makhlasch"+moisNonPaye);
+            date = getDate();
+        }
+
+    }
+
+    public void envoyerMessage() {
+        System.out.println("haaa l objet"+objet);
+        Mail.sendMail("fatihaabenaliaa@gmail.com", "fatiha123456", email, objet, message);
         JsfUtil.addSuccessMessage("Votre Message Est Envoyer Avec Succes");
     }
-    
+     public void generatePdf() throws JRException, IOException {
+        Map<String, Object> params = new HashMap<>();
+        params.put("p5", date);
+        params.put("p1", nomPrenom);
+        params.put("p2", getDossierrr().getNomFamille());
+        params.put("p3",nbrMonth);
+        params.put("p4",moisNonPaye );
+        PdfUtil.generatePdf(items, params, "Bilan Copmte", "/report/TestBilan.jasper");
+    }
+     public void imprimer() throws JRException, IOException{
+         generatePdf();
+          FacesContext.getCurrentInstance().getResponseComplete();
+     }
+     
+
 }

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3e9ab85b-0b03-4ebb-b5a9-b31bb78019e7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p1" class="java.lang.String"/>
+	<parameter name="p2" class="java.lang.String"/>
+	<parameter name="p3" class="java.lang.String"/>
+	<parameter name="p4" class="java.lang.String"/>
+	<parameter name="p5" class="java.lang.String"/>
+	<field name="debutPar" class="java.util.Date"/>
+	<field name="finPar" class="java.util.Date"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="nbrjours1" class="java.lang.Integer"/>
+	<field name="totMontant" class="java.lang.Double"/>
+	<field name="numCheque" class="java.lang.String"/>
+	<field name="typePaiement" class="java.lang.String"/>
+	<field name="remarque" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="227face5-a9a6-4202-a7a0-5cb8d235c385" x="173" y="11" width="254" height="20"/>
+				<textElement/>
+				<text><![CDATA[                Bilan Parrain pour le Dossier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d8c56672-0de3-4aee-a665-48084a93df75" x="9" y="40" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Marrakech le :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9234de66-a3de-486f-b99b-f747f2d746bd" x="144" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p5}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="157" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="52c5b318-5ac4-44b0-8f60-edf6c73f83b4" x="38" y="13" width="125" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nom et Prenom :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06c5c60b-81c3-487d-882c-d0f353506599" x="38" y="43" width="125" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nom de la Famille]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ca87cb-0f1e-42c4-9390-8832640ecf33" x="38" y="78" width="125" height="20"/>
+				<textElement/>
+				<text><![CDATA[Les mois non Parrainer ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="613fa368-1c59-409f-a089-6da5fcf18008" x="38" y="114" width="125" height="20"/>
+				<textElement/>
+				<text><![CDATA[Contribution Caisse]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ca63db15-40f3-496c-ba13-5ea19e987922" x="198" y="7" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7f9a3e4f-78d3-4d02-af5b-392ccc297482" x="197" y="40" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3bced56e-5034-41ba-ba76-87bf94470866" x="197" y="78" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ad6ec5a7-e8f6-4339-92d5-1c26b06e96f5" x="197" y="114" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p4}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="221" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="26e3fb4a-86ec-4438-ace9-7f1e114ce38e" x="206" y="32" width="160" height="20"/>
+				<textElement/>
+				<text><![CDATA[       List des Parrainage ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="568bcad5-cdc5-4b90-9d49-21f07caa579a" x="11" y="175" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{debutPar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ddc57391-3083-4e7e-a70c-64dd5ed3f1c6" x="72" y="175" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{finPar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4522b34c-5ee4-4447-b7cc-8f4f4aeafc7f" x="133" y="175" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nbrjours1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="35cf0744-dbc3-459f-9c81-599172c730a8" x="194" y="175" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ca7f6a6-b1c6-43c5-837f-a6273b0a7fd3" x="255" y="175" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{totMontant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1bd1154d-29f4-4f13-af20-60e868d6a40e" x="316" y="175" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numCheque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5f7fca0a-d4a9-4225-a823-24844364e072" x="377" y="175" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{typePaiement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3e2bc1eb-c5f8-40eb-8d51-c5788926bb7d" x="438" y="175" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{remarque}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b2e4cf2c-fc58-47cb-80e8-4c23c2ccf7f3" x="11" y="155" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[debutPar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="41db27fb-3f81-42d8-ad52-1cc80181e74d" x="72" y="155" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[finPar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="916205d7-9fd1-4385-bd4c-1fe449b30a64" x="133" y="155" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[nbrjours1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa237d26-cfc8-458e-abfc-51f85c4e47c7" x="194" y="155" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="27976928-8404-45d4-9c78-2e8a3e7bf24e" x="255" y="155" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[totMontant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f46b2fec-b050-4bfb-a676-fd5c9f697160" x="316" y="155" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[numCheque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aa7ec1eb-a4ca-4d3c-a30e-10a3d7eef3ca" x="377" y="155" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[typePaiement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c3c628fa-7d81-49d3-ab1a-69114ca4f52c" x="438" y="155" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[remarque]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

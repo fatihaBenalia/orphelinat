@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperationnArchiveEditDlg" widgetVar="OperationnArchiveEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOperationnArchiveTitle}">
+            <h:form id="OperationnArchiveEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operationnArchiveController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{operationnArchiveController.selected.id}" title="#{bundle.EditOperationnArchiveTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_date1}" for="date1" />
+                        <p:calendar id="date1" pattern="MM/dd/yyyy" value="#{operationnArchiveController.selected.date1}" title="#{bundle.EditOperationnArchiveTitle_date1}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_date2}" for="date2" />
+                        <p:calendar id="date2" pattern="MM/dd/yyyy" value="#{operationnArchiveController.selected.date2}" title="#{bundle.EditOperationnArchiveTitle_date2}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_nbrMois}" for="nbrMois" />
+                        <p:inputText id="nbrMois" value="#{operationnArchiveController.selected.nbrMois}" title="#{bundle.EditOperationnArchiveTitle_nbrMois}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{operationnArchiveController.selected.type}" title="#{bundle.EditOperationnArchiveTitle_type}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_responsable}" for="responsable" />
+                        <p:inputText id="responsable" value="#{operationnArchiveController.selected.responsable}" title="#{bundle.EditOperationnArchiveTitle_responsable}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_fournisseur}" for="fournisseur" />
+                        <p:inputText id="fournisseur" value="#{operationnArchiveController.selected.fournisseur}" title="#{bundle.EditOperationnArchiveTitle_fournisseur}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_mediataire}" for="mediataire" />
+                        <p:inputText id="mediataire" value="#{operationnArchiveController.selected.mediataire}" title="#{bundle.EditOperationnArchiveTitle_mediataire}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{operationnArchiveController.selected.montant}" title="#{bundle.EditOperationnArchiveTitle_montant}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_numCheque}" for="numCheque" />
+                        <p:inputText id="numCheque" value="#{operationnArchiveController.selected.numCheque}" title="#{bundle.EditOperationnArchiveTitle_numCheque}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_numFacture}" for="numFacture" />
+                        <p:inputText id="numFacture" value="#{operationnArchiveController.selected.numFacture}" title="#{bundle.EditOperationnArchiveTitle_numFacture}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_numReleve}" for="numReleve" />
+                        <p:inputText id="numReleve" value="#{operationnArchiveController.selected.numReleve}" title="#{bundle.EditOperationnArchiveTitle_numReleve}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_descriptioncaise}" for="descriptioncaise" />
+                        <p:inputText id="descriptioncaise" value="#{operationnArchiveController.selected.descriptioncaise}" title="#{bundle.EditOperationnArchiveTitle_descriptioncaise}" />
+                        <p:outputLabel value="#{bundle.EditOperationnArchiveLabel_etatValide}" for="etatValide" />
+                        <p:inputText id="etatValide" value="#{operationnArchiveController.selected.etatValide}" title="#{bundle.EditOperationnArchiveTitle_etatValide}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{operationnArchiveController.update}" value="#{bundle.Save}" update="display,:OperationnArchiveListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OperationnArchiveEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OperationnArchiveEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

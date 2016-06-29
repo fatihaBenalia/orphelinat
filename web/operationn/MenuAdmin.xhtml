@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOperationnTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <br/><br/><br/><br/>
+
+
+
+            <style>
+
+                #menu-demo2, #menu-demo2 ul{
+                    padding:0;
+                    margin:0;
+                    list-style:none;
+                    text-align:center;
+                    font-size: 17px;
+                    font-weight: bold;
+                }
+                #menu-demo2 li{
+                    display:inline-block;
+                    position:relative;
+                    border-radius:8px 8px 8px 8px;
+                }
+                #menu-demo2 ul li{
+                    display:inherit;
+                    border-radius:0;
+                }
+                #menu-demo2 ul li:hover{
+                    border-radius:0;
+                }
+                #menu-demo2 ul li:last-child{
+                    border-radius:0 0 8px 8px;
+                }
+                #menu-demo2 ul{
+                    position:absolute;
+                    z-index: 1000;
+                    max-height:0;
+                    left: 0;
+                    right: 0;
+                    overflow:hidden;
+                    -moz-transition: .8s all .3s;
+                    -webkit-transition: .8s all .3s;
+                    transition: .8s all .3s;
+                }
+                #menu-demo2 li:hover ul{
+                    max-height:15em;
+                }
+                /* background des liens menus */
+
+                #menu-demo2 li:last-child{
+                    background-color: bisque;
+                    background-image:-webkit-linear-gradient(top, bisque 0%, lightcoral 100%);
+                    background-image:linear-gradient(to bottom, bisque 0%, lightcoral 100%);
+                }
+                /* background des liens sous menus */
+
+                #menu-demo2 li:last-child li{
+                    background:lightcoral;
+                }
+                /* background des liens menus et sous menus au survol */
+
+                #menu-demo2 li:last-child:hover, #menu-demo2 li:last-child li:hover{
+                    background:bisque;
+                }
+                /* les a href */
+                #menu-demo2 a{
+                    text-decoration:none;
+                    display:block;
+                    color:#fff;
+                    font-family:arial;
+                }
+                #menu-demo2 ul a{
+                    padding:8px 0;
+
+                }
+                #menu-demo2 li:hover li a{
+                    color:#fff;
+                    text-transform:inherit;
+                    text-align: center;
+
+
+                }
+                #menu-demo2 li:hover a, #menu-demo2 li li:hover a{
+                    color:#000;
+
+                </style>
+
+                <style>
+                    #menu-demo3, #menu-demo3 ul{
+                        padding:0;
+                        margin:0;
+                        list-style:none;
+                        text-align:center;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+                    #menu-demo3 li{
+                        display:inline-block;
+                        position:relative;
+                        border-radius:8px 8px 8px 8px;
+                    }
+                    #menu-demo3 ul li{
+                        display:inherit;
+                        border-radius:0;
+                    }
+                    #menu-demo3 ul li:hover{
+                        border-radius:0;
+                    }
+                    #menu-demo3 ul li:last-child{
+                        border-radius:0 0 8px 8px;
+                    }
+                    #menu-demo3 ul{
+                        position:absolute;
+                        z-index: 1000;
+                        max-height:0;
+                        left: 0;
+                        right: 0;
+                        overflow:hidden;
+                        -moz-transition: .8s all .3s;
+                        -webkit-transition: .8s all .3s;
+                        transition: .8s all .3s;
+                    }
+                    #menu-demo3 li:hover ul{
+                        max-height:15em;
+                    }
+                    /* background des liens menus */
+
+                    #menu-demo3 li:last-child{
+                        background-color: gold;
+                        background-image:-webkit-linear-gradient(top, indianred 0%, gold 100%);
+                        background-image:linear-gradient(to bottom, indianred 0%, gold 100%);
+                    }
+                    /* background des liens sous menus */
+
+                    #menu-demo3 li:last-child li{
+                        background:indianred;
+                    }
+                    /* background des liens menus et sous menus au survol */
+
+                    #menu-demo3 li:last-child:hover, #menu-demo3 li:last-child li:hover{
+                        background:gold;
+                    }
+                    /* les a href */
+                    #menu-demo3 a{
+                        text-decoration:none;
+                        display:block;
+                        color:#fff;
+                        font-family:arial;
+                    }
+                    #menu-demo3 ul a{
+                        padding:8px 0;
+
+                    }
+                    #menu-demo3 li:hover li a{
+                        color:#fff;
+                        text-transform:inherit;
+                        text-align: center;
+
+
+                    }
+                    #menu-demo3 li:hover a, #menu-demo3 li li:hover a{
+                        color:#000;
+                    }
+                </style>
+                <style>
+                    #menu-demo4, #menu-demo4 ul{
+                        padding:0;
+                        margin:0;
+                        list-style:none;
+                        text-align:center;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+                    #menu-demo4 li{
+                        display:inline-block;
+                        position:relative;
+                        border-radius:8px 8px 8px 8px;
+                    }
+                    #menu-demo4 ul li{
+                        display:inherit;
+                        border-radius:0;
+                    }
+                    #menu-demo4 ul li:hover{
+                        border-radius:0;
+                    }
+                    #menu-demo4 ul li:last-child{
+                        border-radius:0 0 8px 8px;
+                    }
+                    #menu-demo4 ul{
+                        position:absolute;
+                        z-index: 1000;
+                        max-height:0;
+                        left: 0;
+                        right: 0;
+                        overflow:hidden;
+                        -moz-transition: .8s all .3s;
+                        -webkit-transition: .8s all .3s;
+                        transition: .8s all .3s;
+                    }
+                    #menu-demo4 li:hover ul{
+                        max-height:15em;
+                    }
+                    /* background des liens menus */
+
+                    #menu-demo4 li:last-child{
+                        background-color: #CFFF6A;
+                        background-image:-webkit-linear-gradient(top, #CFFF6A 0%, #677F35 100%);
+                        background-image:linear-gradient(to bottom, #CFFF6A 0%, #677F35 100%);
+                    }
+                    /* background des liens sous menus */
+
+                    #menu-demo4 li:last-child li{
+                        background:#677F35;
+                    }
+                    /* background des liens menus et sous menus au survol */
+
+                    #menu-demo4 li:last-child:hover, #menu-demo4 li:last-child li:hover{
+                        background:#CFFF6A;
+                    }
+                    /* les a href */
+                    #menu-demo4 a{
+                        text-decoration:none;
+                        display:block;
+                        color:#fff;
+                        font-family:arial;
+                    }
+                    #menu-demo4 ul a{
+                        padding:8px 0;
+
+                    }
+                    #menu-demo4 li:hover li a{
+                        color:#fff;
+                        text-transform:inherit;
+                        text-align: center;
+
+
+                    }
+                    #menu-demo4 li:hover a, #menu-demo4 li li:hover a{
+                        color:#000;
+                    }
+                </style>
+                <style>
+                    #menu-demo5, #menu-demo5 ul{
+                        padding:0;
+                        margin:0;
+                        list-style:none;
+                        text-align:center;
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+                    #menu-demo5 li{
+                        display:inline-block;
+                        position:relative;
+                        border-radius:8px 8px 8px 8px;
+                    }
+                    #menu-demo5 ul li{
+                        display:inherit;
+                        border-radius:0;
+                    }
+                    #menu-demo5 ul li:hover{
+                        border-radius:0;
+                    }
+                    #menu-demo5 ul li:last-child{
+                        border-radius:0 0 8px 8px;
+                    }
+                    #menu-demo5 ul{
+                        position:absolute;
+                        z-index: 1000;
+                        max-height:0;
+                        left: 0;
+                        right: 0;
+                        overflow:hidden;
+                        -moz-transition: .8s all .3s;
+                        -webkit-transition: .8s all .3s;
+                        transition: .8s all .3s;
+                    }
+                    #menu-demo5 li:hover ul{
+                        max-height:15em;
+                    }
+                    /* background des liens menus */
+
+                    #menu-demo5 li:last-child{
+                        background-color: paleturquoise;
+                        background-image:-webkit-linear-gradient(top, paleturquoise 0%, lightseagreen 100%);
+                        background-image:linear-gradient(to bottom, paleturquoise 0%, lightseagreen 100%);
+                    }
+                    /* background des liens sous menus */
+
+                    #menu-demo5 li:last-child li{
+                        background:lightseagreen;
+                    }
+                    /* background des liens menus et sous menus au survol */
+
+                    #menu-demo5 li:last-child:hover, #menu-demo5 li:last-child li:hover{
+                        background:paleturquoise;
+                    }
+                    /* les a href */
+                    #menu-demo5 a,er{
+                        text-decoration:none;
+                        display:block;
+                        color:#fff;
+                        font-family:arial;
+                    }
+                    #menu-demo5 ul a,er{
+                        padding:8px 0;
+
+                    }
+                    #menu-demo5 li:hover li a,er{
+                        color:#fff;
+                        text-transform:inherit;
+                        text-align: center;
+
+
+                    }
+                    #menu-demo5 li:hover a,er, #menu-demo5 li li:hover a{
+                        color:#000;
+                    }
+                </style>
+                <h:form >
+                    <ul id="menu-demo2" style="margin-top: 90px;">
+
+                        <li style="margin-left: -600px; margin-top: 30px; width: 120px; height: 150px; ">
+
+                            <a href="#" > <img src="operationn/icoc.png" style="width: 90px; height: 90px; margin-top: 20px;" /> </a>
+                            <p:commandLink value="Creation Des Caisses"  style="font-weight: bolder; font-size: 24px;"  oncomplete="PF('CaisseCreateDialog').show()"  update=":CaisseCreateForm" />
+
+                        </li>
+                    </ul>  
+
+                    <ul id="menu-demo3" style="margin-top: -180px; margin-left: -400px; ">
+                        <li style="margin-left: 190px; margin-top: 30px; width: 120px; height: 150px; ">
+
+                            <a href="#" > <img src="operationn/modif.png" style="width: 90px; height: 90px; margin-top: 20px;" /> </a>
+                            <p:commandLink value="Modifier Les Parametres "  type="button" onclick="PF('dlg6').show();" style="font-weight: bolder; font-size: 24px;" />
+
+                        </li>
+                    </ul> 
+                    <ul id="menu-demo4" style="margin-left: 185px; margin-top: -320px;">
+                        <li style=" margin-top: 170px; width: 120px; height: 150px; ">
+
+                            <a href="#" > <img src="operationn/aleerte.png" style="width: 90px; height: 90px; margin-top: 20px;" /> </a>
+                            <p:commandLink value="Les Operations Modifier"   type="button" onclick="PF('dlg7').show();" style="font-weight: bolder; font-size: 24px;" />
+
+                        </li>
+                    </ul> 
+                    <ul id="menu-demo5" style="margin-top: -150px; ">
+                        <li style="margin-left: 583px;  width: 120px; height: 150px; ">
+
+                            <a href="#" > <img src="operationn/tach.png" style="width: 90px; height: 90px; margin-top: 20px;" /></a>
+                            <p:commandLink value="Les Taches De Comptable "  style="font-weight: bolder; font-size: 24px;" action="/operationn/MenuAdmin1.xhtml"/>
+
+                        </li>
+                    </ul> 
+                </h:form> 
+
+
+
+
+                <p:dialog header="Modifier Parametre" widgetVar="dlg6" showEffect="explode" appendTo="@(body)" resizable="false" modal="true" height="360" width="1000">
+                    <br/>
+                    <br/>
+                    <h:form id="ParametreListForm">
+                        <p:panel >
+                            <p:dataTable id="datalist" value="#{parametreController.parametres}" var="item"
+                                         selectionMode="single" selection="#{parametreController.selected}"
+
+                                         rowKey="#{item.id}"
+
+                                         >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Date" style="color: yellowgreen; font-weight: bolder;"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.dateApplication}" >
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="M.Complete" style="color:yellowgreen; font-weight: bolder;" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.montantComplete}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="M.Partielle" style="color: yellowgreen; font-weight: bolder;" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.montantPartielle}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListParametreTitle_alimentation}" style="color: yellowgreen; font-weight: bolder;" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.alimentation}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListParametreTitle_habillement}" style="color: yellowgreen; font-weight: bolder;" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.habillement}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Couverture" style="color: yellowgreen; font-weight: bolder;" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.matelasEtCouvertures}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListParametreTitle_sante}" style="color: yellowgreen; font-weight: bolder;" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.sante}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListParametreTitle_scolarité}" style="color:yellowgreen; font-weight: bolder;" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.scolarité}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListParametreTitle_sacrifice}" style="color: yellowgreen; font-weight: bolder;" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.sacrifice}"/>
+                                </p:column>
+
+                                <p:column>
+
+                                    <f:facet name="header">
+                                        <h:outputText value="Modifier" style="color: yellowgreen; font-weight: bolder;" />
+                                    </f:facet> 
+                                    <p:commandButton actionListener="#{parametreController.updateParametre(item)}" style="margin-left: 15px;"  icon="ui-icon-pencil" update=":editPar"  />
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>
+
+                    </h:form>
+                    <br/><br/>
+                    <h:form id="editPar" style="margin-left: 140px;">
+                        <p:panelGrid columns="4" rendered="#{parametreController.selected != null}">
+                            <p:outputLabel value="#{bundle.EditParametreLabel_montantComplete}" for="montantComplete" style="color: coral; font-weight: bolder;" />
+                            <p:inputText id="montantComplete" value="#{parametreController.selected.montantComplete}" title="#{bundle.EditParametreTitle_montantComplete}" />
+                            <p:outputLabel value="#{bundle.EditParametreLabel_montantPartielle}" for="montantPartielle" style="color: coral; font-weight: bolder;"/>
+                            <p:inputText id="montantPartielle" value="#{parametreController.selected.montantPartielle}" title="#{bundle.EditParametreTitle_montantPartielle}" />
+                            <p:outputLabel value="#{bundle.EditParametreLabel_alimentation}" for="alimentation" style="color: coral; font-weight: bolder;" />
+                            <p:inputText id="alimentation" value="#{parametreController.selected.alimentation}" title="#{bundle.EditParametreTitle_alimentation}" />
+                            <p:outputLabel value="#{bundle.EditParametreLabel_habillement}" for="habillement" style="color: coral; font-weight: bolder;"/>
+                            <p:inputText id="habillement" value="#{parametreController.selected.habillement}" title="#{bundle.EditParametreTitle_habillement}" />
+                            <p:outputLabel value="#{bundle.EditParametreLabel_matelasEtCouvertures}" for="matelasEtCouvertures" style="color: coral; font-weight: bolder;" />
+                            <p:inputText id="matelasEtCouvertures" value="#{parametreController.selected.matelasEtCouvertures}" title="#{bundle.EditParametreTitle_matelasEtCouvertures}" />
+                            <p:outputLabel value="#{bundle.EditParametreLabel_sante}" for="sante" style="color: coral; font-weight: bolder;" />
+                            <p:inputText id="sante" value="#{parametreController.selected.sante}" title="#{bundle.EditParametreTitle_sante}" />
+                            <p:outputLabel value="#{bundle.EditParametreLabel_scolarité}" for="scolarité" style="color: coral; font-weight: bolder;" />
+                            <p:inputText id="scolarité" value="#{parametreController.selected.scolarité}" title="#{bundle.EditParametreTitle_scolarité}" />
+                            <p:outputLabel value="#{bundle.EditParametreLabel_sacrifice}" for="sacrifice" style="color: coral; font-weight: bolder;"  />
+                            <p:inputText id="sacrifice" value="#{parametreController.selected.sacrifice}" title="#{bundle.EditParametreTitle_sacrifice}" />
+                        </p:panelGrid>
+                        <p:commandButton value="Modifier" style="color: yellowgreen; font-weight: bolder;" action="#{parametreController.modifierAnn()}"  update=":growl,:ParametreListForm:datalist,editPar" />
+                        <p:commandButton value="Ajouter Nouveau Parametre" style="color: yellowgreen; font-weight: bolder;"  action="#{parametreController.createParam()}"  update=":growl,:ParametreListForm:datalist,editPar"  />
+                    </h:form>
+                    <br/><br/>
+                </p:dialog>
+                <br/><br/>
+                <p:dialog header="Les Opérations Modifiées" widgetVar="dlg7" showEffect="explode" appendTo="@(body)" resizable="false" modal="true" height="340" width="1200">
+                    <br/>
+
+
+                    <h:form id="OperatinListForm">
+                        <p:panel header="La Liste Des Opérations Modifiées">
+                            <p:dataTable id="datalist" value="#{operationnController.operationns}" var="item"
+                                         selectionMode="single" selection="#{operationnController.selected}"
+                                         paginator="true"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         >
+
+
+
+
+
+                                <p:column style="color: coral; font-weight: bolder;">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_date1}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.date1}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_type}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.type}"/>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_descriptionCai}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.descriptioncaise}"/>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_responsable}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.responsable}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_fournisseur}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fournisseur}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_mediataire}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.mediataire}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_debit}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.debit}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_credit}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.credit}"/>
+                                </p:column>
+                                <p:column style="color: coral; font-weight: bolder;">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_montant}"  />
+                                    </f:facet>
+                                    <h:outputText value="#{item.montant}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_numCheque}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.numCheque}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_numFacture}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.numFacture}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListOperationnTitle_numReleve}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.numReleve}"/>
+                                </p:column>
+
+
+
+                                <f:facet name="footer">
+                                    <p:commandButton     value="Voir Details" actionListener="#{operationnController.voirDetails()}" update=":ArchiveOperationListForm:datalist"  style="margin-left: -50px; width: 200px; height: 25px; color: yellowgreen; font-weight: bold; " />
+                                    <p:commandButton     value="Actualiser" actionListener="#{operationnController.getOperationns1()}" update=":OperatinListForm:datalist,:ArchiveOperationListForm:datalist"  style="margin-left: 10px; width: 200px; height: 25px; color: yellowgreen; font-weight: bold; " />
+                                </f:facet>
+                                <br/><br/>
+                            </p:dataTable>
+
+                        </p:panel>
+
+
+                    </h:form>
+
+
+                    <br/><br/>
+
+                    <h:form id="ArchiveOperationListForm">
+                        <p:panel header="Details Du Changement">
+                            <p:dataTable id="datalist" value="#{operationnController.archives}" var="item"
+                                         selectionMode="single" selection="#{archiveOperationController.selected}"
+                                        
+                                         rowKey="#{item.id}"
+                                      >   
+
+                                <p:column style="color: coral; font-weight: bolder;">
+                                    <f:facet name="header">
+                                        <h:outputText value="Date Modification"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.dateModification}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column style="color: coral; font-weight: bolder;">
+                                    <f:facet name="header">
+                                        <h:outputText value="Le Montant Est Modifié au :"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.montant}"/>
+                                </p:column>
+
+
+
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+                </p:dialog>
+                <br/><br/>
+
+
+
+                <ui:include src="CreationCaisse.xhtml"/>
+
+            </ui:define>
+        </ui:composition>
+
+    </html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+
+
+        <p:dialog  id="ArchiveEditDlg" header="Archive Dossier Selon L'etat" widgetVar="dlg88" showEffect="explode" appendTo="@(body)" resizable="false" modal="true" height="260" width="1200">
+            <br/>
+            <h:form id="ArchiveCreateForm">
+                <h:panelGroup id="display">
+                    <p:panel header="#{bundle.ListDossierArchiveTitle}">
+                        <p:dataTable id="datalist" value="#{dossierController.archivees}" var="item"
+                                     selectionMode="single" selection="#{dossierArchiveController.selected}"
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     >
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDossierArchiveTitle_date}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListDossierArchiveTitle_etat}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.etat}"/>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </p:panel>
+
+                </h:panelGroup>
+            </h:form>
+
+        </p:dialog>
+
+
+
+
+
+    </ui:composition>
+
+</html>

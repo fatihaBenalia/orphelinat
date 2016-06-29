@@ -1,29 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8af0b809-ef98-4582-8a61-f7c8ffc18a22">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" forecolor="#333300" backcolor="#999900">
+		<pen lineWidth="1.0" lineStyle="Dotted"/>
+		<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+			<pen lineWidth="1.0" lineStyle="Dashed"/>
+			<topPen lineWidth="1.0" lineStyle="Dashed"/>
+			<leftPen lineWidth="1.0" lineStyle="Dashed"/>
+			<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+			<rightPen lineWidth="1.0" lineStyle="Dashed"/>
+		</box>
+	</style>
+	<style name="style2" forecolor="#333300"/>
+	<parameter name="p1" class="java.util.Date"/>
+	<parameter name="p2" class="java.lang.String"/>
+	<parameter name="p3" class="java.lang.String"/>
+	<parameter name="p4" class="java.lang.String"/>
+	<parameter name="p5" class="java.lang.Double"/>
+	<parameter name="p6" class="java.lang.String"/>
+	<parameter name="p7" class="java.lang.String"/>
+	<parameter name="p8" class="java.lang.String"/>
+	<parameter name="p9" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<image>
+				<reportElement uuid="d40a6776-abe9-4529-8d7c-b9551fca3304" x="453" y="0" width="102" height="66"/>
+				<imageExpression><![CDATA["C:\\Users\\samia\\Documents\\NetBeansProjects\\projetsDerniere\\web\\ass.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="67530731-8991-4d33-86c1-8bf9c12a761f" style="style1" x="0" y="24" width="445" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[L'Association Marocaine Pour La Prise En Charge De L'Orphelin]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="167" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="90716926-864f-4f03-8f8f-b6ddf8862242" style="style2" x="30" y="13" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date Operation :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="fa27cb52-7f01-4a85-a2ef-48537f4e3a57" x="130" y="13" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="18592096-1d2a-484a-98cf-6962aaeb3ded" style="style2" x="319" y="13" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero Releve :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4c9bb9d1-892a-4354-b1dc-1341860f50c5" x="419" y="13" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N 011701]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c72153be-c00c-4ca0-87b7-82246a31a32c" style="style2" x="73" y="44" width="177" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[_Nom Et Prenom Du Parrain :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9f8003d7-3269-4730-9c1d-6954f22cfd3d" style="style2" x="73" y="64" width="167" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[_La Famille Parrainée :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d26549c0-7e3f-4a5d-8a21-ab90e6757da5" x="250" y="64" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="edafa10b-2b8a-4ba5-ab67-16aaf3ec94b0" x="250" y="124" width="53" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p6}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="73227e61-595d-473f-957d-c2a46141b19f" style="style2" x="73" y="84" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[_Montant :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7caa4c7b-0e49-4fa6-8bae-fc060564858a" style="style2" x="73" y="104" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[_Type Paiement :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6347dd87-36b3-407e-aaec-1e48862d5cce" x="345" y="105" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Numero Chèque :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="468fdcdf-99d4-4526-b58b-4d400af2b37e" x="250" y="44" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f02a0b71-bd1b-47d3-b208-1dcc494ef2bf" x="311" y="44" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5ce79775-28f8-46f1-be1e-a8c1ff2b24c9" x="250" y="84" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6fca2979-eb7c-4cce-a9e8-6b320ce740b0" style="style2" x="411" y="124" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature :]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="5e140e60-4698-4158-9ab3-205098761956" x="0" y="154" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="3b07045a-6cae-4683-8d29-fcebed0caabc" x="303" y="124" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="33e0bdef-8d57-43c9-baa6-89585459452d" x="250" y="104" width="57" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="10ddcce9-d90a-46d0-915c-d8594c123f9e" x="445" y="105" width="84" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p9}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="15e1fd33-d54e-4452-b01b-9ae8f0f0e113" style="style2" x="73" y="124" width="177" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[_Nom Et Prenom Du Mediateur :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="119" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
 </jasperReport>

@@ -6,6 +6,7 @@ import bean.CaisseTTCaisse;
 import bean.Dossier;
 import bean.Parrain;
 import bean.Parrinage;
+import bean.User;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +24,12 @@ public class SessionUtil {
     }
      public static Parrain getParrin(){
        return  (Parrain) getAttribute("pp");
+    }
+      public static void registerUser(User user){
+          setAttribute("pp1", user);
+    }
+     public static User getUser(){
+       return  (User) getAttribute("pp1");
     }
      
         public static void registerDossier(Dossier dossier){

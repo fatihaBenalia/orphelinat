@@ -53,7 +53,16 @@ public class CaisseController implements Serializable {
         this.typeCaisse = typeCaisse;
     }
     
-    
+    public void creerCaisse(){
+        int res = ejbFacade.create1(selected);
+        if(res >0){
+            JsfUtil.addSuccessMessage("Caisse Est Crée Qvec Succes ");
+        }else{
+            JsfUtil.addErrorMessage("Error !!");
+        }
+            
+            
+    }
 
     
      public void findByCaise() {

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListParrinageTitle}"></h:outputText>
+        </ui:define>
+        <h1><h:outputText value="Gestion Des Dossiers" style="font-size: 25px; " /></h1>
+
+        <ui:define name="body">
+
+
+
+
+
+
+            <br/><br/>
+
+
+            <h:form style="margin-left: 1280px;margin-top: -32px;">
+
+
+                <p:dock position="top" itemWidth="80" maxWidth="30"  >
+
+                    <p:menuitem  icon="/images/ttt.png" action="/parrinage/GestionDossiers.xhtml" value="Retour" style="color: #004a80; font-weight: bolder;font-size: 17px;"  />
+                </p:dock>                   
+            </h:form>
+   
+            <h:form id="ParrinageListForm"  style="width: 1000px;margin-left: 160px;">
+
+                <div style="border: solid; border-color: yellowgreen; border-radius: 25px; width: 600px;margin-left: 210px;margin-top: -15px; height: 50px;">
+                <br/><br/>
+                <h1><h:outputLabel style="margin-left: 80px; color: darkblue;margin-top: -30px;position: absolute;">-- Bilan Parrain Pour Un Dossier --</h:outputLabel></h1>
+                </div>
+   <br/>   <br/>
+                <p:fieldset legend="Partie De Recherche :"  style="width:1000px;margin-top: -15px;" >
+                    <p:panelGrid columns="4"  >
+
+                        <p:outputLabel value="Nom Du Parrain :" for="nomPar"   style="  font-size: 18px; font-weight: bold ; margin-left: 30px;color: darkblue; " />
+                        <p:inputText id="nomPar" value="#{parrinageController.parrinage1.parrain.nom}"    title="#{bundle.CreateOperationnTitle_etatValide}" style=" margin-left: 30px;" />
+
+
+                        <p:commandButton icon="ui-icon-search" actionListener="#{parrinageController.rechercheByCritere()}" value="-- Rechercher --" update=":ParrinageListForm:datalist,id1" />
+
+                        <p:commandButton  value="-- Télécharger Le Formulaire --"  action="#{parrinageController.imprimer()}"  ajax="false"  style=" margin-left: 40px;"   />
+
+                    </p:panelGrid>
+                    <br/>
+                </p:fieldset>
+
+
+
+
+
+                <br/><br/><br/>
+                <p:fieldset  >
+                    <p:panelGrid columns="2" style="margin-left: 260px;" id="id1" >
+                        <p:outputLabel value="Nom et Prenom Du Parrain :" for="nomP"   style="  font-size: 18px; font-weight: bold ;color: darkblue;"/>
+                        <p:inputText id="nomP" value="#{parrinageController.nomPrenom}" title="#{bundle.CreateOperationnTitle_etatValide}" style=" margin-left: 30px;" />
+                        <p:outputLabel value="Nom De La Famille :" for="nom"    style="  font-size: 18px; font-weight: bold ; margin-left: 30px; color: darkblue;" />
+                        <p:inputText id="nom" readonly="true" value="#{parrinageController.getDossierrr().nomFamille}"   title="#{bundle.CreateOperationnTitle_etatValide}" style=" margin-left: 30px;" />
+                        <p:outputLabel value=" Les Mois Non Parrinée :" for="con"   style="  font-size: 18px; font-weight: bold ; margin-left: 30px;color: darkblue; " />
+                        <p:inputText id="con"  value="#{parrinageController.nbrMonth}"   title="#{bundle.CreateOperationnTitle_etatValide}" style=" margin-left: 30px;" />
+                        <p:outputLabel value=" Contribution De La Caisse:" for="conn"   style="  font-size: 18px; font-weight: bold ; margin-left: 30px;color: darkblue; " />
+                        <p:inputText id="conn"  value="#{parrinageController.moisNonPaye}"   title="#{bundle.CreateOperationnTitle_etatValide}" style=" margin-left: 30px;" />
+
+                    </p:panelGrid>
+
+                    <br/><br/>
+                    <p:panel header="La Liste Des Parrinages Pour Un Dossier">
+                        <p:dataTable id="datalist" value="#{parrinageController.items}" var="item"
+                                     selectionMode="single" selection="#{parrinageController.selected}"
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+
+                                     >
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Parrain"/>
+                                </f:facet>
+                                <h:outputText value="#{item.parrain.nom}"/>
+                            </p:column>
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Montant"/>
+                                </f:facet>
+                                <h:outputText value="#{item.montant}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DebutPar"/>
+                                </f:facet>
+                                <h:outputText value="#{item.debutPar}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="FinPar"/>
+                                </f:facet>
+                                <h:outputText value="#{item.finPar}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Type"/>
+                                </f:facet>
+                                <h:outputText value="#{item.type}"/>
+                            </p:column>
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre De Mois"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nbrjours1}"/>
+                            </p:column>
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Mediataire"/>
+                                </f:facet>
+                                <h:outputText value="#{item.parrain.mediataire.nom}"/>
+                            </p:column>
+
+                        </p:dataTable> 
+                    </p:panel>
+                </p:fieldset>
+
+            </h:form> 
+
+
+
+
+
+
+
+            <br/> <br/>
+
+            <br/>
+
+
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7385d372-e715-4888-914a-02492668dfa1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="5"/>
+	<parameter name="p1" class="java.lang.String"/>
+	<parameter name="p2" class="java.lang.String"/>
+	<parameter name="p3" class="java.lang.Double"/>
+	<parameter name="p4" class="java.lang.String"/>
+	<parameter name="p5" class="java.util.Date"/>
+	<parameter name="p6" class="java.lang.String"/>
+	<parameter name="p7" class="java.lang.String"/>
+	<field name="debutPar" class="java.lang.String"/>
+	<field name="finPar" class="java.lang.String"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="montant" class="java.lang.String"/>
+	<field name="nbrjours1" class="java.lang.String"/>
+	<field name="totMontant" class="java.lang.String"/>
+	<field name="numCheque" class="java.lang.String"/>
+	<field name="typePaiement" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="022bc25e-8317-4ea7-98ad-144458cb07e0" x="157" y="10" width="227" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bilan Parrain Pour Un Dossier]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2e2a9b33-b4a8-4148-bbc7-c820fd787af1" x="292" y="49" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="bd4e628e-3ef0-4dae-9bb4-0b8ef63b64ca" x="157" y="49" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marrakech, Le :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="174" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d2e3c898-241f-46f9-ae6d-8537d9fd11c1" x="69" y="23" width="175" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nom Et Prenom Du Parrain :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8fa5c5f5-0765-4f87-98a5-8654e22fd280" x="69" y="55" width="175" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nom De La Famille Parrinée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="04465c51-a736-4d19-8696-7b4fc9335f01" x="69" y="88" width="175" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Les Mois Non Parrinée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d796b315-bb63-4081-8514-072542bd288d" x="69" y="120" width="175" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contribution De La Caisse :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a281c4c3-10ad-47c4-aab8-e4d3dc48f16f" x="284" y="23" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ccd4f748-22b2-4616-957c-92284ec69ede" x="284" y="55" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9a939aaa-e24e-4cf9-a3c9-b6d1cb11c252" x="284" y="88" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cb99cb9a-b531-4e6e-b8fb-76acec8f6523" x="284" y="120" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p4}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="175" splitType="Stretch">
+			<textField>
+				<reportElement uuid="64ede7ad-8547-42da-a8e7-f3ed42d238c2" x="9" y="108" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{debutPar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d20dbea6-5622-4702-8f46-bbff40d00bd2" x="9" y="88" width="78" height="20"/>
+				<textElement/>
+				<text><![CDATA[debutPar]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="94c183bc-cd55-4526-8a12-8afa903dd67b" x="87" y="108" width="68" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{finPar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9a8b1b41-397a-4515-a555-db4387f4282f" x="87" y="88" width="68" height="20"/>
+				<textElement/>
+				<text><![CDATA[finPar]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="40483b53-77e2-41b4-b0d8-56cf3ab38ce7" x="155" y="108" width="66" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="578b4935-1379-4ef1-85af-4d1f8657021a" x="155" y="88" width="66" height="20"/>
+				<textElement/>
+				<text><![CDATA[type]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="be7edf02-288a-4b04-896b-fb7a945b52fb" x="221" y="108" width="63" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3ef4b1e0-74dc-4c4f-8d3e-2814950a67ac" x="221" y="88" width="63" height="20"/>
+				<textElement/>
+				<text><![CDATA[montant]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b3dbeb2b-90d4-438b-82f2-15aa5bc1c592" x="284" y="108" width="52" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nbrjours1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8b9a819d-b190-47c2-8276-ed04d5ad97fe" x="284" y="88" width="52" height="20"/>
+				<textElement/>
+				<text><![CDATA[nbrjours1]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a5416a80-9452-4cc5-ae79-ca3017ecec37" x="336" y="108" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{totMontant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0afa1761-6301-4ed8-bde2-cae4c4d2e2e5" x="336" y="88" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[totMontant]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9f3ef978-b91f-455b-b102-2fd3582c7852" x="455" y="108" width="73" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numCheque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5fdf3f13-a45b-4681-826f-1ebcf0f20620" x="397" y="108" width="58" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{typePaiement}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="daa99e77-04cc-40bc-97bc-8840e98d0cd0" x="397" y="88" width="58" height="20"/>
+				<textElement/>
+				<text><![CDATA[typePaiement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a365520-d8ee-4908-ae5f-481a7ca4ea52" x="455" y="88" width="73" height="20"/>
+				<textElement/>
+				<text><![CDATA[numCheque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56b593a5-1717-4bcc-b499-41829152f5df" x="200" y="32" width="162" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La List Des Parrinages]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="26" splitType="Stretch"/>
+	</summary>
+</jasperReport>

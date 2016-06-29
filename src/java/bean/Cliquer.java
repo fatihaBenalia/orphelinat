@@ -24,6 +24,17 @@ public class Cliquer implements Serializable {
     private int res;
     private int res2;
     private int res3;
+    private int test;
+
+    public int getTest() {
+        return test;
+    }
+
+    public void setTest(int test) {
+        this.test = test;
+    }
+    
+    
 
     public int getRes2() {
         return res2;

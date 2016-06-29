@@ -1,6 +1,7 @@
 package controler;
 
 import bean.Dossier;
+import bean.DossierArchive;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
 import controler.util.SessionUtil;
@@ -16,10 +17,12 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.event.CellEditEvent;
 
 @Named("dossierController")
 @SessionScoped
@@ -28,13 +31,28 @@ public class DossierController implements Serializable {
     @EJB
     private service.DossierFacade ejbFacade;
     private List<Dossier> items = null;
+    private List<DossierArchive> archivees = null;
     private Dossier selected;
     private int etatt;
     private int nbr;
     private String msg;
     private String destination;
     private Dossier nesDossier;
-    
+
+    public List<DossierArchive> getArchivees() {
+        if(archivees == null){
+            archivees = new ArrayList();
+        }
+        return archivees;
+    }
+
+    public void setArchivees(List<DossierArchive> archivees) {
+        this.archivees = archivees;
+    }
+
+   
+
+  
     
     public String getMsg() {
         return msg;
@@ -140,6 +158,12 @@ public class DossierController implements Serializable {
         }
         return items;
     }
+    public void getItems1() {
+        
+  
+            items = ejbFacade.mesDossiers();
+     
+    }
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
@@ -223,6 +247,21 @@ public class DossierController implements Serializable {
     }
 
     /////////////////////
+    
+    
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+            System.out.println("haa lwla"+oldValue);
+            System.out.println("haa tania"+newValue);
+            System.out.println("etat dyal selected lwlaaa"+selected.getEtat());
+        if(newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "L'etat Est Changer Avec Sucess", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            ejbFacade.editerSelected(selected,oldValue);
+            
+        }
+    } 
     public void findDosiier() {
         items = ejbFacade.findDosiier(etatt);
     }
@@ -246,7 +285,7 @@ public class DossierController implements Serializable {
     public String registerDossier() {
         SessionUtil.registerDossier(selected);
 
-        return "/AjouterParrinage.xhtml";
+        return "/parrinage/AjouterParrinage.xhtml";
     }
 
     public Dossier getDossier() {
@@ -258,6 +297,23 @@ public class DossierController implements Serializable {
         System.out.println("haa dossier"+nesDossier);
         items = ejbFacade.rechercheByCritere(nesDossier);
     }
-    
-    
+   public void editerDossier(){
+     ejbFacade.editDosssier();
+   } 
+   
+   public String registerDossierPourParrain(){
+       System.out.println("haaa dossier dyaalnaa"+selected.getId());
+       SessionUtil.registerDossier(selected);
+       return "/parrinage/ParrinageDunParrain.xhtml";
+   }
+   public void afficher(){
+       System.out.println("haaniniiiiii");
+   }
+   
+   public void voirArchiveDossier(){
+       System.out.println("hahwaa dkhaal lhnaas");
+
+        archivees = ejbFacade.voirDossierArchive(selected);
+   }
+   
 }

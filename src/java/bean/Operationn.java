@@ -52,7 +52,29 @@ public class Operationn implements Serializable {
     private String typeOperation; /// gestion source ou social
     private int etatDete;
     private String descriptioncaise;
+    private int etatModification;
+    private String typePaiement;
 
+    public String getTypePaiement() {
+        return typePaiement;
+    }
+
+    public void setTypePaiement(String typePaiement) {
+        this.typePaiement = typePaiement;
+    }
+    
+    
+
+    public int getEtatModification() {
+        return etatModification;
+    }
+
+    public void setEtatModification(int etatModification) {
+        this.etatModification = etatModification;
+    }
+    
+    
+    
     
     
       public java.util.Date convertUtilToSql(java.util.Date utilDate) {

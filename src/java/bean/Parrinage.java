@@ -38,9 +38,67 @@ public class Parrinage implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date priseDossier;
     private String type;
-    private double Montant;
+    private double montant;
     private int nbrjours1;
+    private int etatArchive;
+    private double totMontant;
+    private String numCheque;
+    private String typePaiement;
+    private String remarque;
+
+    public double getMontant() {
+        return montant;
+    }
+
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
+
    
+    
+    
+    
+
+    public String getNumCheque() {
+        return numCheque;
+    }
+
+    public void setNumCheque(String numCheque) {
+        this.numCheque = numCheque;
+    }
+
+    public String getTypePaiement() {
+        return typePaiement;
+    }
+
+    public void setTypePaiement(String typePaiement) {
+        this.typePaiement = typePaiement;
+    }
+
+    public String getRemarque() {
+        return remarque;
+    }
+
+    public void setRemarque(String remarque) {
+        this.remarque = remarque;
+    }
+    
+    
+
+    public double getTotMontant() {
+        return totMontant;
+    }
+    public void setTotMontant(double totMontant) {
+        this.totMontant = totMontant;
+    }
+
+    public int getEtatArchive() {
+        return etatArchive;
+    }
+
+    public void setEtatArchive(int etatArchive) {
+        this.etatArchive = etatArchive;
+    }
 
     public int getNbrjours1() {
         return nbrjours1;
@@ -50,8 +108,6 @@ public class Parrinage implements Serializable {
         this.nbrjours1 = nbrjours1;
     }
 
- 
-    
     public Parrain getParrain() {
         if(parrain == null){
             parrain= new Parrain();
@@ -63,14 +119,7 @@ public class Parrinage implements Serializable {
         this.parrain = parrain;
     }
 
-    public double getMontant() {
-        return Montant;
-    }
-
-    public void setMontant(double Montant) {
-        this.Montant = Montant;
-    }
-    
+   
     public Dossier getDossier() {
         if(dossier == null){
             dossier= new Dossier();

@@ -22,7 +22,7 @@ public class Parametre implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double montantComplete;//600
     private double montantPartielle;//300
@@ -34,6 +34,16 @@ public class Parametre implements Serializable {
     private double sacrifice;//100
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateApplication;
+    private int ress;
+
+    public int getRess() {
+        return ress;
+    }
+
+    public void setRess(int ress) {
+        this.ress = ress;
+    }
+    
 
     public Date getDateApplication() {
         return dateApplication;

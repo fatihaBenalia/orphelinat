@@ -43,6 +43,14 @@ public class CliquerController implements Serializable {
             return -1;
         }
     }
+       public int tester() {
+        Cliquer cliquer = ejbFacade.find(1);
+        if (cliquer.getTest()== 1) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
           public int clicker3() {
         Cliquer cliquer = ejbFacade.find(1);
         if (cliquer.getRes3()== 1) {

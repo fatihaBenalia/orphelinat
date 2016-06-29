@@ -59,7 +59,7 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
     public int addOperationDeMoi() {
         Parametre parametre;
         parametre = parametreFacade.chercher();
-        String requette = " select d from Dossier d where d.etat = 1  or d.etat=2";
+        String requette = " select d from Dossier d where d.etat = 3  or d.etat=2";
         List<Dossier> ds = em.createQuery(requette).getResultList();
         System.out.println("hani dawazt la requette==========>" + ds.toString());
         for (int i = 0; i < ds.size(); i++) {
@@ -74,21 +74,21 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
                 parrinageFacade.edit(get1);
             }
             System.out.println("voilaaaa hani kandawaz traitement ");
-            if (associationParrinage.getMontant() > parametre.getMontantComplete()) {
+            if (associationParrinage.getMontant() >= parametre.getMontantComplete()) {
                 associationParrinage.setMontant(associationParrinage.getMontant() - parametre.getMontantComplete());
                 get.setMontantTotal(parametre.getMontantComplete());
                 dossierFacade.edit(get);
                 compteAssociationParrinage.edit(associationParrinage);
                 Date date = new Date();
                 OperationMois operationMois1 = new OperationMois();
-                Caisse caisse1 = caisseFacade.find("1");
+                Caisse caisse1 = caisseFacade.find("approvisionnement");
                 System.out.println("haniii f caisse1====>" + caisse1.toString());
                 operationMois1.setCaisse(caisse1);
                 operationMois1.setDossier(get);
                 operationMois1.setDate(date);
                 operationMois1.setMontant(parametre.getAlimentation());
-                operationMois1.setDescription("Alimentation");
-                operationMois1.setEtat(1);
+                operationMois1.setDescription("approvisionnement");
+                operationMois1.setEtat("debit");
                 create(operationMois1);
                 caisse1.setEntreeDossier(caisse1.getEntreeDossier() + parametre.getAlimentation());
                 caisseFacade.edit(caisse1);
@@ -97,14 +97,14 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
                  * ************************************************************************
                  */
                 OperationMois operationMois2 = new OperationMois();
-                Caisse caisse2 = caisseFacade.find("2");
+                Caisse caisse2 = caisseFacade.find("sacrifice");
                 System.out.println("haniii f caisse2====>" + caisse2.toString());
                 operationMois2.setCaisse(caisse2);
                 operationMois2.setDossier(get);
                 operationMois2.setDate(date);
                 operationMois2.setMontant(parametre.getSacrifice());
-                operationMois2.setDescription("Sacrifice");
-                operationMois2.setEtat(1);
+                operationMois2.setDescription("sacrifice");
+                operationMois2.setEtat("debit");
                 create(operationMois2);
                 caisse2.setEntreeDossier(caisse2.getEntreeDossier() + parametre.getSacrifice());
                 caisseFacade.edit(caisse2);
@@ -113,14 +113,14 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
                  * ****************************************************************************
                  */
                 OperationMois operationMois3 = new OperationMois();
-                Caisse caisse3 = caisseFacade.find("3");
+                Caisse caisse3 = caisseFacade.find("santé");
                 System.out.println("haniii f caisse3====>" + caisse3.toString());
                 operationMois3.setCaisse(caisse3);
                 operationMois3.setDossier(get);
                 operationMois3.setDate(date);
                 operationMois3.setMontant(parametre.getSante());
-                operationMois3.setDescription("Sante");
-                operationMois3.setEtat(1);
+                operationMois3.setDescription("santé");
+                operationMois3.setEtat("debit");
                 create(operationMois3);
 
                 caisse3.setEntreeDossier(caisse3.getEntreeDossier() + parametre.getSante());
@@ -130,14 +130,14 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
                  * ******************************************************************************
                  */
                 OperationMois operationMois4 = new OperationMois();
-                Caisse caisse4 = caisseFacade.find("4");
+                Caisse caisse4 = caisseFacade.find("scolarité");
                 System.out.println("haniii f caisse4====>" + caisse4.toString());
                 operationMois4.setCaisse(caisse4);
                 operationMois4.setDossier(get);
                 operationMois4.setDate(date);
                 operationMois4.setMontant(parametre.getScolarité());
-                operationMois4.setDescription("Scolarité");
-                operationMois4.setEtat(1);
+                operationMois4.setDescription("scolarité");
+                operationMois4.setEtat("debit");
                 create(operationMois4);
                 caisse4.setEntreeDossier(caisse4.getEntreeDossier() + parametre.getScolarité());
                 caisseFacade.edit(caisse4);
@@ -146,14 +146,14 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
                  * ******************************************************************************
                  */
                 OperationMois operationMois5 = new OperationMois();
-                Caisse caisse5 = caisseFacade.find("5");
+                Caisse caisse5 = caisseFacade.find("habillement");
                 System.out.println("haniii f caisse4====>" + caisse5.toString());
                 operationMois5.setCaisse(caisse5);
                 operationMois5.setDossier(get);
                 operationMois5.setDate(date);
                 operationMois5.setMontant(parametre.getHabillement());
-                operationMois5.setDescription("Habillement");
-                operationMois5.setEtat(1);
+                operationMois5.setDescription("habillement");
+                operationMois5.setEtat("debit");
                 create(operationMois5);
                 caisse5.setEntreeDossier(caisse5.getEntreeDossier() + parametre.getHabillement());
                 caisseFacade.edit(caisse5);
@@ -162,14 +162,14 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
                  * ******************************************************************************
                  */
                 OperationMois operationMois6 = new OperationMois();
-                Caisse caisse6 = caisseFacade.find("6");
+                Caisse caisse6 = caisseFacade.find("matelasEtCouvertures");
                 System.out.println("haniii f caisse6====>" + caisse6.toString());
                 operationMois6.setCaisse(caisse6);
                 operationMois6.setDossier(get);
                 operationMois6.setDate(date);
                 operationMois6.setMontant(parametre.getMatelasEtCouvertures());
-                operationMois6.setDescription("MatelasEtCouvertures");
-                operationMois6.setEtat(1);
+                operationMois6.setDescription("matelasEtCouvertures");
+                operationMois6.setEtat("debit");
                 create(operationMois6);
                 caisse6.setEntreeDossier(caisse6.getEntreeDossier() + parametre.getMatelasEtCouvertures());
                 caisseFacade.edit(caisse6);
@@ -178,14 +178,28 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
             }
 
         }
+        for (int i = 0; i < ds.size(); i++) {
+            Dossier get = ds.get(i);
+              String reString1 = "select p from Parrinage p where p.dossier.id =" + get.getId() + "";
+            List<Parrinage> parrinagee = em.createQuery(reString1).getResultList();
+            for (int j = 0; j < parrinagee.size(); j++) {
+                Parrinage get1 = parrinagee.get(j);
+                if (get1.getNbrjours1() == 0) {
+                    get.setLaid(get1.getNbrjours1());
+                    dossierFacade.edit(get);
+                    parrinageFacade.edit(get1);
 
+                }
+            }
+            
+        }
         return 1;
     }
 
     public int DossierDeEtat2() {
         Parametre parametre;
         parametre = parametreFacade.chercher();
-        String requette = " select d from Dossier d where d.etat = 3 ";
+        String requette = " select d from Dossier d where d.etat = 1 ";
         List<Dossier> mm = em.createQuery(requette).getResultList();
         for (int i = 0; i < mm.size(); i++) {
             Dossier get = mm.get(i);
@@ -199,21 +213,21 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
                 parrinageFacade.edit(get1);
             }
             System.out.println("voilaaaa hani kandawaz traitement ");
-            if (associationParrinage.getMontant() > parametre.getMontantPartielle()) {
+            if (associationParrinage.getMontant() >= parametre.getMontantPartielle()) {
                 associationParrinage.setMontant(associationParrinage.getMontant() - parametre.getMontantPartielle());
                 get.setMontantTotal(parametre.getMontantPartielle());
                 dossierFacade.edit(get);
                 compteAssociationParrinage.edit(associationParrinage);
                 Date date = new Date();
                 OperationMois operationMois1 = new OperationMois();
-                Caisse caisse1 = caisseFacade.find("1");
+                Caisse caisse1 = caisseFacade.find("approvisionnement");
                 System.out.println("haniii f caisse1====>" + caisse1.toString());
                 operationMois1.setCaisse(caisse1);
                 operationMois1.setDossier(get);
                 operationMois1.setDate(date);
                 operationMois1.setMontant(parametre.getAlimentation());
-                operationMois1.setDescription("Alimentation");
-                operationMois1.setEtat(1);
+                operationMois1.setDescription("approvisionnement");
+                operationMois1.setEtat("debit");
                 create(operationMois1);
                 caisse1.setEntreeDossier(caisse1.getEntreeDossier() + parametre.getAlimentation());
                 caisseFacade.edit(caisse1);
@@ -240,22 +254,24 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
                 Parrinage get1 = parrinage.get(j);
                 get1.setNbrjours1(get1.getNbrjours1() - 1);
                 parrinageFacade.edit(get1);
+                
             }
             System.out.println("voilaaaa hani kandawaz traitement ");
             associationParrinage.setMontant(associationParrinage.getMontant() - parametre.getMontantPartielle());
             get.setMontantDepenseSanter(get.getMontantDepenseSanter() + parametre.getMontantPartielle());
+            get.setLaid(get.getLaid()-1);
             dossierFacade.edit(get);
             compteAssociationParrinage.edit(associationParrinage);
             Date date = new Date();
             OperationMois operationMois1 = new OperationMois();
-            Caisse caisse1 = caisseFacade.find("7");
+            Caisse caisse1 = caisseFacade.find("parrainageGlobale");
             System.out.println("haniii f caisse1====>" + caisse1.getId());
             operationMois1.setCaisse(caisse1);
             operationMois1.setDossier(get);
             operationMois1.setDate(date);
             operationMois1.setMontant(parametre.getAlimentation());
-            operationMois1.setDescription("Alimentation");
-            operationMois1.setEtat(2);
+            operationMois1.setDescription("parrainageGlobale");
+            operationMois1.setEtat("credit");
             create(operationMois1);
             caisse1.setEntree(caisse1.getEntree() - parametre.getAlimentation());
             caisse1.setDepense(caisse1.getDepense() + parametre.getAlimentation());
@@ -264,7 +280,7 @@ public class OperationMoisFacade extends AbstractFacade<OperationMois> {
 
             return 1;
         }
-        return 1;
+        return -1;
     }
 /////////////////////////////////pdf///////////////////
    

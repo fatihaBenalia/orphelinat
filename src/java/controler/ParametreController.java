@@ -6,6 +6,7 @@ import controler.util.JsfUtil.PersistAction;
 import service.ParametreFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -26,15 +27,68 @@ public class ParametreController implements Serializable {
     @EJB
     private service.ParametreFacade ejbFacade;
     private List<Parametre> items = null;
+    private List<Parametre> parametres = null;
     private Parametre selected;
 
+    public List<Parametre> getParametres() {
+        if(parametres == null){
+            parametres = ejbFacade.selectParametre();
+        }
+        return parametres;
+    }
+    public void actualiser() {
+       
+            parametres = ejbFacade.selectParametre();
+            selected = null;
+       
+    }
+    
+       
+ public void modifierAnn(){
+
+    int res=ejbFacade.modParametre(selected);
+    selected= null;
+    if(res >0 ){
+             JsfUtil.addSuccessMessage(" Le Parametre Est Modifié Avec Sucess");
+    }else{
+        JsfUtil.addErrorMessage("error!");
+     
+ }
+ }
+public void createParam(){
+  int res=ejbFacade.createPar(selected);
+    selected= null;
+    if(res >0 ){
+             JsfUtil.addSuccessMessage(" Le Parametre Est crée Avec Sucess");
+    }else{
+        JsfUtil.addErrorMessage("error!");
+     
+ }  
+}
+    public void setParametres(List<Parametre> parametres) {
+        this.parametres = parametres;
+    }
+
+    
+    
+    
     public ParametreController() {
     }
+    
+    
 
     public Parametre getSelected() {
+        if(selected == null){
+            selected = new Parametre();
+        }
         return selected;
     }
+ public void updateParametre(Parametre parametre) {
+        this.selected = parametre;
+    
 
+    }
+    
     public void setSelected(Parametre selected) {
         this.selected = selected;
     }

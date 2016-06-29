@@ -43,6 +43,15 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
     public CaisseFacade() {
         super(Caisse.class);
     }
+
+    public int create1(Caisse caisse) {
+        Caisse loaded = find(caisse.getId());
+        if (loaded == null) {
+            create(caisse);
+            return 1;
+        }
+        return -1;
+    }
 ///////////////////////////// sociale actuel ://///////////////////////////////////////////////////////////
 
     public double calculMontEntree() {
@@ -179,6 +188,9 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
 
     public void calculMontChaquCaisse(Caisse caisse, double rev, double det, double dep) {
         Date date = new Date();
+        System.out.println("hahomaa lrev" + rev);
+        System.out.println("hahomaa det" + det);
+        System.out.println("hahomaa dep" + dep);
         double prof;
         if (rev - dep > 0) {
             prof = rev - dep;
@@ -289,7 +301,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
 
 //    }
     ////////////////// les mois li li 3ndhom 31 jours   
-    @Schedule(dayOfMonth = "31", second = "0", minute = "0", hour = "23")
+   @Schedule(dayOfMonth = "17", second = "0", minute = "41", hour = "13")
     public void calSommeCaisse1() {
         System.out.println("ha 7na hnaaaa");
         Date date = new Date();
@@ -301,6 +313,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
         if (month == 3 || month == 5 || month == 1 || month == 7 || month == 8 || month == 10 || month == 12) {
             String req = " select c from Caisse c where c.type like 'sociale' ";
             List<Caisse> lista = em.createQuery(req).getResultList();
+            System.out.println("haa listaa dyal les caisses !! " + lista);
             for (int i = 0; i < lista.size(); i++) {
                 Caisse get = lista.get(i);
                 double rev1 = 0;
@@ -332,7 +345,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
     }
 
     ////////////////// les mois qui contient 30 jours
-    @Schedule(dayOfMonth = "30", second = "0", minute = "0", hour = "23")
+    @Schedule(dayOfMonth = "17", second = "0", minute = "52", hour = "13")
     public void calSommeCaisse2() {
         Date date = new Date();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -343,6 +356,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
         if (month == 4 || month == 6 || month == 9 || month == 11) {
             String req = " select c from Caisse c where c.type like 'sociale' ";
             List<Caisse> lista = em.createQuery(req).getResultList();
+            System.out.println("haa listra " + lista);
             for (int i = 0; i < lista.size(); i++) {
                 Caisse get = lista.get(i);
                 double rev1 = 0;
@@ -351,6 +365,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                 double prof1 = 0;
                 String requette = " select o from Operationn o where o.caisse.id like '" + get.getId() + "' ";
                 List<Operationn> lista1 = em.createQuery(requette).getResultList();
+                System.out.println("haa listraww" + lista1);
                 for (int j = 0; j < lista1.size(); j++) {
                     Operationn get1 = lista1.get(j);
                     LocalDate localDate1 = get1.getDate1().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -377,7 +392,10 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
 /////////////////////////// calcul la somme de tout les caisse pour chaque mois:(les Caisses Socials)/////////////////////////////////////////
     public void calculMontTTCaisse(double rev, double det, double dep, double profit) {
         Date date = new Date();
-
+        System.out.println("haa lreeev" + rev);
+        System.out.println("haa lproooooooof" + profit);
+        System.out.println("haa ldepppp" + dep);
+        System.out.println("haa ldeeet" + det);
         CaisseMoisCaisse caisseMoisCaisse = new CaisseMoisCaisse();
         caisseMoisCaisse.setDepense(dep);
         caisseMoisCaisse.setDete(det);
@@ -390,7 +408,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
     }
 
 ////////////// les mois qui contient 30 jours :
-    @Schedule(dayOfMonth = "30", second = "0", minute = "30", hour = "23")
+     @Schedule(dayOfMonth = "17", second = "0", minute = "55", hour = "13")
     public void calSommeCaissePourTTCaisse() {
         double rev1 = 0;
         double det1 = 0;
@@ -420,7 +438,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
     }
 //////////////////////////////// les mois qui contient 31 jours :
 
-    @Schedule(dayOfMonth = "31", second = "0", minute = "30", hour = "23")
+   @Schedule(dayOfMonth = "17", second = "0", minute = "43", hour = "13")
     public void calSommeCaissePourTTCaisse1() {
         double rev1 = 0;
         double det1 = 0;
@@ -571,7 +589,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                         }
                     }
                 }
-                calculMontChaquCaisse(get, rev1, det1, dep1);
+                calculMontChaquCaisseGestion(get, rev1, det1, dep1);
             }
         }
     }
@@ -613,14 +631,14 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                         }
                     }
                 }
-                calculMontChaquCaisse(get, rev1, det1, dep1);
+                calculMontChaquCaisseGestion(get, rev1, det1, dep1);
             }
         }
     }
 
 //    }
     ////////////////// les mois li li 3ndhom 31 jours   
-    @Schedule(dayOfMonth = "31", second = "0", minute = "10", hour = "23")
+   @Schedule(dayOfMonth = "17", second = "0", minute = "41", hour = "13")
     public void calSommeCaisseGestionn() {
         System.out.println("ha 7na hnaaaa");
         Date date = new Date();
@@ -657,13 +675,13 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                         }
                     }
                 }
-                calculMontChaquCaisse(get, rev1, det1, dep1);
+                calculMontChaquCaisseGestion(get, rev1, det1, dep1);
             }
         }
     }
 
     ////////////////// les mois qui contient 30 jours
-    @Schedule(dayOfMonth = "30", second = "0", minute = "10", hour = "23")
+    @Schedule(dayOfMonth = "17", second = "0", minute = "52", hour = "13")
     public void calSommeCaisseGestionnnm() {
         Date date = new Date();
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -699,7 +717,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                         }
                     }
                 }
-                calculMontChaquCaisse(get, rev1, det1, dep1);
+                calculMontChaquCaisseGestion(get, rev1, det1, dep1);
             }
         }
     }
@@ -721,7 +739,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
     }
 
 ////////////// les mois qui contient 30 jours :
-    @Schedule(dayOfMonth = "30", second = "0", minute = "37", hour = "23")
+    @Schedule(dayOfMonth = "17", second = "0", minute = "55", hour = "13")
     public void calSommeCaissePourTTCaisseGestion() {
         double rev1 = 0;
         double det1 = 0;
@@ -746,12 +764,12 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                     prof1 += get.getProfit();
                 }
             }
-            calculMontTTCaisse(rev1, det1, dep1, prof1);
+            calculMontTTCaisseGestion(rev1, det1, dep1, prof1);
         }
     }
 //////////////////////////////// les mois qui contient 31 jours :
 
-    @Schedule(dayOfMonth = "31", second = "0", minute = "37", hour = "23")
+   @Schedule(dayOfMonth = "17", second = "0", minute = "43", hour = "13")
     public void calSommeCaissePourTTCaisseGestionn() {
         double rev1 = 0;
         double det1 = 0;
@@ -776,7 +794,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                     prof1 += get.getProfit();
                 }
             }
-            calculMontTTCaisse(rev1, det1, dep1, prof1);
+            calculMontTTCaisseGestion(rev1, det1, dep1, prof1);
         }
     }
 
@@ -807,7 +825,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                     prof1 += get.getProfit();
                 }
             }
-            calculMontTTCaisse(rev1, det1, dep1, prof1);
+            calculMontTTCaisseGestion(rev1, det1, dep1, prof1);
         }
     }
 
@@ -838,7 +856,7 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
                     prof1 += get.getProfit();
                 }
             }
-            calculMontTTCaisse(rev1, det1, dep1, prof1);
+            calculMontTTCaisseGestion(rev1, det1, dep1, prof1);
         }
     }
 
@@ -846,60 +864,68 @@ public class CaisseFacade extends AbstractFacade<Caisse> {
         if (caisse != null) {
             String req = " select c from Caisse c where c.id like '" + caisse.getId() + "' ";
             List<Caisse> list = em.createQuery(req).getResultList();
-            if(! list.isEmpty()){
+            if (!list.isEmpty()) {
                 Caisse loaded = list.get(0);
                 double res = loaded.getDepense();
                 return res;
             }
-               
+
         }
         return 0;
     }
+
     public double getCaisse1(Caisse caisse) {
         if (caisse != null) {
             String req = " select c from Caisse c where c.id like '" + caisse.getId() + "' ";
             List<Caisse> list = em.createQuery(req).getResultList();
-            if(! list.isEmpty()){
+            if (!list.isEmpty()) {
                 Caisse loaded = list.get(0);
                 double res = loaded.getDete();
                 return res;
             }
-               
+
         }
         return 0;
     }
+
     public double getCaisse2(Caisse caisse) {
         if (caisse != null) {
             String req = " select c from Caisse c where c.id like '" + caisse.getId() + "' ";
             List<Caisse> list = em.createQuery(req).getResultList();
-            if(! list.isEmpty()){
+            if (!list.isEmpty()) {
                 Caisse loaded = list.get(0);
                 double res = loaded.getProfit();
                 return res;
             }
-               
+
         }
         return 0;
     }
+
     public double getCaisse3(Caisse caisse) {
         if (caisse != null) {
             String req = " select c from Caisse c where c.id like '" + caisse.getId() + "' ";
             List<Caisse> list = em.createQuery(req).getResultList();
-            if(! list.isEmpty()){
+            if (!list.isEmpty()) {
                 Caisse loaded = list.get(0);
                 double res = loaded.getEntree();
                 return res;
             }
-               
+
         }
         return 0;
     }
 
     public List<Caisse> findCaisse(String typeCaisse) {
         String req = "select c from Caisse c where c.type like  '" + typeCaisse + "' ";
-       List<Caisse> lista = em.createQuery(req).getResultList();
-       System.out.println("haa lista"+ lista);
+        List<Caisse> lista = em.createQuery(req).getResultList();
+        System.out.println("haa lista" + lista);
         return lista;
+    }
+
+    @Schedule(dayOfMonth = "17", second = "0", minute = "47", hour = "13")
+    public void hanii() {
+        System.out.println("saii khdmaat 3la slama");
     }
 
 }

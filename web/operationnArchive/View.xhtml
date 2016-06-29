@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperationnArchiveViewDlg" widgetVar="OperationnArchiveViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOperationnArchiveTitle}">
+            <h:form id="OperationnArchiveViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operationnArchiveController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_id}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.id}" title="#{bundle.ViewOperationnArchiveTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_date1}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.date1}" title="#{bundle.ViewOperationnArchiveTitle_date1}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_date2}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.date2}" title="#{bundle.ViewOperationnArchiveTitle_date2}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_nbrMois}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.nbrMois}" title="#{bundle.ViewOperationnArchiveTitle_nbrMois}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_type}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.type}" title="#{bundle.ViewOperationnArchiveTitle_type}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_responsable}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.responsable}" title="#{bundle.ViewOperationnArchiveTitle_responsable}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_fournisseur}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.fournisseur}" title="#{bundle.ViewOperationnArchiveTitle_fournisseur}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_mediataire}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.mediataire}" title="#{bundle.ViewOperationnArchiveTitle_mediataire}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_montant}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.montant}" title="#{bundle.ViewOperationnArchiveTitle_montant}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_numCheque}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.numCheque}" title="#{bundle.ViewOperationnArchiveTitle_numCheque}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_numFacture}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.numFacture}" title="#{bundle.ViewOperationnArchiveTitle_numFacture}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_numReleve}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.numReleve}" title="#{bundle.ViewOperationnArchiveTitle_numReleve}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_descriptioncaise}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.descriptioncaise}" title="#{bundle.ViewOperationnArchiveTitle_descriptioncaise}"/>
+                        <h:outputText value="#{bundle.ViewOperationnArchiveLabel_etatValide}"/>
+                        <h:outputText value="#{operationnArchiveController.selected.etatValide}" title="#{bundle.ViewOperationnArchiveTitle_etatValide}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OperationnArchiveViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
